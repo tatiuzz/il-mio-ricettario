@@ -18,18 +18,23 @@
     --border: #e9ddcd;
     --macro-bg: #eef6f0;
     --macro-border: #cfe8d6;
+    --fredda-bg: #e3f0f8;
+    --fredda-ink: #276186;
+    --dieta-bg: #f1ece0;
+    --dieta-ink: #7a6a3f;
+    --star: #c99a1e;
     --shadow: 0 3px 14px rgba(43,36,24,0.08);
     --font-display: "Playfair Display", Georgia, "Iowan Old Style", serif;
     --font-body: "Work Sans", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
+  html{ font-size:14px; scroll-behavior:smooth; }
   *{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
   body{
     margin:0;
     font-family: var(--font-body);
     background:var(--bg);
     color:var(--ink);
-    font-size:17px;
+    font-size:15px;
     line-height:1.55;
     padding-bottom:60px;
   }
@@ -47,7 +52,7 @@
     background:#3d3128;
     color:#f6ede1;
     padding:10px 16px;
-    font-size:0.88rem;
+    font-size:0.85rem;
     text-align:center;
   }
   #banner-dirty .btn-export{
@@ -66,35 +71,54 @@
     padding:5px 10px;
     border-radius:999px;
     cursor:pointer;
-    font-size:0.8rem;
+    font-size:0.78rem;
   }
 
   #app{ max-width: 900px; margin: 0 auto; padding: 0 16px; }
 
   /* ---------- copertina ---------- */
   .copertina{
-    min-height: 70vh;
+    min-height: 82vh;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
-    gap:10px;
+    gap:8px;
     padding: 40px 16px;
   }
-  .copertina-ornamento{ font-size:2rem; color:var(--accent); margin-bottom:6px; }
-  .copertina-titolo{ font-size:3rem; margin:0; letter-spacing:0.01em; }
-  .copertina-sottotitolo{ font-style:italic; color:var(--ink-soft); margin:0; font-size:1.05rem; }
-  .copertina-info{ color:var(--ink-soft); font-size:0.9rem; margin:14px 0 20px; }
+  .copertina-ornamento{ font-size:1.9rem; color:var(--accent); margin-bottom:6px; }
+  .copertina-titolo{ font-size:2.5rem; margin:0; letter-spacing:0.01em; }
+  .copertina-sottotitolo{ font-style:italic; color:var(--ink-soft); margin:0; font-size:1rem; }
+  .copertina-info{ color:var(--ink-soft); font-size:0.88rem; margin:14px 0 0; }
+  .copertina-aggiornato{ color:var(--ink-soft); font-size:0.78rem; margin:2px 0 20px; }
   .btn-sfoglia{
     background:var(--accent);
     color:#fff;
     border:none;
-    padding:14px 30px;
+    padding:13px 28px;
     border-radius:999px;
-    font-size:1.05rem;
+    font-size:1rem;
     cursor:pointer;
     box-shadow: var(--shadow);
+  }
+  .copertina-esci{ margin-top:22px; display:flex; flex-direction:column; align-items:center; gap:6px; }
+  .btn-esci{
+    background:none;
+    border:1px solid var(--border);
+    color:var(--ink-soft);
+    padding:8px 20px;
+    border-radius:999px;
+    cursor:pointer;
+    font-size:0.82rem;
+  }
+  .btn-esci:hover{ border-color:var(--accent); color:var(--accent); }
+  #esci-hint{
+    display:none;
+    font-size:0.76rem;
+    color:var(--ink-soft);
+    max-width:280px;
+    margin:0;
   }
 
   /* ---------- indice ---------- */
@@ -102,11 +126,11 @@
     background:none;
     border:none;
     color:var(--ink-soft);
-    font-size:0.95rem;
+    font-size:0.9rem;
     cursor:pointer;
     padding:16px 0 4px;
   }
-  .titolo-pagina{ margin:4px 0 16px; font-size:2rem; }
+  .titolo-pagina{ margin:4px 0 14px; font-size:1.6rem; }
   .chip-gruppo-attivo{
     display:inline-flex;
     align-items:center;
@@ -115,47 +139,62 @@
     color:var(--accent);
     padding:6px 14px;
     border-radius:999px;
-    font-size:0.9rem;
+    font-size:0.85rem;
     margin-bottom:14px;
     font-weight:600;
   }
   .chip-x{ cursor:pointer; font-weight:700; }
   #search-box{
     width:100%;
-    padding:13px 16px;
-    font-size:1rem;
+    padding:12px 15px;
+    font-size:0.95rem;
     border-radius:12px;
     border:1px solid var(--border);
     background:var(--paper);
-    margin-bottom:16px;
+    margin-bottom:12px;
     font-family: var(--font-body);
   }
   #search-box:focus{ outline:2px solid var(--accent); outline-offset:1px; }
-  .filtro-riga{ margin-bottom:12px; padding-top:10px; border-top:1px solid var(--border); }
-  .filtro-label{
-    display:block;
-    font-size:0.75rem;
-    letter-spacing:0.09em;
-    color:var(--ink-soft);
-    font-weight:700;
-    margin-bottom:8px;
-  }
+
+  .filtro-speciali{ margin-bottom:14px; }
   .filtro-tags{ display:flex; flex-wrap:wrap; gap:7px; }
   .filtro-tag{
     border:1px solid var(--border);
     background:var(--paper);
     color:var(--ink);
-    padding:6px 14px;
+    padding:6px 13px;
     border-radius:999px;
-    font-size:0.87rem;
+    font-size:0.82rem;
     cursor:pointer;
   }
   .filtro-tag.active{ background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600; }
 
-  #risultati-indice{ margin-top:18px; }
+  details.filtro-riga{ margin-bottom:10px; padding-top:9px; border-top:1px solid var(--border); }
+  details.filtro-riga summary{
+    cursor:pointer;
+    font-size:0.72rem;
+    letter-spacing:0.09em;
+    color:var(--ink-soft);
+    font-weight:700;
+    padding:3px 0 8px;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  details.filtro-riga summary::-webkit-details-marker{ display:none; }
+  details.filtro-riga summary::after{
+    content:'▾';
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    transition: transform 0.15s ease;
+  }
+  details.filtro-riga[open] summary::after{ transform: rotate(180deg); }
+
+  #risultati-indice{ margin-top:16px; }
   .capitolo-titolo{
-    font-size:1.5rem;
-    margin:26px 0 2px;
+    font-size:1.25rem;
+    margin:24px 0 2px;
     color:var(--accent);
   }
   .capitolo-divider{ height:1px; background:var(--border); margin-bottom:12px; }
@@ -163,21 +202,22 @@
     background:var(--paper);
     border:1px solid var(--border);
     border-radius:12px;
-    padding:14px 16px;
+    padding:13px 15px;
     margin-bottom:10px;
     cursor:pointer;
     transition: box-shadow 0.15s ease, transform 0.1s ease;
   }
   .voce-indice:hover{ box-shadow: var(--shadow); transform: translateY(-1px); }
-  .voce-titolo{ font-family: var(--font-display); font-size:1.15rem; font-weight:700; }
-  .voce-autore{ color:var(--ink-soft); font-size:0.85rem; margin:2px 0 8px; }
+  .voce-indice-header{ display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
+  .voce-titolo{ font-family: var(--font-display); font-size:1.05rem; font-weight:700; }
+  .voce-numero{ color:var(--ink-soft); font-weight:400; font-size:0.85em; margin-right:4px; }
   .no-results{ text-align:center; color:var(--ink-soft); padding:30px 16px; }
 
   /* ---------- tag generici ---------- */
-  .tags{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+  .tags{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin-top:8px; }
   .tag{
-    font-size:0.8rem;
-    padding:4px 11px;
+    font-size:0.76rem;
+    padding:4px 10px;
     border-radius:999px;
     font-weight:600;
     white-space:nowrap;
@@ -192,6 +232,8 @@
   .tag.tag-difficolta-editabile{ cursor:pointer; }
   .tag.tag-difficolta-editabile:hover{ filter:brightness(0.95); }
   .tag.tempo{ background:#e6eef6; color:#31577a; }
+  .tag.fredda{ background:var(--fredda-bg); color:var(--fredda-ink); }
+  .tag.dieta{ background:var(--dieta-bg); color:var(--dieta-ink); }
   .tag.gruppo{ background:#efe6f6; color:#6c3fa1; cursor:pointer; }
   .tag.gruppo:hover{ filter:brightness(0.96); }
   .tag.manuale{ background:#f0f0ec; color:#55503f; }
@@ -201,17 +243,30 @@
     border:1px dashed var(--border);
     background:none;
     color:var(--ink-soft);
-    padding:4px 11px;
+    padding:4px 10px;
     border-radius:999px;
-    font-size:0.8rem;
+    font-size:0.76rem;
     cursor:pointer;
   }
   .tag-input{
-    font-size:0.8rem;
+    font-size:0.76rem;
     padding:4px 10px;
     border-radius:999px;
     border:1px solid var(--accent);
   }
+
+  .btn-preferito{
+    background:none;
+    border:none;
+    font-size:1.25rem;
+    line-height:1;
+    cursor:pointer;
+    color:var(--border);
+    flex-shrink:0;
+    padding:0 2px;
+  }
+  .btn-preferito.attivo{ color:var(--star); }
+  .btn-preferito-grande{ font-size:1.6rem; }
 
   /* ---------- pagina ricetta ---------- */
   .pagina-ricetta{
@@ -219,11 +274,12 @@
     border:1px solid var(--border);
     border-radius:18px;
     box-shadow: var(--shadow);
-    padding:26px 24px 30px;
+    padding:24px 22px 28px;
     margin-bottom:30px;
   }
-  .ricetta-titolo{ font-size:2rem; margin:6px 0 4px; line-height:1.25; }
-  .autore{ color:var(--ink-soft); font-size:0.92rem; margin-bottom:12px; }
+  .ricetta-titolo-riga{ display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
+  .ricetta-titolo{ font-size:1.6rem; margin:6px 0 4px; line-height:1.25; }
+  .autore{ color:var(--ink-soft); font-size:0.85rem; margin-bottom:10px; }
   .pagina-ricetta .tags{ margin-bottom:16px; }
 
   .porzioni-box{
@@ -231,46 +287,48 @@
     background:var(--bg); border:1px solid var(--border);
     border-radius:12px; padding:8px 14px; width:fit-content; margin-bottom:16px;
   }
-  .porzioni-box .label{ font-size:0.9rem; color:var(--ink-soft); }
+  .porzioni-box .label{ font-size:0.85rem; color:var(--ink-soft); }
   .stepper{ display:flex; align-items:center; gap:10px; }
   .stepper-btn{
-    width:34px; height:34px; border-radius:50%;
+    width:32px; height:32px; border-radius:50%;
     border:1px solid var(--accent); background:#fff; color:var(--accent);
-    font-size:1.2rem; line-height:1; cursor:pointer;
+    font-size:1.1rem; line-height:1; cursor:pointer;
   }
-  .stepper .valore{ font-weight:700; font-size:1.05rem; min-width:20px; text-align:center; }
+  .stepper .valore{ font-weight:700; font-size:1rem; min-width:20px; text-align:center; }
 
   .macro-box{
     background:var(--macro-bg); border:1px solid var(--macro-border);
-    border-radius:14px; padding:12px 14px; font-size:0.92rem; margin-bottom:16px;
+    border-radius:14px; padding:12px 14px; font-size:0.86rem; margin-bottom:16px;
   }
   .macro-box .macro-title{ font-weight:700; margin-bottom:6px; color:#2c5a3a; }
   .macro-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:4px 14px; }
 
   .sezione{ margin-top:20px; }
   .section-title{
-    margin:0 0 8px; font-size:1rem; text-transform:uppercase;
+    margin:0 0 8px; font-size:0.92rem; text-transform:uppercase;
     letter-spacing:0.05em; color:var(--ink-soft); font-family: var(--font-body); font-weight:700;
   }
   ul.ingredienti{ list-style:none; margin:0; padding:0; }
   ul.ingredienti li{
     display:flex; align-items:center; justify-content:space-between; gap:10px;
     padding:7px 0; border-bottom:1px dashed var(--border);
+    font-size:0.92rem;
   }
   .ingrediente-vuoto{ color:var(--ink-soft); font-style:italic; }
   .ingrediente-remove{
     border:none; background:none; color:var(--ink-soft); opacity:0.4;
-    cursor:pointer; font-size:0.85rem; flex-shrink:0;
+    cursor:pointer; font-size:0.8rem; flex-shrink:0;
   }
   .ingrediente-remove:hover{ opacity:1; color:#a13939; }
   .btn-add-ingrediente{
     margin-top:10px; border:1px dashed var(--border); background:none;
-    color:var(--ink-soft); padding:7px 14px; border-radius:10px; cursor:pointer; font-size:0.88rem;
+    color:var(--ink-soft); padding:7px 14px; border-radius:10px; cursor:pointer; font-size:0.82rem;
   }
-  ol.passi{ margin:0; padding-left:22px; }
+  ol.passi{ margin:0; padding-left:20px; font-size:0.92rem; }
   ol.passi li{ margin-bottom:8px; }
-  .nota-box{ white-space:pre-line; font-size:0.95rem; }
+  .nota-box{ white-space:pre-line; font-size:0.88rem; }
   .nota-box.nota-vuota{ color:var(--ink-soft); font-style:italic; }
+  .meta-riga{ color:var(--ink-soft); font-size:0.78rem; margin:2px 0 12px; }
 
   /* affordance elementi modificabili */
   .editable{ cursor:text; border-bottom:1px dashed transparent; border-radius:3px; }
@@ -288,12 +346,12 @@
   }
   .nav-pagine button{
     background:none; border:none; color:var(--accent);
-    cursor:pointer; font-size:0.9rem; max-width:45%; text-align:left;
+    cursor:pointer; font-size:0.85rem; max-width:45%; text-align:left;
   }
   .nav-next{ text-align:right !important; }
 
   @media (min-width:720px){
-    .ricetta-titolo{ font-size:2.3rem; }
+    .ricetta-titolo{ font-size:1.9rem; }
   }
 </style>
 </head>
@@ -311,601 +369,1712 @@
 [
   {
     "id": "sushi-cake-pollo",
+    "numero": 1,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Sushi Cake pollo croccante, avocado e cream cheese",
     "autore": "dietitianrose",
-    "categoria": "Piatto Unico",
+    "categorie": [
+      "Piatto Unico"
+    ],
+    "dieta": [
+      "Carne"
+    ],
+    "fredda": false,
     "difficolta": "Facile",
     "tempo": "20 minuti",
     "persone": 1,
     "gruppo": "Sushi Cake",
     "tags": [],
     "ingredienti": [
-      { "quantita": 0.5, "unita": "cup", "nome": "riso a chicco corto/sushi, cotto" },
-      { "quantita": 2, "unita": "pezzi", "nome": "chicken tenders croccanti (air fryer), a cubetti" },
-      { "quantita": 0.5, "unita": "pezzi", "nome": "avocado, a fette" },
-      { "quantita": 2, "unita": "cucchiai", "nome": "cream cheese (circa)" },
-      { "quantita": 0.5, "unita": "pezzi", "nome": "foglio di alga nori (o tagliato a misura)" },
-      { "quantita": null, "unita": "q.b.", "nome": "cipollotto e semi di sesamo tostati, per servire" }
+      {
+        "quantita": 0.5,
+        "unita": "cup",
+        "nome": "riso a chicco corto/sushi, cotto"
+      },
+      {
+        "quantita": 2,
+        "unita": "pezzi",
+        "nome": "chicken tenders croccanti (air fryer), a cubetti"
+      },
+      {
+        "quantita": 0.5,
+        "unita": "pezzi",
+        "nome": "avocado, a fette"
+      },
+      {
+        "quantita": 2,
+        "unita": "cucchiai",
+        "nome": "cream cheese (circa)"
+      },
+      {
+        "quantita": 0.5,
+        "unita": "pezzi",
+        "nome": "foglio di alga nori (o tagliato a misura)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "cipollotto e semi di sesamo tostati, per servire"
+      }
     ],
     "svolgimento": "1. Cuoci il riso secondo le istruzioni della confezione (va bene anche il riso pronto al microonde).\n2. Mentre il riso cuoce, prepara il ripieno e gli eventuali contorni di verdure.\n3. In un contenitore leggermente unto o foderato con pellicola (circa 600 ml), disponi uno strato di avocado e proteina.\n4. Copri con il riso e premi bene con le mani o il dorso di un cucchiaio.\n5. Aggiungi il nori sopra, capovolgi su un piatto, taglia a fette e servi.",
     "note": "Idee di accompagnamento: carota in agrodolce veloce, insalata di cetrioli piccante, edamame, zenzero o wasabi."
   },
   {
     "id": "sushi-cake-tonno",
+    "numero": 2,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Sushi Cake tonno e avocado",
     "autore": "dietitianrose",
-    "categoria": "Piatto Unico",
+    "categorie": [
+      "Piatto Unico"
+    ],
+    "dieta": [
+      "Pesce"
+    ],
+    "fredda": false,
     "difficolta": "Facile",
     "tempo": "20 minuti",
     "persone": 1,
     "gruppo": "Sushi Cake",
     "tags": [],
     "ingredienti": [
-      { "quantita": 0.5, "unita": "cup", "nome": "riso a chicco corto/sushi, cotto" },
-      { "quantita": 125, "unita": "g", "nome": "tonno (al naturale/in olio d'oliva), sgocciolato" },
-      { "quantita": 2, "unita": "cucchiaini", "nome": "maionese o yogurt (1-2 cucchiaini)" },
-      { "quantita": 0.5, "unita": "pezzi", "nome": "avocado, a fette" },
-      { "quantita": 0.5, "unita": "pezzi", "nome": "foglio di alga nori" },
-      { "quantita": null, "unita": "q.b.", "nome": "cipollotto e semi di sesamo tostati, per servire" }
+      {
+        "quantita": 0.5,
+        "unita": "cup",
+        "nome": "riso a chicco corto/sushi, cotto"
+      },
+      {
+        "quantita": 125,
+        "unita": "g",
+        "nome": "tonno (al naturale/in olio d'oliva), sgocciolato"
+      },
+      {
+        "quantita": 2,
+        "unita": "cucchiaini",
+        "nome": "maionese o yogurt (1-2 cucchiaini)"
+      },
+      {
+        "quantita": 0.5,
+        "unita": "pezzi",
+        "nome": "avocado, a fette"
+      },
+      {
+        "quantita": 0.5,
+        "unita": "pezzi",
+        "nome": "foglio di alga nori"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "cipollotto e semi di sesamo tostati, per servire"
+      }
     ],
     "svolgimento": "1. Cuoci il riso secondo le istruzioni della confezione (va bene anche il riso pronto al microonde).\n2. Mentre il riso cuoce, prepara il ripieno e gli eventuali contorni di verdure.\n3. In un contenitore leggermente unto o foderato con pellicola (circa 600 ml), disponi uno strato di avocado e proteina.\n4. Copri con il riso e premi bene.\n5. Aggiungi il nori sopra, capovolgi su un piatto, taglia a fette e servi.",
     "note": "Idee di accompagnamento: carota in agrodolce veloce, insalata di cetrioli piccante, edamame, zenzero o wasabi."
   },
   {
     "id": "sushi-cake-salmone",
+    "numero": 3,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Sushi Cake salmone e cream cheese",
     "autore": "dietitianrose",
-    "categoria": "Piatto Unico",
+    "categorie": [
+      "Piatto Unico"
+    ],
+    "dieta": [
+      "Pesce"
+    ],
+    "fredda": false,
     "difficolta": "Facile",
     "tempo": "20 minuti",
     "persone": 1,
     "gruppo": "Sushi Cake",
     "tags": [],
     "ingredienti": [
-      { "quantita": 0.5, "unita": "cup", "nome": "riso a chicco corto/sushi, cotto" },
-      { "quantita": 75, "unita": "g", "nome": "salmone affumicato/cotto, a fette (50-100g)" },
-      { "quantita": 2, "unita": "cucchiai", "nome": "cream cheese (circa)" },
-      { "quantita": 0.5, "unita": "pezzi", "nome": "foglio di alga nori" },
-      { "quantita": null, "unita": "q.b.", "nome": "cipollotto e semi di sesamo tostati, per servire" }
+      {
+        "quantita": 0.5,
+        "unita": "cup",
+        "nome": "riso a chicco corto/sushi, cotto"
+      },
+      {
+        "quantita": 75,
+        "unita": "g",
+        "nome": "salmone affumicato/cotto, a fette (50-100g)"
+      },
+      {
+        "quantita": 2,
+        "unita": "cucchiai",
+        "nome": "cream cheese (circa)"
+      },
+      {
+        "quantita": 0.5,
+        "unita": "pezzi",
+        "nome": "foglio di alga nori"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "cipollotto e semi di sesamo tostati, per servire"
+      }
     ],
     "svolgimento": "1. Cuoci il riso secondo le istruzioni della confezione (va bene anche il riso pronto al microonde).\n2. Mentre il riso cuoce, prepara il ripieno e gli eventuali contorni di verdure.\n3. In un contenitore leggermente unto o foderato con pellicola (circa 600 ml), disponi uno strato di salmone.\n4. Copri con il riso e premi bene.\n5. Aggiungi il nori sopra, capovolgi su un piatto, taglia a fette e servi.",
     "note": "Idee di accompagnamento: carota in agrodolce veloce, insalata di cetrioli piccante, edamame, zenzero o wasabi.\nSe in gravidanza: evitare salmone affumicato refrigerato a meno che non sia riscaldato fino a diventare bollente (linee guida australiane)."
   },
   {
     "id": "sushi-cake-salmone-maxi",
+    "numero": 4,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Sushi Cake al salmone affumicato (versione maxi)",
     "autore": "ayselshares",
-    "categoria": "Piatto Unico",
+    "categorie": [
+      "Piatto Unico"
+    ],
+    "dieta": [
+      "Pesce"
+    ],
+    "fredda": false,
     "difficolta": "Facile",
     "tempo": "30 minuti",
     "persone": 2,
     "gruppo": "Sushi Cake",
     "tags": [],
     "ingredienti": [
-      { "quantita": 200, "unita": "g", "nome": "salmone affumicato" },
-      { "quantita": null, "unita": "q.b.", "nome": "riso per sushi, cotto" },
-      { "quantita": 0.5, "unita": "pezzi", "nome": "avocado" },
-      { "quantita": 2, "unita": "pezzi", "nome": "mini cetrioli" },
-      { "quantita": 3, "unita": "pezzi", "nome": "fogli di alga nori" },
-      { "quantita": 2.5, "unita": "cucchiai", "nome": "cream cheese (2-3 cucchiai)" },
-      { "quantita": null, "unita": "q.b.", "nome": "semi di sesamo" }
+      {
+        "quantita": 200,
+        "unita": "g",
+        "nome": "salmone affumicato"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "riso per sushi, cotto"
+      },
+      {
+        "quantita": 0.5,
+        "unita": "pezzi",
+        "nome": "avocado"
+      },
+      {
+        "quantita": 2,
+        "unita": "pezzi",
+        "nome": "mini cetrioli"
+      },
+      {
+        "quantita": 3,
+        "unita": "pezzi",
+        "nome": "fogli di alga nori"
+      },
+      {
+        "quantita": 2.5,
+        "unita": "cucchiai",
+        "nome": "cream cheese (2-3 cucchiai)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "semi di sesamo"
+      }
     ],
     "svolgimento": "1. Fodera un contenitore con pellicola trasparente e disponi il salmone affumicato sul fondo.\n2. Aggiungi uno strato di riso per sushi, un foglio di nori e spalma il cream cheese sopra.\n3. Aggiungi l'avocado a fette e le striscioline di cetriolo. Metti il secondo foglio di nori sopra, aggiungi un altro strato di riso e finisci con l'ultimo foglio di nori.\n4. Premi bene il tutto, capovolgi su un piatto, taglia a pezzi e cospargi con i semi di sesamo. Servi con salsa di soia e salsa teriyaki.",
     "note": ""
   },
   {
     "id": "uova-cinesi",
+    "numero": 5,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Uova cinesi (al vapore)",
     "autore": "beardedscara",
-    "categoria": "Secondo",
+    "categorie": [
+      "Secondo"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": false,
     "difficolta": "Facile",
     "tempo": "20-30 minuti",
     "persone": null,
     "gruppo": null,
     "tags": [],
-    "macronutrienti": { "kcal": 320, "proteine": 19.4, "carboidrati": 1.8, "grassi": 25.9 },
+    "macronutrienti": {
+      "kcal": 320,
+      "proteine": 19.4,
+      "carboidrati": 1.8,
+      "grassi": 25.9
+    },
     "ingredienti": [
-      { "quantita": 3, "unita": "pezzi", "nome": "uova" },
-      { "quantita": 225, "unita": "ml", "nome": "acqua" },
-      { "quantita": 1, "unita": "cucchiaio", "nome": "olio di sesamo" },
-      { "quantita": null, "unita": "q.b.", "nome": "sale, cipollotto, salsa di soia, semi di sesamo" }
+      {
+        "quantita": 3,
+        "unita": "pezzi",
+        "nome": "uova"
+      },
+      {
+        "quantita": 225,
+        "unita": "ml",
+        "nome": "acqua"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaio",
+        "nome": "olio di sesamo"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "sale, cipollotto, salsa di soia, semi di sesamo"
+      }
     ],
     "svolgimento": "1. Rompi le uova in una ciotola (in alternativa, usa una delle combinazioni isoproteiche indicate nella nota sotto).\n2. Aggiungi l'acqua e un pizzico di sale.\n3. Sbatti energicamente ed elimina la schiuma in superficie.\n4. Copri con pellicola.\n5. Cuoci a bagnomaria per 15-30 minuti.\n6. Incidi le uova e condisci a piacere con cipollotto, salsa di soia, semi di sesamo e olio di sesamo.",
     "note": "Varianti proteiche equivalenti indicate dall'autore (valori conditi CON olio e sesamo):\n• 2 uova + 55g albume: ~277 kcal, 19,1g proteine, 1,5g carboidrati, 21,1g grassi\n• 1 uovo + 110g albume: ~234 kcal, 18,9g proteine, 1,5g carboidrati, 16,5g grassi\n• 165g albume: ~191 kcal, 18,6g proteine, 1,6g carboidrati, 11,8g grassi\nL'autore consiglia di abbinare una fonte di carboidrati (es. pane) e verdure fresche o cotte."
   },
   {
     "id": "colazione-bilanciata-ciotole",
+    "numero": 6,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Colazione bilanciata pronta la sera prima",
     "autore": "beardedscara",
-    "categoria": "Altro",
+    "categorie": [
+      "Altro"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": true,
     "difficolta": "Facile",
     "tempo": "10 minuti",
     "persone": null,
     "gruppo": null,
     "tags": [],
-    "macronutrienti": { "kcal": 360, "proteine": 24, "carboidrati": 41, "grassi": 12 },
+    "macronutrienti": {
+      "kcal": 360,
+      "proteine": 24,
+      "carboidrati": 41,
+      "grassi": 12
+    },
     "ingredienti": [
-      { "quantita": 150, "unita": "g", "nome": "yogurt greco magro (o skyr, quark, latte proteico)" },
-      { "quantita": 10, "unita": "g", "nome": "semi di chia (o psyllio, semi di lino)" },
-      { "quantita": 30, "unita": "g", "nome": "fiocchi di avena secchi (o cereali da colazione, biscotti)" },
-      { "quantita": 70, "unita": "ml", "nome": "bevanda vegetale senza zucchero (o latte, acqua)" },
-      { "quantita": 100, "unita": "g", "nome": "frutta fresca (50-150 g)" },
-      { "quantita": 10, "unita": "g", "nome": "cocco disidratato (o burro di frutta secca, creme spalmabili)" }
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "yogurt greco magro (o skyr, quark, latte proteico)"
+      },
+      {
+        "quantita": 10,
+        "unita": "g",
+        "nome": "semi di chia (o psyllio, semi di lino)"
+      },
+      {
+        "quantita": 30,
+        "unita": "g",
+        "nome": "fiocchi di avena secchi (o cereali da colazione, biscotti)"
+      },
+      {
+        "quantita": 70,
+        "unita": "ml",
+        "nome": "bevanda vegetale senza zucchero (o latte, acqua)"
+      },
+      {
+        "quantita": 100,
+        "unita": "g",
+        "nome": "frutta fresca (50-150 g)"
+      },
+      {
+        "quantita": 10,
+        "unita": "g",
+        "nome": "cocco disidratato (o burro di frutta secca, creme spalmabili)"
+      }
     ],
     "svolgimento": "1. La sera prima, versa in una ciotola lo yogurt greco magro (o l'alternativa scelta tra skyr, quark o latte proteico).\n2. Aggiungi i semi di chia (o psyllio/semi di lino) e i fiocchi di avena (o cereali/biscotti).\n3. Versa la bevanda vegetale senza zucchero (o l'alternativa scelta).\n4. Copri e lascia riposare in frigorifero per una notte.\n5. Al mattino aggiungi la frutta fresca e il cocco disidratato (o burro di frutta secca/creme spalmabili) e servi.",
     "note": ""
   },
   {
     "id": "sushi-burger-friggitrice-ad-aria",
+    "numero": 7,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Sushi Burger in friggitrice ad aria (o forno)",
     "autore": "friggitrice_ad_aria",
-    "categoria": "Secondo",
+    "categorie": [
+      "Secondo"
+    ],
+    "dieta": [
+      "Pesce"
+    ],
+    "fredda": false,
     "difficolta": "Media",
     "tempo": "45 minuti",
     "persone": 2,
     "gruppo": null,
     "tags": [],
     "ingredienti": [
-      { "quantita": 150, "unita": "g", "nome": "riso per sushi" },
-      { "quantita": 200, "unita": "ml", "nome": "acqua" },
-      { "quantita": 4, "unita": "pezzi", "nome": "fogli di alga nori" },
-      { "quantita": 80, "unita": "g", "nome": "salmone affumicato" },
-      { "quantita": 150, "unita": "g", "nome": "formaggio spalmabile" },
-      { "quantita": 1, "unita": "pezzi", "nome": "mini cetriolo" },
-      { "quantita": 1, "unita": "pezzi", "nome": "avocado" },
-      { "quantita": null, "unita": "q.b.", "nome": "olio spray" },
-      { "quantita": 150, "unita": "g", "nome": "farina 00 o di riso (per la pastella)" },
-      { "quantita": 200, "unita": "g", "nome": "acqua (per la pastella)" },
-      { "quantita": null, "unita": "q.b.", "nome": "panko o pangrattato" },
-      { "quantita": null, "unita": "q.b.", "nome": "sale" },
-      { "quantita": null, "unita": "q.b.", "nome": "salsa Sriracha" },
-      { "quantita": 2, "unita": "cucchiai", "nome": "aceto di riso" },
-      { "quantita": 1, "unita": "cucchiaino", "nome": "zucchero" },
-      { "quantita": 1, "unita": "pizzico", "nome": "sale (per condire il riso)" }
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "riso per sushi"
+      },
+      {
+        "quantita": 200,
+        "unita": "ml",
+        "nome": "acqua"
+      },
+      {
+        "quantita": 4,
+        "unita": "pezzi",
+        "nome": "fogli di alga nori"
+      },
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "salmone affumicato"
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "formaggio spalmabile"
+      },
+      {
+        "quantita": 1,
+        "unita": "pezzi",
+        "nome": "mini cetriolo"
+      },
+      {
+        "quantita": 1,
+        "unita": "pezzi",
+        "nome": "avocado"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "olio spray"
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "farina 00 o di riso (per la pastella)"
+      },
+      {
+        "quantita": 200,
+        "unita": "g",
+        "nome": "acqua (per la pastella)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "panko o pangrattato"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "sale"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "salsa Sriracha"
+      },
+      {
+        "quantita": 2,
+        "unita": "cucchiai",
+        "nome": "aceto di riso"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaino",
+        "nome": "zucchero"
+      },
+      {
+        "quantita": 1,
+        "unita": "pizzico",
+        "nome": "sale (per condire il riso)"
+      }
     ],
     "svolgimento": "1. Risciacqua il riso finché l'acqua diventa limpida, poi cuocilo in acqua per assorbimento a fuoco basso con il coperchio.\n2. In un pentolino scalda qualche secondo l'aceto di riso con zucchero e un pizzico di sale, mescolando.\n3. Trasferisci il riso cotto in una ciotola, versa il condimento a pioggia e incorporalo con un mestolo facendo dei tagli, senza schiacciarlo. Lascia raffreddare.\n4. Prendi un foglio di alga nori: metti al centro un coppapasta e stendi uno strato di riso, poi formaggio spalmabile, cetriolo, salmone, avocado, ancora formaggio e riso.\n5. Spennella i bordi dell'alga e richiudi verso il centro. Ripeti con un secondo foglio di nori spennellato per chiudere anche dall'altro lato.\n6. Forma un burger compatto aiutandoti con la pellicola e lascialo in frigorifero per 15 minuti.\n7. Prepara una pastella con acqua, farina e un pizzico di sale.\n8. Immergi i burger nella pastella, poi passali nel panko o pangrattato.\n9. Aggiungi uno spruzzo d'olio e cuoci in friggitrice ad aria a 200°C (anche 205°C) per 10 minuti, girando a metà cottura con altro olio spray. In alternativa cuoci in forno a 220°C per 15 minuti, oppure friggi in abbondante olio di semi.\n10. Condisci con la salsa Sriracha e servi.",
     "note": ""
   },
   {
     "id": "peperoni-ripieni-di-riso",
+    "numero": 8,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Peperoni ripieni di riso",
     "autore": "chiarainpentola",
-    "categoria": "Secondo",
+    "categorie": [
+      "Secondo"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": false,
     "difficolta": "Media",
     "tempo": "1 ora",
     "persone": 4,
     "gruppo": null,
     "tags": [],
     "ingredienti": [
-      { "quantita": 180, "unita": "g", "nome": "riso" },
-      { "quantita": 0.5, "unita": "pezzi", "nome": "cipolla" },
-      { "quantita": 3, "unita": "pezzi", "nome": "carote" },
-      { "quantita": 2.5, "unita": "pezzi", "nome": "zucchine (2-3)" },
-      { "quantita": null, "unita": "q.b.", "nome": "basilico" },
-      { "quantita": null, "unita": "q.b.", "nome": "sale" },
-      { "quantita": 4, "unita": "pezzi", "nome": "peperoni grandi" },
-      { "quantita": 150, "unita": "g", "nome": "pomodorini" },
-      { "quantita": 1, "unita": "cucchiaio", "nome": "capperi dissalati (abbondante)" },
-      { "quantita": 2, "unita": "cucchiai", "nome": "olive taggiasche" },
-      { "quantita": 2.5, "unita": "cucchiai", "nome": "parmigiano grattugiato (2-3)" },
-      { "quantita": 2.5, "unita": "cucchiai", "nome": "stracchino, o provola o mozzarella (2-3)" },
-      { "quantita": 1, "unita": "pezzi", "nome": "uovo" },
-      { "quantita": null, "unita": "q.b.", "nome": "olio evo" }
+      {
+        "quantita": 180,
+        "unita": "g",
+        "nome": "riso"
+      },
+      {
+        "quantita": 0.5,
+        "unita": "pezzi",
+        "nome": "cipolla"
+      },
+      {
+        "quantita": 3,
+        "unita": "pezzi",
+        "nome": "carote"
+      },
+      {
+        "quantita": 2.5,
+        "unita": "pezzi",
+        "nome": "zucchine (2-3)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "basilico"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "sale"
+      },
+      {
+        "quantita": 4,
+        "unita": "pezzi",
+        "nome": "peperoni grandi"
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "pomodorini"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaio",
+        "nome": "capperi dissalati (abbondante)"
+      },
+      {
+        "quantita": 2,
+        "unita": "cucchiai",
+        "nome": "olive taggiasche"
+      },
+      {
+        "quantita": 2.5,
+        "unita": "cucchiai",
+        "nome": "parmigiano grattugiato (2-3)"
+      },
+      {
+        "quantita": 2.5,
+        "unita": "cucchiai",
+        "nome": "stracchino, o provola o mozzarella (2-3)"
+      },
+      {
+        "quantita": 1,
+        "unita": "pezzi",
+        "nome": "uovo"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "olio evo"
+      }
     ],
     "svolgimento": "1. Porta a bollore l'acqua in una pentola, salala e lessa circa 180 g di riso.\n2. Nel frattempo scalda un filo d'olio in padella, trita la cipolla e falla soffriggere.\n3. Aggiungi le carote e le zucchine tagliate a dadini, qualche foglia di basilico, regola di sale e lascia insaporire.\n4. In una ciotola metti i pomodorini tagliati in quattro.\n5. Trita i capperi dissalati e le olive taggiasche e aggiungili alla ciotola insieme a un po' di basilico.\n6. Lava, asciuga e pulisci i peperoni: usa la parte superiore come cappello oppure tagliala a dadini e aggiungila in padella con le verdure.\n7. Scola il riso cotto e uniscilo alla ciotola con i pomodorini.\n8. Aggiungi le verdure cotte, il parmigiano, lo stracchino (o provola o mozzarella), l'uovo e mescola bene il composto.\n9. Preriscalda il forno a 180-190°C.\n10. Riempi i peperoni con il composto premendo bene, disponili in una teglia foderata di carta forno, condisci con un filo d'olio e inforna per circa 30-40 minuti.",
     "note": "Il ricalcolo automatico delle quantità non copre tempi e temperatura di cottura in forno: verificali comunque."
   },
   {
     "id": "melanzane-teriyaki-stile-unagi",
+    "numero": 9,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Melanzane in salsa teriyaki (stile unagi)",
     "autore": "yuijapanesekitchen",
-    "categoria": "Secondo",
+    "categorie": [
+      "Secondo"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": false,
     "difficolta": "Media",
     "tempo": "30 minuti",
     "persone": 2,
     "gruppo": null,
     "tags": [],
     "ingredienti": [
-      { "quantita": 2.5, "unita": "pezzi", "nome": "melanzane (2-3, circa 200-300 g)" },
-      { "quantita": 3, "unita": "cucchiai", "nome": "amido di patate (o di mais)" },
-      { "quantita": 2, "unita": "cucchiai", "nome": "salsa di soia" },
-      { "quantita": 2, "unita": "cucchiai", "nome": "mirin" },
-      { "quantita": 2, "unita": "cucchiai", "nome": "sakè" },
-      { "quantita": 1, "unita": "cucchiaio", "nome": "zucchero" },
-      { "quantita": null, "unita": "q.b.", "nome": "riso cotto al vapore, per servire" },
-      { "quantita": null, "unita": "q.b.", "nome": "alga nori sminuzzata (opzionale)" },
-      { "quantita": null, "unita": "q.b.", "nome": "semi di sesamo bianco (opzionali)" },
-      { "quantita": null, "unita": "q.b.", "nome": "olio" }
+      {
+        "quantita": 2.5,
+        "unita": "pezzi",
+        "nome": "melanzane (2-3, circa 200-300 g)"
+      },
+      {
+        "quantita": 3,
+        "unita": "cucchiai",
+        "nome": "amido di patate (o di mais)"
+      },
+      {
+        "quantita": 2,
+        "unita": "cucchiai",
+        "nome": "salsa di soia"
+      },
+      {
+        "quantita": 2,
+        "unita": "cucchiai",
+        "nome": "mirin"
+      },
+      {
+        "quantita": 2,
+        "unita": "cucchiai",
+        "nome": "sakè"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaio",
+        "nome": "zucchero"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "riso cotto al vapore, per servire"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "alga nori sminuzzata (opzionale)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "semi di sesamo bianco (opzionali)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "olio"
+      }
     ],
     "svolgimento": "1. Elimina i piccioli delle melanzane e sbuccia qualche striscia di buccia da ciascuna (circa quattro strisce equidistanti).\n2. Cuoci le melanzane a vapore per 8-10 minuti, oppure avvolgile in pellicola e cuocile al microonde a 600W per circa 3 minuti, finché sono appena morbide.\n3. Taglia ogni melanzana per il lungo senza arrivare in fondo, poi aprila come un libro e incidi leggermente la polpa con una forchetta.\n4. Infarina entrambi i lati con l'amido di patate.\n5. Scalda un filo d'olio in padella a fuoco medio e cuoci le melanzane finché sono ben dorate su entrambi i lati.\n6. Aggiungi tutti gli ingredienti della salsa (salsa di soia, mirin, sakè, zucchero) e lascia sobbollire finché la salsa si addensa e ricopre le melanzane.\n7. Servi sopra il riso al vapore e completa con l'alga nori sminuzzata e i semi di sesamo.",
     "note": ""
   },
   {
     "id": "involtini-carta-di-riso-alle-verdure",
+    "numero": 10,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Involtini di carta di riso alle verdure (dumplings)",
     "autore": "broccoli_mum",
-    "categoria": "Secondo",
+    "categorie": [
+      "Secondo"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": false,
     "difficolta": "Media",
     "tempo": "30 minuti",
     "persone": 2,
     "gruppo": null,
     "tags": [],
     "ingredienti": [
-      { "quantita": null, "unita": "q.b.", "nome": "funghi" },
-      { "quantita": null, "unita": "q.b.", "nome": "zucchina" },
-      { "quantita": null, "unita": "q.b.", "nome": "carota" },
-      { "quantita": null, "unita": "q.b.", "nome": "cavolo" },
-      { "quantita": null, "unita": "q.b.", "nome": "tofu" },
-      { "quantita": null, "unita": "q.b.", "nome": "fogli di carta di riso" },
-      { "quantita": null, "unita": "q.b.", "nome": "salsa di soia" },
-      { "quantita": null, "unita": "q.b.", "nome": "aceto di riso" },
-      { "quantita": null, "unita": "q.b.", "nome": "aglio in polvere" },
-      { "quantita": null, "unita": "q.b.", "nome": "salsa al peperoncino dolce" },
-      { "quantita": null, "unita": "q.b.", "nome": "semi di sesamo" }
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "funghi"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "zucchina"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "carota"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "cavolo"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "tofu"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "fogli di carta di riso"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "salsa di soia"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "aceto di riso"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "aglio in polvere"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "salsa al peperoncino dolce"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "semi di sesamo"
+      }
     ],
     "svolgimento": "1. Frulla funghi, zucchina, carota, cavolo e tofu in un robot da cucina fino a tritarli finemente.\n2. Trasferisci il composto in una padella antiaderente, aggiungi la salsa di soia e l'aglio in polvere e cuoci qualche minuto finché le verdure si ammorbidiscono.\n3. Immergi un foglio di carta di riso in acqua finché si ammorbidisce.\n4. Metti un po' di ripieno al centro e chiudi a pacchetto sigillato.\n5. Cospargi semi di sesamo in una padella antiaderente e cuoci i dumplings sopra i semi finché dorati e croccanti su entrambi i lati.\n6. Mescola salsa di soia, aceto di riso e salsa al peperoncino dolce per una salsa di accompagnamento veloce.\n7. Servi i dumplings con la salsa.",
     "note": ""
   },
   {
     "id": "cena-fredda-gazpacho-con-feta",
+    "numero": 11,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Gazpacho con feta",
     "autore": "dietista.paolastavolone",
-    "categoria": "Zuppa",
+    "categorie": [
+      "Zuppa"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": true,
     "difficolta": "Facile",
     "tempo": "15 minuti",
     "persone": null,
     "gruppo": "7 Cene Fredde",
     "tags": [],
     "ingredienti": [
-      { "quantita": 250, "unita": "g", "nome": "pomodori" },
-      { "quantita": 150, "unita": "g", "nome": "anguria" },
-      { "quantita": 50, "unita": "g", "nome": "feta" },
-      { "quantita": 40, "unita": "g", "nome": "pane integrale" },
-      { "quantita": null, "unita": "q.b.", "nome": "basilico" },
-      { "quantita": 5, "unita": "ml", "nome": "olio evo" }
+      {
+        "quantita": 250,
+        "unita": "g",
+        "nome": "pomodori"
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "anguria"
+      },
+      {
+        "quantita": 50,
+        "unita": "g",
+        "nome": "feta"
+      },
+      {
+        "quantita": 40,
+        "unita": "g",
+        "nome": "pane integrale"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "basilico"
+      },
+      {
+        "quantita": 5,
+        "unita": "ml",
+        "nome": "olio evo"
+      }
     ],
     "svolgimento": "1. Frulla pomodori, anguria, olio e basilico fino a ottenere una crema.\n2. Versa nel piatto e completa con feta sbriciolata e pane tostato.",
     "note": ""
   },
   {
     "id": "cena-fredda-insalata-di-fagioli",
+    "numero": 12,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Insalata di fagioli",
     "autore": "dietista.paolastavolone",
-    "categoria": "Contorno",
+    "categorie": [
+      "Contorno"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
     "difficolta": "Facile",
     "tempo": "10 minuti",
     "persone": null,
     "gruppo": "7 Cene Fredde",
     "tags": [],
     "ingredienti": [
-      { "quantita": 150, "unita": "g", "nome": "fagioli cotti" },
-      { "quantita": null, "unita": "q.b.", "nome": "pomodorini" },
-      { "quantita": 20, "unita": "g", "nome": "olive taggiasche" },
-      { "quantita": null, "unita": "q.b.", "nome": "cipolla rossa" },
-      { "quantita": null, "unita": "q.b.", "nome": "prezzemolo" },
-      { "quantita": 50, "unita": "g", "nome": "pane integrale" }
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "fagioli cotti"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "pomodorini"
+      },
+      {
+        "quantita": 20,
+        "unita": "g",
+        "nome": "olive taggiasche"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "cipolla rossa"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "prezzemolo"
+      },
+      {
+        "quantita": 50,
+        "unita": "g",
+        "nome": "pane integrale"
+      }
     ],
     "svolgimento": "1. Taglia le verdure.\n2. Unisci tutti gli ingredienti e servi con il pane tostato.",
     "note": ""
   },
   {
     "id": "cena-fredda-tacos-con-gamberetti",
+    "numero": 13,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Tacos con gamberetti",
     "autore": "dietista.paolastavolone",
-    "categoria": "Secondo",
+    "categorie": [
+      "Secondo"
+    ],
+    "dieta": [
+      "Pesce"
+    ],
+    "fredda": false,
     "difficolta": "Facile",
     "tempo": "20 minuti",
     "persone": null,
     "gruppo": "7 Cene Fredde",
     "tags": [],
     "ingredienti": [
-      { "quantita": 2, "unita": "pezzi", "nome": "tortillas di mais (60 g)" },
-      { "quantita": 120, "unita": "g", "nome": "gamberetti cotti" },
-      { "quantita": 1, "unita": "pezzi", "nome": "zucchina" },
-      { "quantita": 30, "unita": "g", "nome": "yogurt greco" },
-      { "quantita": null, "unita": "q.b.", "nome": "succo e scorza di limone" },
-      { "quantita": null, "unita": "q.b.", "nome": "pomodorini" },
-      { "quantita": null, "unita": "q.b.", "nome": "menta" },
-      { "quantita": 10, "unita": "ml", "nome": "olio evo" }
+      {
+        "quantita": 2,
+        "unita": "pezzi",
+        "nome": "tortillas di mais (60 g)"
+      },
+      {
+        "quantita": 120,
+        "unita": "g",
+        "nome": "gamberetti cotti"
+      },
+      {
+        "quantita": 1,
+        "unita": "pezzi",
+        "nome": "zucchina"
+      },
+      {
+        "quantita": 30,
+        "unita": "g",
+        "nome": "yogurt greco"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "succo e scorza di limone"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "pomodorini"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "menta"
+      },
+      {
+        "quantita": 10,
+        "unita": "ml",
+        "nome": "olio evo"
+      }
     ],
     "svolgimento": "1. Cuoci la zucchina e frullala con lo yogurt e il limone.\n2. Farcisci i tacos con la crema ottenuta, i gamberetti, i pomodorini leggermente schiacciati e la menta.",
     "note": ""
   },
   {
     "id": "cena-fredda-involtini-di-zucchine",
+    "numero": 14,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Involtini di zucchine",
     "autore": "dietista.paolastavolone",
-    "categoria": "Contorno",
+    "categorie": [
+      "Contorno"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": false,
     "difficolta": "Facile",
     "tempo": "20 minuti",
     "persone": null,
     "gruppo": "7 Cene Fredde",
     "tags": [],
     "ingredienti": [
-      { "quantita": 2, "unita": "pezzi", "nome": "zucchine grandi" },
-      { "quantita": 50, "unita": "g", "nome": "hummus" },
-      { "quantita": 30, "unita": "g", "nome": "avocado" },
-      { "quantita": null, "unita": "q.b.", "nome": "pomodorini" },
-      { "quantita": null, "unita": "q.b.", "nome": "valeriana" },
-      { "quantita": 60, "unita": "g", "nome": "pane integrale" }
+      {
+        "quantita": 2,
+        "unita": "pezzi",
+        "nome": "zucchine grandi"
+      },
+      {
+        "quantita": 50,
+        "unita": "g",
+        "nome": "hummus"
+      },
+      {
+        "quantita": 30,
+        "unita": "g",
+        "nome": "avocado"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "pomodorini"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "valeriana"
+      },
+      {
+        "quantita": 60,
+        "unita": "g",
+        "nome": "pane integrale"
+      }
     ],
     "svolgimento": "1. Griglia le zucchine e lasciale raffreddare.\n2. Spalmale con l'hummus, aggiungi l'avocado e i pomodorini, poi arrotolale.\n3. Servi con valeriana e pane integrale.",
     "note": ""
   },
   {
     "id": "cena-fredda-carpaccio-di-pomodoro",
+    "numero": 15,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Carpaccio di pomodoro",
     "autore": "dietista.paolastavolone",
-    "categoria": "Antipasto",
+    "categorie": [
+      "Antipasto"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
     "difficolta": "Facile",
     "tempo": "15 minuti",
     "persone": null,
     "gruppo": "7 Cene Fredde",
     "tags": [],
     "ingredienti": [
-      { "quantita": 250, "unita": "g", "nome": "pomodori" },
-      { "quantita": 50, "unita": "g", "nome": "pane carasau" },
-      { "quantita": 120, "unita": "g", "nome": "ceci cotti" },
-      { "quantita": 20, "unita": "g", "nome": "olive taggiasche" },
-      { "quantita": 10, "unita": "g", "nome": "capperi" },
-      { "quantita": null, "unita": "q.b.", "nome": "cipolla rossa" },
-      { "quantita": null, "unita": "q.b.", "nome": "basilico" },
-      { "quantita": 5, "unita": "ml", "nome": "olio evo" }
+      {
+        "quantita": 250,
+        "unita": "g",
+        "nome": "pomodori"
+      },
+      {
+        "quantita": 50,
+        "unita": "g",
+        "nome": "pane carasau"
+      },
+      {
+        "quantita": 120,
+        "unita": "g",
+        "nome": "ceci cotti"
+      },
+      {
+        "quantita": 20,
+        "unita": "g",
+        "nome": "olive taggiasche"
+      },
+      {
+        "quantita": 10,
+        "unita": "g",
+        "nome": "capperi"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "cipolla rossa"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "basilico"
+      },
+      {
+        "quantita": 5,
+        "unita": "ml",
+        "nome": "olio evo"
+      }
     ],
     "svolgimento": "1. Disponi il pane carasau come base.\n2. Aggiungi il carpaccio di pomodoro e completa con ceci, olive, capperi, cipolla e basilico.\n3. Condisci con l'olio.",
     "note": ""
   },
   {
     "id": "cena-fredda-tartare-di-riso-venere",
+    "numero": 16,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Tartare di riso venere",
     "autore": "dietista.paolastavolone",
-    "categoria": "Primo",
+    "categorie": [
+      "Primo"
+    ],
+    "dieta": [
+      "Pesce"
+    ],
+    "fredda": false,
     "difficolta": "Media",
     "tempo": "30 minuti",
     "persone": null,
     "gruppo": "7 Cene Fredde",
     "tags": [],
     "ingredienti": [
-      { "quantita": 80, "unita": "g", "nome": "riso venere" },
-      { "quantita": 120, "unita": "g", "nome": "tonno" },
-      { "quantita": 80, "unita": "g", "nome": "mango" },
-      { "quantita": null, "unita": "q.b.", "nome": "erba cipollina" },
-      { "quantita": 10, "unita": "g", "nome": "semi di sesamo" }
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "riso venere"
+      },
+      {
+        "quantita": 120,
+        "unita": "g",
+        "nome": "tonno"
+      },
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "mango"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "erba cipollina"
+      },
+      {
+        "quantita": 10,
+        "unita": "g",
+        "nome": "semi di sesamo"
+      }
     ],
     "svolgimento": "1. Cuoci il riso e lascialo raffreddare.\n2. Mettilo in un coppapasta, aggiungi tonno e mango a cubetti, erba cipollina e sesamo.",
     "note": ""
   },
   {
     "id": "cena-fredda-fiocchi-di-latte-e-melone",
+    "numero": 17,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Fiocchi di latte e melone",
     "autore": "dietista.paolastavolone",
-    "categoria": "Antipasto",
+    "categorie": [
+      "Antipasto"
+    ],
+    "dieta": [
+      "Carne"
+    ],
+    "fredda": true,
     "difficolta": "Facile",
     "tempo": "10 minuti",
     "persone": null,
     "gruppo": "7 Cene Fredde",
     "tags": [],
     "ingredienti": [
-      { "quantita": 120, "unita": "g", "nome": "fiocchi di latte" },
-      { "quantita": 50, "unita": "g", "nome": "prosciutto crudo" },
-      { "quantita": 150, "unita": "g", "nome": "melone" },
-      { "quantita": 40, "unita": "g", "nome": "crostini di pane" },
-      { "quantita": null, "unita": "q.b.", "nome": "menta" },
-      { "quantita": 10, "unita": "ml", "nome": "olio evo" }
+      {
+        "quantita": 120,
+        "unita": "g",
+        "nome": "fiocchi di latte"
+      },
+      {
+        "quantita": 50,
+        "unita": "g",
+        "nome": "prosciutto crudo"
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "melone"
+      },
+      {
+        "quantita": 40,
+        "unita": "g",
+        "nome": "crostini di pane"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "menta"
+      },
+      {
+        "quantita": 10,
+        "unita": "ml",
+        "nome": "olio evo"
+      }
     ],
     "svolgimento": "1. Disponi i fiocchi di latte, il melone e il crudo nel piatto.\n2. Completa con crostini croccanti, menta e olio.",
     "note": ""
   },
   {
     "id": "schiacciata-al-pomodoro-croccante-morbida",
+    "numero": 18,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Schiacciata al pomodoro croccante e morbida",
     "autore": "unfilodolio_",
-    "categoria": "Antipasto",
+    "categorie": [
+      "Antipasto"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": false,
     "difficolta": "Media",
     "tempo": "55 minuti",
     "persone": 4,
     "gruppo": null,
     "tags": [],
     "ingredienti": [
-      { "quantita": 320, "unita": "ml", "nome": "acqua" },
-      { "quantita": 40, "unita": "g", "nome": "concentrato di pomodoro" },
-      { "quantita": 270, "unita": "g", "nome": "farina" },
-      { "quantita": 40, "unita": "g", "nome": "parmigiano" },
-      { "quantita": 500, "unita": "g", "nome": "pomodorini (datterini o ciliegino)" },
-      { "quantita": null, "unita": "q.b.", "nome": "basilico abbondante" },
-      { "quantita": 1, "unita": "pizzico", "nome": "sale" },
-      { "quantita": null, "unita": "q.b.", "nome": "farina di mais" },
-      { "quantita": null, "unita": "q.b.", "nome": "olive (facoltative)" },
-      { "quantita": null, "unita": "q.b.", "nome": "olio evo" }
+      {
+        "quantita": 320,
+        "unita": "ml",
+        "nome": "acqua"
+      },
+      {
+        "quantita": 40,
+        "unita": "g",
+        "nome": "concentrato di pomodoro"
+      },
+      {
+        "quantita": 270,
+        "unita": "g",
+        "nome": "farina"
+      },
+      {
+        "quantita": 40,
+        "unita": "g",
+        "nome": "parmigiano"
+      },
+      {
+        "quantita": 500,
+        "unita": "g",
+        "nome": "pomodorini (datterini o ciliegino)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "basilico abbondante"
+      },
+      {
+        "quantita": 1,
+        "unita": "pizzico",
+        "nome": "sale"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "farina di mais"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "olive (facoltative)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "olio evo"
+      }
     ],
     "svolgimento": "1. Sciogli il concentrato di pomodoro nell'acqua.\n2. Aggiungi la farina poco alla volta mescolando, poi unisci parmigiano e sale.\n3. Taglia i pomodorini e aggiungili all'impasto insieme al basilico.\n4. Versa il composto in una teglia oliata e foderata di carta forno, spolvera con farina di mais e livella bene.\n5. Aggiungi altri pomodorini, le olive, un filo d'olio e ancora farina di mais sopra.\n6. Cuoci in forno a 200°C per 40 minuti, oppure in friggitrice ad aria a 180°C per 30 minuti.\n7. Servi con una salsa yogurt alle erbe o pesto, a piacere.",
     "note": "Il ricalcolo automatico delle quantità non copre tempi e temperatura di cottura in forno: verificali comunque."
   },
   {
     "id": "lazy-ramen-fakeaway",
+    "numero": 19,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Lazy Ramen",
     "autore": "eatinghealthytoday",
-    "categoria": "Primo",
+    "categorie": [
+      "Primo"
+    ],
+    "dieta": [
+      "Carne"
+    ],
+    "fredda": false,
     "difficolta": "Media",
     "tempo": "30 minuti",
     "persone": 2,
     "gruppo": null,
     "tags": [],
     "ingredienti": [
-      { "quantita": 0.5, "unita": "cucchiai", "nome": "olio neutro" },
-      { "quantita": 1, "unita": "pezzi", "nome": "spicchio d'aglio, tritato" },
-      { "quantita": 0.5, "unita": "pezzi", "nome": "pezzo di zenzero (grande come un pollice), grattugiato" },
-      { "quantita": 1, "unita": "cucchiaio", "nome": "pasta di curry rosso" },
-      { "quantita": 1, "unita": "cucchiaino", "nome": "burro di arachidi colmo (o pasta di sesamo)" },
-      { "quantita": 1, "unita": "cucchiaino", "nome": "pasta di miso" },
-      { "quantita": 1, "unita": "cucchiaio", "nome": "salsa di soia (o più a piacere)" },
-      { "quantita": 2, "unita": "cup", "nome": "brodo di pollo" },
-      { "quantita": 0.5, "unita": "cup", "nome": "latte di soia (o latte di cocco)" },
-      { "quantita": null, "unita": "q.b.", "nome": "funghi shiitake, affettati" },
-      { "quantita": null, "unita": "q.b.", "nome": "bok choy, dimezzato o affettato" },
-      { "quantita": null, "unita": "q.b.", "nome": "noodle ramen istantanei" },
-      { "quantita": null, "unita": "q.b.", "nome": "uova pulite e non incrinate (opzionali)" },
-      { "quantita": 250, "unita": "g", "nome": "carne macinata magra a scelta (o tofu sminuzzato per versione vegetariana)" },
-      { "quantita": 1, "unita": "cucchiaio", "nome": "salsa di ostriche" },
-      { "quantita": 1, "unita": "cucchiaio", "nome": "salsa di soia (per la carne)" },
-      { "quantita": 1, "unita": "cucchiaio", "nome": "salsa di soia scura" },
-      { "quantita": 1, "unita": "cucchiaio", "nome": "salsa dolce al peperoncino (o miele)" },
-      { "quantita": null, "unita": "q.b.", "nome": "cipollotto affettato, per servire" },
-      { "quantita": null, "unita": "q.b.", "nome": "semi di sesamo, per servire" },
-      { "quantita": null, "unita": "q.b.", "nome": "olio piccante, per servire (opzionale)" },
-      { "quantita": null, "unita": "q.b.", "nome": "kimchi, per servire" },
-      { "quantita": null, "unita": "q.b.", "nome": "spicchio di lime, per servire" }
+      {
+        "quantita": 0.5,
+        "unita": "cucchiai",
+        "nome": "olio neutro"
+      },
+      {
+        "quantita": 1,
+        "unita": "pezzi",
+        "nome": "spicchio d'aglio, tritato"
+      },
+      {
+        "quantita": 0.5,
+        "unita": "pezzi",
+        "nome": "pezzo di zenzero (grande come un pollice), grattugiato"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaio",
+        "nome": "pasta di curry rosso"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaino",
+        "nome": "burro di arachidi colmo (o pasta di sesamo)"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaino",
+        "nome": "pasta di miso"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaio",
+        "nome": "salsa di soia (o più a piacere)"
+      },
+      {
+        "quantita": 2,
+        "unita": "cup",
+        "nome": "brodo di pollo"
+      },
+      {
+        "quantita": 0.5,
+        "unita": "cup",
+        "nome": "latte di soia (o latte di cocco)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "funghi shiitake, affettati"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "bok choy, dimezzato o affettato"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "noodle ramen istantanei"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "uova pulite e non incrinate (opzionali)"
+      },
+      {
+        "quantita": 250,
+        "unita": "g",
+        "nome": "carne macinata magra a scelta (o tofu sminuzzato per versione vegetariana)"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaio",
+        "nome": "salsa di ostriche"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaio",
+        "nome": "salsa di soia (per la carne)"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaio",
+        "nome": "salsa di soia scura"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaio",
+        "nome": "salsa dolce al peperoncino (o miele)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "cipollotto affettato, per servire"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "semi di sesamo, per servire"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "olio piccante, per servire (opzionale)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "kimchi, per servire"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "spicchio di lime, per servire"
+      }
     ],
     "svolgimento": "1. Cuoci la carne macinata fino a farla rosolare. Aggiungi la salsa di ostriche, la salsa di soia, la salsa di soia scura e la salsa dolce al peperoncino, poi cuoci per 2-3 minuti finché diventa lucida.\n2. Nel frattempo scalda l'olio in una pentola. Fai cuocere aglio e zenzero per 1 minuto, poi unisci la pasta di curry, il burro di arachidi, il miso e la salsa di soia.\n3. Versa il brodo e il latte di soia e porta a ebollizione.\n4. Aggiungi le uova (se le usi), i funghi e i noodles e cuoci per 6½-7 minuti, finché le uova sono cotte a piacere e i noodles sono morbidi.\n5. Aggiungi il bok choy negli ultimi 30 secondi di cottura.\n6. Trasferisci le uova in un bagno di acqua e ghiaccio, sgusciale, poi dividi noodles, verdure e brodo nelle ciotole.\n7. Completa con la carne macinata, l'uovo a fette e i topping preferiti (cipollotto, semi di sesamo, olio piccante, kimchi, uno spicchio di lime).",
     "note": "Nota di sicurezza alimentare: usa uova pulite e non incrinate e assicurati che il brodo raggiunga un bollore pieno per un tempo sufficiente a cuocere le uova. Se sei in gravidanza, immunodepressa o cucini per persone a rischio, cuoci le uova completamente, oppure bollile separatamente e aggiungile al ramen alla fine."
   },
   {
     "id": "zuppa-miso-uovo-jammy-riso",
+    "numero": 20,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Zuppa di miso con uovo jammy e riso",
     "autore": "eatinghealthytoday",
-    "categoria": "Zuppa",
+    "categorie": [
+      "Zuppa"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": false,
     "difficolta": "Facile",
     "tempo": "15 minuti",
     "persone": 1,
     "gruppo": "Settimana giapponese alto proteico",
     "tags": [],
-    "macronutrienti": { "kcal": 380, "proteine": 22, "carboidrati": 38, "grassi": 12 },
+    "macronutrienti": {
+      "kcal": 380,
+      "proteine": 22,
+      "carboidrati": 38,
+      "grassi": 12
+    },
     "ingredienti": [
-      { "quantita": 0.5, "unita": "cup", "nome": "riso bianco cotto" },
-      { "quantita": 2, "unita": "pezzi", "nome": "uova grandi" },
-      { "quantita": 1, "unita": "cucchiaino", "nome": "pasta di miso bianco" },
-      { "quantita": 1, "unita": "cup", "nome": "acqua calda (non bollente)" },
-      { "quantita": null, "unita": "q.b.", "nome": "tofu setoso a cubetti (una piccola manciata)" },
-      { "quantita": 1, "unita": "cucchiaino", "nome": "alga wakame essiccata" },
-      { "quantita": 1, "unita": "cucchiaino", "nome": "salsa di soia a basso contenuto di sodio" },
-      { "quantita": null, "unita": "q.b.", "nome": "semi di sesamo (un pizzico)" },
-      { "quantita": 2, "unita": "pezzi", "nome": "cipollotti affettati" }
+      {
+        "quantita": 0.5,
+        "unita": "cup",
+        "nome": "riso bianco cotto"
+      },
+      {
+        "quantita": 2,
+        "unita": "pezzi",
+        "nome": "uova grandi"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaino",
+        "nome": "pasta di miso bianco"
+      },
+      {
+        "quantita": 1,
+        "unita": "cup",
+        "nome": "acqua calda (non bollente)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "tofu setoso a cubetti (una piccola manciata)"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaino",
+        "nome": "alga wakame essiccata"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaino",
+        "nome": "salsa di soia a basso contenuto di sodio"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "semi di sesamo (un pizzico)"
+      },
+      {
+        "quantita": 2,
+        "unita": "pezzi",
+        "nome": "cipollotti affettati"
+      }
     ],
     "svolgimento": "1. Porta a bollore abbastanza acqua in un pentolino. Immergi delicatamente le uova e cuocile per esattamente 6 minuti e 30 secondi. Trasferiscile subito in acqua e ghiaccio.\n2. In una ciotola separata, sciogli il miso bianco nell'acqua calda (non bollente).\n3. Aggiungi il tofu setoso a cubetti e l'alga wakame essiccata al brodo di miso e mescola delicatamente.\n4. Sgusciale le uova e tagliale a metà. Metti il riso cotto in una ciotola da portata e disponi sopra le uova.\n5. Versa il brodo di miso con tofu e wakame sopra riso e uova. Aggiungi la salsa di soia, un pizzico di semi di sesamo e i cipollotti affettati.",
     "note": ""
   },
   {
     "id": "pollo-katsu-al-forno",
+    "numero": 21,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Pollo katsu al forno",
     "autore": "eatinghealthytoday",
-    "categoria": "Secondo",
+    "categorie": [
+      "Secondo"
+    ],
+    "dieta": [
+      "Carne"
+    ],
+    "fredda": false,
     "difficolta": "Media",
     "tempo": "35 minuti",
     "persone": 1,
     "gruppo": "Settimana giapponese alto proteico",
     "tags": [],
-    "macronutrienti": { "kcal": 500, "proteine": 46, "carboidrati": 44, "grassi": 12 },
+    "macronutrienti": {
+      "kcal": 500,
+      "proteine": 46,
+      "carboidrati": 44,
+      "grassi": 12
+    },
     "ingredienti": [
-      { "quantita": 1, "unita": "pezzi", "nome": "petto di pollo grande (200 g)" },
-      { "quantita": 3, "unita": "cucchiai", "nome": "pangrattato panko" },
-      { "quantita": 1, "unita": "pezzi", "nome": "uovo sbattuto" },
-      { "quantita": 1, "unita": "cucchiaio", "nome": "farina 00" },
-      { "quantita": null, "unita": "q.b.", "nome": "sale e pepe" },
-      { "quantita": 2.5, "unita": "cup", "nome": "riso bianco cotto" },
-      { "quantita": null, "unita": "q.b.", "nome": "cavolo bianco a listarelle, per servire" },
-      { "quantita": 1, "unita": "cucchiaio", "nome": "curry in polvere (per la salsa)" },
-      { "quantita": 100, "unita": "ml", "nome": "brodo (per la salsa)" },
-      { "quantita": 1, "unita": "cucchiaino", "nome": "miele (per la salsa)" },
-      { "quantita": 1, "unita": "cucchiaino", "nome": "salsa di soia (per la salsa)" },
-      { "quantita": null, "unita": "q.b.", "nome": "olio spray" }
+      {
+        "quantita": 1,
+        "unita": "pezzi",
+        "nome": "petto di pollo grande (200 g)"
+      },
+      {
+        "quantita": 3,
+        "unita": "cucchiai",
+        "nome": "pangrattato panko"
+      },
+      {
+        "quantita": 1,
+        "unita": "pezzi",
+        "nome": "uovo sbattuto"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaio",
+        "nome": "farina 00"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "sale e pepe"
+      },
+      {
+        "quantita": 2.5,
+        "unita": "cup",
+        "nome": "riso bianco cotto"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "cavolo bianco a listarelle, per servire"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaio",
+        "nome": "curry in polvere (per la salsa)"
+      },
+      {
+        "quantita": 100,
+        "unita": "ml",
+        "nome": "brodo (per la salsa)"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaino",
+        "nome": "miele (per la salsa)"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaino",
+        "nome": "salsa di soia (per la salsa)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "olio spray"
+      }
     ],
     "svolgimento": "1. Preriscalda il forno a 200°C.\n2. Passa il petto di pollo nella farina, poi nell'uovo sbattuto, infine nel pangrattato panko. Condisci con sale e pepe.\n3. Disponi il pollo impanato su una teglia foderata di carta forno e spruzza leggermente con olio.\n4. Cuoci in forno per 22-25 minuti, finché dorato e cotto.\n5. In un pentolino, unisci curry in polvere, brodo, miele e salsa di soia. Fai sobbollire per 5 minuti per ottenere la salsa.\n6. Affetta il pollo cotto e servi sopra il riso bianco. Versa sopra la salsa al curry e completa con il cavolo a listarelle.",
     "note": "Il ricalcolo automatico delle quantità non copre tempi e temperatura di cottura in forno: verificali comunque."
   },
   {
     "id": "salmone-teriyaki-riso-edamame",
+    "numero": 22,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Salmone teriyaki con riso all'edamame",
     "autore": "eatinghealthytoday",
-    "categoria": "Secondo",
+    "categorie": [
+      "Secondo"
+    ],
+    "dieta": [
+      "Pesce"
+    ],
+    "fredda": false,
     "difficolta": "Facile",
     "tempo": "15 minuti",
     "persone": 1,
     "gruppo": "Settimana giapponese alto proteico",
     "tags": [],
-    "macronutrienti": { "kcal": 520, "proteine": 44, "carboidrati": 42, "grassi": 18 },
+    "macronutrienti": {
+      "kcal": 520,
+      "proteine": 44,
+      "carboidrati": 42,
+      "grassi": 18
+    },
     "ingredienti": [
-      { "quantita": 1, "unita": "pezzi", "nome": "filetto di salmone (180 g)" },
-      { "quantita": 2, "unita": "cucchiai", "nome": "salsa di soia a basso contenuto di sodio" },
-      { "quantita": 1, "unita": "cucchiaio", "nome": "miele" },
-      { "quantita": 1, "unita": "cucchiaino", "nome": "olio di sesamo" },
-      { "quantita": 1, "unita": "cucchiaino", "nome": "aceto di riso" },
-      { "quantita": 0.5, "unita": "cup", "nome": "riso bianco cotto" },
-      { "quantita": 80, "unita": "g", "nome": "edamame sgusciati (surgelati, scongelati)" },
-      { "quantita": null, "unita": "q.b.", "nome": "semi di sesamo e cipollotto, per servire" },
-      { "quantita": null, "unita": "q.b.", "nome": "spicchio di lime" }
+      {
+        "quantita": 1,
+        "unita": "pezzi",
+        "nome": "filetto di salmone (180 g)"
+      },
+      {
+        "quantita": 2,
+        "unita": "cucchiai",
+        "nome": "salsa di soia a basso contenuto di sodio"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaio",
+        "nome": "miele"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaino",
+        "nome": "olio di sesamo"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaino",
+        "nome": "aceto di riso"
+      },
+      {
+        "quantita": 0.5,
+        "unita": "cup",
+        "nome": "riso bianco cotto"
+      },
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "edamame sgusciati (surgelati, scongelati)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "semi di sesamo e cipollotto, per servire"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "spicchio di lime"
+      }
     ],
     "svolgimento": "1. Unisci salsa di soia, miele, olio di sesamo e aceto di riso per preparare la glassa.\n2. Scalda una padella antiaderente o in ghisa a fuoco medio. Cuoci il salmone dal lato della pelle per 3 minuti, poi gira.\n3. Versa la glassa sul salmone e cuoci per altri 2 minuti, bagnando di continuo.\n4. Mescola l'edamame nel riso cotto fino a distribuirlo uniformemente.\n5. Adagia il salmone sopra il riso con edamame, versa sopra la glassa rimasta e completa con semi di sesamo, cipollotto affettato e uno spicchio di lime.",
     "note": ""
   },
   {
     "id": "insalata-edamame-sesamo",
+    "numero": 23,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Insalata di edamame e sesamo",
     "autore": "eatinghealthytoday",
-    "categoria": "Contorno",
+    "categorie": [
+      "Contorno"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
     "difficolta": "Facile",
     "tempo": "10 minuti",
     "persone": 1,
     "gruppo": "Settimana giapponese alto proteico",
     "tags": [],
-    "macronutrienti": { "kcal": 320, "proteine": 22, "carboidrati": 18, "grassi": 18 },
+    "macronutrienti": {
+      "kcal": 320,
+      "proteine": 22,
+      "carboidrati": 18,
+      "grassi": 18
+    },
     "ingredienti": [
-      { "quantita": 200, "unita": "g", "nome": "edamame sgusciati (scongelati)" },
-      { "quantita": 0.5, "unita": "pezzi", "nome": "cetriolo, affettato sottile" },
-      { "quantita": 1, "unita": "cup", "nome": "cavolo bianco a listarelle" },
-      { "quantita": 0.5, "unita": "pezzi", "nome": "avocado a fette" },
-      { "quantita": 2, "unita": "cucchiai", "nome": "semi di sesamo" },
-      { "quantita": null, "unita": "q.b.", "nome": "coriandolo fresco (una manciata)" },
-      { "quantita": 1, "unita": "cucchiaio", "nome": "salsa di soia (condimento)" },
-      { "quantita": 1, "unita": "cucchiaino", "nome": "olio di sesamo (condimento)" },
-      { "quantita": 1, "unita": "cucchiaino", "nome": "aceto di riso (condimento)" },
-      { "quantita": 0.5, "unita": "cucchiaino", "nome": "miele (condimento)" },
-      { "quantita": null, "unita": "pizzico", "nome": "fiocchi di peperoncino" }
+      {
+        "quantita": 200,
+        "unita": "g",
+        "nome": "edamame sgusciati (scongelati)"
+      },
+      {
+        "quantita": 0.5,
+        "unita": "pezzi",
+        "nome": "cetriolo, affettato sottile"
+      },
+      {
+        "quantita": 1,
+        "unita": "cup",
+        "nome": "cavolo bianco a listarelle"
+      },
+      {
+        "quantita": 0.5,
+        "unita": "pezzi",
+        "nome": "avocado a fette"
+      },
+      {
+        "quantita": 2,
+        "unita": "cucchiai",
+        "nome": "semi di sesamo"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "coriandolo fresco (una manciata)"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaio",
+        "nome": "salsa di soia (condimento)"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaino",
+        "nome": "olio di sesamo (condimento)"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaino",
+        "nome": "aceto di riso (condimento)"
+      },
+      {
+        "quantita": 0.5,
+        "unita": "cucchiaino",
+        "nome": "miele (condimento)"
+      },
+      {
+        "quantita": null,
+        "unita": "pizzico",
+        "nome": "fiocchi di peperoncino"
+      }
     ],
     "svolgimento": "1. Metti l'edamame, il cetriolo, il cavolo, l'avocado e il coriandolo fresco in una ciotola.\n2. In una ciotolina, mescola salsa di soia, olio di sesamo, aceto di riso, miele e un pizzico di fiocchi di peperoncino.\n3. Versa il condimento sull'insalata e mescola bene.\n4. Cospargi con i semi di sesamo e servi subito.",
     "note": ""
   },
   {
     "id": "ciotola-noodle-soba-miso",
+    "numero": 24,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Ciotola di noodle soba al miso",
     "autore": "eatinghealthytoday",
-    "categoria": "Primo",
+    "categorie": [
+      "Primo"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": false,
     "difficolta": "Facile",
     "tempo": "20 minuti",
     "persone": 1,
     "gruppo": "Settimana giapponese alto proteico",
     "tags": [],
-    "macronutrienti": { "kcal": 380, "proteine": 28, "carboidrati": 48, "grassi": 10 },
+    "macronutrienti": {
+      "kcal": 380,
+      "proteine": 28,
+      "carboidrati": 48,
+      "grassi": 10
+    },
     "ingredienti": [
-      { "quantita": 80, "unita": "g", "nome": "noodle soba secchi" },
-      { "quantita": 1, "unita": "cucchiaino", "nome": "salsa di soia" },
-      { "quantita": 1, "unita": "cucchiaino", "nome": "olio di sesamo" },
-      { "quantita": 150, "unita": "g", "nome": "tofu setoso a cubetti" },
-      { "quantita": 4, "unita": "pezzi", "nome": "funghi shiitake affettati" },
-      { "quantita": null, "unita": "q.b.", "nome": "spinaci baby (una manciata abbondante)" },
-      { "quantita": 1, "unita": "cucchiaio", "nome": "pasta di miso bianco" },
-      { "quantita": 600, "unita": "ml", "nome": "brodo vegetale (caldo)" },
-      { "quantita": 2, "unita": "pezzi", "nome": "cipollotti affettati" }
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "noodle soba secchi"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaino",
+        "nome": "salsa di soia"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaino",
+        "nome": "olio di sesamo"
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "tofu setoso a cubetti"
+      },
+      {
+        "quantita": 4,
+        "unita": "pezzi",
+        "nome": "funghi shiitake affettati"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "spinaci baby (una manciata abbondante)"
+      },
+      {
+        "quantita": 1,
+        "unita": "cucchiaio",
+        "nome": "pasta di miso bianco"
+      },
+      {
+        "quantita": 600,
+        "unita": "ml",
+        "nome": "brodo vegetale (caldo)"
+      },
+      {
+        "quantita": 2,
+        "unita": "pezzi",
+        "nome": "cipollotti affettati"
+      }
     ],
     "svolgimento": "1. Cuoci i noodle soba secondo le istruzioni della confezione. Scola e sciacqua con acqua fredda.\n2. Scalda il brodo vegetale senza farlo bollire. Incorpora la pasta di miso bianco mescolando con una frusta.\n3. Aggiungi il tofu a cubetti e i funghi shiitake affettati al brodo. Lascia sobbollire per 3 minuti.\n4. Aggiungi gli spinaci baby al brodo e mescola finché appassiscono.\n5. Dividi i noodle soba cotti nelle ciotole di portata. Versa sopra il brodo con tofu, funghi e spinaci.\n6. Condisci con l'olio di sesamo e cospargi con i cipollotti affettati.",
     "note": ""
   },
   {
     "id": "carpaccio-di-fichi",
+    "numero": 25,
+    "dataAggiunta": "2026-08-27",
     "titolo": "Carpaccio di fichi",
     "autore": "ilmiopiattoacolori",
-    "categoria": "Antipasto",
+    "categorie": [
+      "Antipasto"
+    ],
+    "dieta": [
+      "Carne"
+    ],
+    "fredda": true,
     "difficolta": "Facile",
     "tempo": "5 minuti",
     "persone": 4,
     "gruppo": null,
     "tags": [],
     "ingredienti": [
-      { "quantita": 6.5, "unita": "pezzi", "nome": "fichi (6-7)" },
-      { "quantita": 200, "unita": "g", "nome": "stracciatella" },
-      { "quantita": 100, "unita": "g", "nome": "jamón iberico (o prosciutto crudo)" },
-      { "quantita": null, "unita": "q.b.", "nome": "basilico fresco" },
-      { "quantita": null, "unita": "q.b.", "nome": "olio extravergine d'oliva" },
-      { "quantita": null, "unita": "q.b.", "nome": "sale" }
+      {
+        "quantita": 6.5,
+        "unita": "pezzi",
+        "nome": "fichi (6-7)"
+      },
+      {
+        "quantita": 200,
+        "unita": "g",
+        "nome": "stracciatella"
+      },
+      {
+        "quantita": 100,
+        "unita": "g",
+        "nome": "jamón iberico (o prosciutto crudo)"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "basilico fresco"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "olio extravergine d'oliva"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "sale"
+      }
     ],
     "svolgimento": "1. Sbuccia i fichi e tagliali a fette abbastanza spesse. Disponili su un piatto, lasciando un po' di spazio tra una fetta e l'altra.\n2. Ungi leggermente il fondo di un bicchiere con un filo d'olio e schiaccia delicatamente le fette di fico.\n3. Aggiungi il prosciutto, distribuisci la stracciatella a fiocchetti e completa con qualche foglia di basilico fresco, un pizzico di sale (se necessario) e un ultimo filo di olio extravergine d'oliva.",
     "note": ""
@@ -917,16 +2086,17 @@
 (function(){
   "use strict";
 
-  const CATEGORIE_ORDINE = ["Antipasto","Primo","Piatto Unico","Secondo","Contorno","Zuppa","Dolce","Frutta","Altro"];
+  const CATEGORIE_ORDINE = ["Antipasto","Primo","Piatto Unico","Secondo","Contorno","Zuppa","Snack","Aperitivo","Frullati","Dolce","Frutta","Altro"];
   const DIFFICOLTA_OPZIONI = ["Facile","Media","Difficile"];
   const DURATA_BUCKETS_ORDINE = ["≤15 min","16-30 min","31-60 min",">60 min"];
+  const DIETA_OPZIONI = ["Vegano","Vegetariano","Carne","Pesce"];
 
   const RICETTE_BASE = JSON.parse(document.getElementById('ricette-data').textContent);
   const app = document.getElementById('app');
 
   let overrides = {};
   let porzioniCorrenti = {};
-  const filtri = { search: "", portata: new Set(), durata: new Set(), difficolta: new Set(), gruppo: null };
+  const filtri = { search: "", portata: new Set(), durata: new Set(), difficolta: new Set(), dieta: new Set(), prep: new Set(), speciali: new Set(), gruppo: null };
 
   function caricaOverrides(){
     try{ overrides = JSON.parse(localStorage.getItem('ricettario_overrides') || '{}'); }
@@ -978,6 +2148,19 @@
     return String(str ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   }
 
+  function formattaData(iso){
+    if(!iso) return '';
+    const parti = String(iso).split('-');
+    if(parti.length !== 3) return iso;
+    const [y,m,d] = parti;
+    return `${d}/${m}/${y}`;
+  }
+  function ultimoAggiornamento(){
+    const date = RICETTE_BASE.map(r => r.dataAggiunta).filter(Boolean).sort();
+    if(!date.length) return null;
+    return formattaData(date[date.length - 1]);
+  }
+
   function bucketDurata(tempoStr){
     const nums = (String(tempoStr).match(/\d+/g) || []).map(Number);
     if(nums.length === 0) return "n/d";
@@ -990,15 +2173,20 @@
   }
 
   function matchesFiltri(r){
+    const categorie = r.categorie || [];
+    const dieta = r.dieta || [];
     if(filtri.gruppo && r.gruppo !== filtri.gruppo) return false;
-    if(filtri.portata.size && !filtri.portata.has(r.categoria)) return false;
+    if(filtri.portata.size && !categorie.some(c => filtri.portata.has(c))) return false;
     if(filtri.difficolta.size && !filtri.difficolta.has(r.difficolta)) return false;
     if(filtri.durata.size && !filtri.durata.has(bucketDurata(r.tempo))) return false;
+    if(filtri.dieta.size && !dieta.some(d => filtri.dieta.has(d))) return false;
+    if(filtri.prep.has('Fredda') && !r.fredda) return false;
+    if(filtri.speciali.has('preferiti') && !r.preferito) return false;
     if(filtri.search){
       const s = filtri.search.toLowerCase();
       const haystack = [
-        r.titolo, r.autore, r.categoria, r.tempo, r.gruppo || "",
-        ...(r.tags || []), ...r.ingredienti.map(i => i.nome)
+        r.titolo, r.autore, ...categorie, r.tempo, r.gruppo || "",
+        ...dieta, ...(r.tags || []), ...r.ingredienti.map(i => i.nome)
       ].join(" ").toLowerCase();
       if(!haystack.includes(s)) return false;
     }
@@ -1073,6 +2261,10 @@
     porzioniCorrenti[id] = Math.max(1, attuale + delta);
     render();
   }
+  function toggleFavorito(id){
+    const r = getRicettaById(id);
+    salvaCampo(id, 'preferito', !r.preferito);
+  }
 
   function avviaModifica(el, valoreAttuale, multiline, onCommit){
     const input = document.createElement(multiline ? 'textarea' : 'input');
@@ -1122,53 +2314,87 @@
     window.scrollTo(0, 0);
   }
 
+  function refreshView(){
+    const hash = location.hash || '#/';
+    if(hash.startsWith('#/ricetta/')) renderRicetta(decodeURIComponent(hash.replace('#/ricetta/', '')));
+    else if(hash === '#/indice' && document.getElementById('risultati-indice')) renderRisultati();
+    else render();
+  }
+
+  function tentaUscita(){
+    window.close();
+    setTimeout(() => {
+      if(!window.closed){
+        const hint = document.getElementById('esci-hint');
+        if(hint) hint.style.display = 'block';
+      }
+    }, 250);
+  }
+
   function renderCopertina(){
     const tot = RICETTE_BASE.length;
-    const capitoli = new Set(RICETTE_BASE.map(r => r.categoria)).size;
+    const aggiornato = ultimoAggiornamento();
     app.innerHTML = `
       <div class="copertina">
         <div class="copertina-ornamento">❦</div>
         <h1 class="copertina-titolo">Il mio Ricettario</h1>
         <p class="copertina-sottotitolo">Ricette raccolte, una pagina alla volta</p>
-        <p class="copertina-info">${tot} ricette · ${capitoli} capitoli</p>
+        <p class="copertina-info">${tot} ricette</p>
+        ${aggiornato ? `<p class="copertina-aggiornato">Aggiornato il ${aggiornato}</p>` : ''}
         <button class="btn-sfoglia" data-action="go-indice">Sfoglia il ricettario →</button>
+        <div class="copertina-esci">
+          <button class="btn-esci" data-action="esci">Esci</button>
+          <p id="esci-hint">Il browser non consente la chiusura automatica di questa scheda: chiudila manualmente per uscire.</p>
+        </div>
       </div>
     `;
   }
 
   function renderIndice(){
     const tutte = getRicette();
-    const categoriePresenti = new Set(tutte.map(r => r.categoria));
     const durataPresenti = new Set(tutte.map(r => bucketDurata(r.tempo)));
     app.innerHTML = `
       <button class="back-link" data-action="go-cover">← Copertina</button>
       <h1 class="titolo-pagina">Indice</h1>
       ${filtri.gruppo ? `<div class="chip-gruppo-attivo">Gruppo: ${escapeHtml(filtri.gruppo)} <span class="chip-x" data-action="clear-gruppo">✕</span></div>` : ''}
       <input id="search-box" type="text" placeholder="Cerca per titolo, autore, ingrediente, tempo..." value="${escapeHtml(filtri.search)}">
-      <div class="filtro-riga">
-        <span class="filtro-label">PORTATA</span>
+      <div class="filtro-tags filtro-speciali">
+        <button class="filtro-tag ${filtri.speciali.has('preferiti') ? 'active' : ''}" data-tipo="speciali" data-valore="preferiti">★ Preferiti</button>
+        <button class="filtro-tag ${filtri.speciali.has('recenti') ? 'active' : ''}" data-tipo="speciali" data-valore="recenti">🕓 Più recenti</button>
+      </div>
+      <details class="filtro-riga">
+        <summary>PORTATA</summary>
         <div class="filtro-tags">
-          ${CATEGORIE_ORDINE.filter(c => categoriePresenti.has(c)).map(c =>
+          ${CATEGORIE_ORDINE.map(c =>
             `<button class="filtro-tag ${filtri.portata.has(c) ? 'active' : ''}" data-tipo="portata" data-valore="${escapeHtml(c)}">${escapeHtml(c)}</button>`
           ).join('')}
         </div>
-      </div>
-      <div class="filtro-riga">
-        <span class="filtro-label">DURATA</span>
+      </details>
+      <details class="filtro-riga">
+        <summary>DURATA</summary>
         <div class="filtro-tags">
           ${DURATA_BUCKETS_ORDINE.filter(b => durataPresenti.has(b)).map(b =>
             `<button class="filtro-tag ${filtri.durata.has(b) ? 'active' : ''}" data-tipo="durata" data-valore="${escapeHtml(b)}">${escapeHtml(b)}</button>`
           ).join('')}
         </div>
-      </div>
-      <div class="filtro-riga">
-        <span class="filtro-label">DIFFICOLTÀ</span>
+      </details>
+      <details class="filtro-riga">
+        <summary>DIFFICOLTÀ</summary>
         <div class="filtro-tags">
           ${DIFFICOLTA_OPZIONI.map(d =>
             `<button class="filtro-tag ${filtri.difficolta.has(d) ? 'active' : ''}" data-tipo="difficolta" data-valore="${escapeHtml(d)}">${escapeHtml(d)}</button>`
           ).join('')}
         </div>
-      </div>
+      </details>
+      <details class="filtro-riga">
+        <summary>TIPO</summary>
+        <div class="filtro-tags">
+          ${DIETA_OPZIONI.map(d =>
+            `<button class="filtro-tag ${filtri.dieta.has(d) ? 'active' : ''}" data-tipo="dieta" data-valore="${escapeHtml(d)}">${escapeHtml(d)}</button>`
+          ).join('')}
+          <button class="filtro-tag ${filtri.prep.has('Fredda') ? 'active' : ''}" data-tipo="prep" data-valore="Fredda">❄️ Fredda</button>
+        </div>
+      </details>
       <div id="risultati-indice"></div>
     `;
     document.getElementById('search-box').addEventListener('input', e => {
@@ -1179,14 +2405,19 @@
   }
 
   function renderVoceIndice(r){
+    const categorie = r.categorie || [];
     return `
       <div class="voce-indice" data-action="go-ricetta" data-id="${r.id}">
-        <div class="voce-titolo">${escapeHtml(r.titolo)}</div>
-        <div class="voce-autore">@${escapeHtml(r.autore)}</div>
+        <div class="voce-indice-header">
+          <div class="voce-titolo"><span class="voce-numero">#${r.numero ?? ''}</span>${escapeHtml(r.titolo)}</div>
+          <button class="btn-preferito ${r.preferito ? 'attivo' : ''}" data-id="${r.id}" title="${r.preferito ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'}">${r.preferito ? '★' : '☆'}</button>
+        </div>
         <div class="tags">
-          <span class="tag categoria">${escapeHtml(r.categoria)}</span>
+          ${categorie.map(c => `<span class="tag categoria">${escapeHtml(c)}</span>`).join('')}
           <span class="tag difficolta-${r.difficolta}">${escapeHtml(r.difficolta)}</span>
           <span class="tag tempo">⏱ ${escapeHtml(r.tempo)}</span>
+          ${r.fredda ? '<span class="tag fredda">❄️ Fredda</span>' : ''}
+          ${(r.dieta || []).map(d => `<span class="tag dieta">${escapeHtml(d)}</span>`).join('')}
           ${r.gruppo ? `<span class="tag gruppo" data-action="filtra-gruppo" data-gruppo="${escapeHtml(r.gruppo)}">🔗 ${escapeHtml(r.gruppo)}</span>` : ''}
           ${(r.tags || []).map(t => `<span class="tag manuale">${escapeHtml(t)}</span>`).join('')}
         </div>
@@ -1201,9 +2432,18 @@
       container.innerHTML = '<p class="no-results">Nessuna ricetta trovata.</p>';
       return;
     }
+    if(filtri.speciali.has('recenti')){
+      const ordinate = [...trovate].sort((a, b) => {
+        const da = a.dataAggiunta || '', db = b.dataAggiunta || '';
+        if(da !== db) return db.localeCompare(da);
+        return (b.numero || 0) - (a.numero || 0);
+      });
+      container.innerHTML = ordinate.map(renderVoceIndice).join('');
+      return;
+    }
     let html = '';
     CATEGORIE_ORDINE.forEach(cat => {
-      const delCap = trovate.filter(r => r.categoria === cat);
+      const delCap = trovate.filter(r => (r.categorie || []).includes(cat));
       if(delCap.length === 0) return;
       html += `<h2 class="capitolo-titolo">${escapeHtml(cat)}</h2><div class="capitolo-divider"></div>`;
       html += delCap.map(renderVoceIndice).join('');
@@ -1270,18 +2510,26 @@
     ).join('');
 
     const tagsExtra = `
+      ${r.fredda ? '<span class="tag fredda">❄️ Fredda</span>' : ''}
+      ${(r.dieta || []).map(d => `<span class="tag dieta">${escapeHtml(d)}</span>`).join('')}
       ${r.gruppo ? `<span class="tag gruppo" data-action="filtra-gruppo" data-gruppo="${escapeHtml(r.gruppo)}">🔗 ${escapeHtml(r.gruppo)}</span>` : ''}
       ${(r.tags || []).map(t => `<span class="tag manuale">${escapeHtml(t)} <span class="tag-remove" data-id="${r.id}" data-tag="${escapeHtml(t)}">✕</span></span>`).join('')}
       <button class="btn-add-tag" data-id="${r.id}">+ tag</button>
     `;
 
+    const categorieHtml = (r.categorie || []).map(c => `<span class="tag categoria">${escapeHtml(c)}</span>`).join('');
+
     app.innerHTML = `
       <div class="pagina-ricetta">
         <button class="back-link" data-action="go-indice">← Indice</button>
-        <h1 class="editable ricetta-titolo" data-id="${r.id}" data-campo="titolo">${escapeHtml(r.titolo)}</h1>
+        <div class="ricetta-titolo-riga">
+          <h1 class="editable ricetta-titolo" data-id="${r.id}" data-campo="titolo">${escapeHtml(r.titolo)}</h1>
+          <button class="btn-preferito btn-preferito-grande ${r.preferito ? 'attivo' : ''}" data-id="${r.id}" title="${r.preferito ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'}">${r.preferito ? '★' : '☆'}</button>
+        </div>
         <div class="autore">di @${escapeHtml(r.autore)}</div>
+        <div class="meta-riga">#${r.numero ?? ''} · aggiunta il ${formattaData(r.dataAggiunta) || '—'}</div>
         <div class="tags">
-          <span class="tag categoria">${escapeHtml(r.categoria)}</span>
+          ${categorieHtml}
           <span class="tag tag-difficolta-editabile difficolta-${r.difficolta}" data-id="${r.id}" title="Clicca per cambiare difficoltà">${escapeHtml(r.difficolta)}</span>
           <span class="tag tempo editable" data-id="${r.id}" data-campo="tempo">⏱ ${escapeHtml(r.tempo)}</span>
           ${tagsExtra}
@@ -1313,9 +2561,18 @@
   document.addEventListener('click', e => {
     let el;
 
+    if((el = e.target.closest('[data-action="esci"]'))){
+      tentaUscita();
+      return;
+    }
+    if((el = e.target.closest('.btn-preferito'))){
+      toggleFavorito(el.dataset.id);
+      refreshView();
+      return;
+    }
     if((el = e.target.closest('[data-action="filtra-gruppo"]'))){
       filtri.gruppo = el.dataset.gruppo;
-      filtri.search = ''; filtri.portata = new Set(); filtri.durata = new Set(); filtri.difficolta = new Set();
+      filtri.search = ''; filtri.portata = new Set(); filtri.durata = new Set(); filtri.difficolta = new Set(); filtri.dieta = new Set(); filtri.prep = new Set();
       location.hash = '#/indice';
       renderIndice();
       return;
