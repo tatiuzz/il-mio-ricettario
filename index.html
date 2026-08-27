@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il mio Ricettario — TEST v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #faf6f0;
+    --paper: #fffdfa;
+    --ink: #2b241e;
+    --ink-soft: #6f6255;
+    --accent: #b5502a;
+    --accent-soft: #f4e3d6;
+    --border: #e9ddcd;
+    --macro-bg: #eef6f0;
+    --macro-border: #cfe8d6;
+    --shadow: 0 3px 14px rgba(43,36,24,0.08);
+    --font-display: "Playfair Display", Georgia, "Iowan Old Style", serif;
+    --font-body: "Work Sans", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family: var(--font-body);
+    background:var(--bg);
+    color:var(--ink);
+    font-size:17px;
+    line-height:1.55;
+    padding-bottom:60px;
+  }
+  h1,h2,h3{ font-family: var(--font-display); font-weight:700; }
+  a{ color:var(--accent); }
+  button{ font-family: var(--font-body); }
+
+  /* ---------- banner modifiche non esportate ---------- */
+  #banner-dirty{
+    display:none;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+    background:#3d3128;
+    color:#f6ede1;
+    padding:10px 16px;
+    font-size:0.88rem;
+    text-align:center;
+  }
+  #banner-dirty .btn-export{
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    padding:6px 14px;
+    border-radius:999px;
+    cursor:pointer;
+    font-weight:600;
+  }
+  #banner-dirty .btn-dismiss-banner{
+    background:transparent;
+    border:1px solid #8a7d6d;
+    color:#f6ede1;
+    padding:5px 10px;
+    border-radius:999px;
+    cursor:pointer;
+    font-size:0.8rem;
+  }
+
+  #app{ max-width: 900px; margin: 0 auto; padding: 0 16px; }
+
+  /* ---------- copertina ---------- */
+  .copertina{
+    min-height: 70vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    gap:10px;
+    padding: 40px 16px;
+  }
+  .copertina-ornamento{ font-size:2rem; color:var(--accent); margin-bottom:6px; }
+  .copertina-titolo{ font-size:3rem; margin:0; letter-spacing:0.01em; }
+  .copertina-sottotitolo{ font-style:italic; color:var(--ink-soft); margin:0; font-size:1.05rem; }
+  .copertina-info{ color:var(--ink-soft); font-size:0.9rem; margin:14px 0 20px; }
+  .btn-sfoglia{
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    padding:14px 30px;
+    border-radius:999px;
+    font-size:1.05rem;
+    cursor:pointer;
+    box-shadow: var(--shadow);
+  }
+
+  /* ---------- indice ---------- */
+  .back-link{
+    background:none;
+    border:none;
+    color:var(--ink-soft);
+    font-size:0.95rem;
+    cursor:pointer;
+    padding:16px 0 4px;
+  }
+  .titolo-pagina{ margin:4px 0 16px; font-size:2rem; }
+  .chip-gruppo-attivo{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:0.9rem;
+    margin-bottom:14px;
+    font-weight:600;
+  }
+  .chip-x{ cursor:pointer; font-weight:700; }
+  #search-box{
+    width:100%;
+    padding:13px 16px;
+    font-size:1rem;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:var(--paper);
+    margin-bottom:16px;
+    font-family: var(--font-body);
+  }
+  #search-box:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+  .filtro-riga{ margin-bottom:12px; padding-top:10px; border-top:1px solid var(--border); }
+  .filtro-label{
+    display:block;
+    font-size:0.75rem;
+    letter-spacing:0.09em;
+    color:var(--ink-soft);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .filtro-tags{ display:flex; flex-wrap:wrap; gap:7px; }
+  .filtro-tag{
+    border:1px solid var(--border);
+    background:var(--paper);
+    color:var(--ink);
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:0.87rem;
+    cursor:pointer;
+  }
+  .filtro-tag.active{ background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600; }
+
+  #risultati-indice{ margin-top:18px; }
+  .capitolo-titolo{
+    font-size:1.5rem;
+    margin:26px 0 2px;
+    color:var(--accent);
+  }
+  .capitolo-divider{ height:1px; background:var(--border); margin-bottom:12px; }
+  .voce-indice{
+    background:var(--paper);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:14px 16px;
+    margin-bottom:10px;
+    cursor:pointer;
+    transition: box-shadow 0.15s ease, transform 0.1s ease;
+  }
+  .voce-indice:hover{ box-shadow: var(--shadow); transform: translateY(-1px); }
+  .voce-titolo{ font-family: var(--font-display); font-size:1.15rem; font-weight:700; }
+  .voce-autore{ color:var(--ink-soft); font-size:0.85rem; margin:2px 0 8px; }
+  .no-results{ text-align:center; color:var(--ink-soft); padding:30px 16px; }
+
+  /* ---------- tag generici ---------- */
+  .tags{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; }
+  .tag{
+    font-size:0.8rem;
+    padding:4px 11px;
+    border-radius:999px;
+    font-weight:600;
+    white-space:nowrap;
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+  }
+  .tag.categoria{ background:var(--accent-soft); color:var(--accent); }
+  .tag.difficolta-Facile{ background:#e4f3e0; color:#3f7a30; }
+  .tag.difficolta-Media{ background:#fbeecb; color:#8a6414; }
+  .tag.difficolta-Difficile{ background:#f6dede; color:#a13939; }
+  .tag.tag-difficolta-editabile{ cursor:pointer; }
+  .tag.tag-difficolta-editabile:hover{ filter:brightness(0.95); }
+  .tag.tempo{ background:#e6eef6; color:#31577a; }
+  .tag.gruppo{ background:#efe6f6; color:#6c3fa1; cursor:pointer; }
+  .tag.gruppo:hover{ filter:brightness(0.96); }
+  .tag.manuale{ background:#f0f0ec; color:#55503f; }
+  .tag-remove{ cursor:pointer; font-weight:700; opacity:0.6; }
+  .tag-remove:hover{ opacity:1; }
+  .btn-add-tag{
+    border:1px dashed var(--border);
+    background:none;
+    color:var(--ink-soft);
+    padding:4px 11px;
+    border-radius:999px;
+    font-size:0.8rem;
+    cursor:pointer;
+  }
+  .tag-input{
+    font-size:0.8rem;
+    padding:4px 10px;
+    border-radius:999px;
+    border:1px solid var(--accent);
+  }
+
+  /* ---------- pagina ricetta ---------- */
+  .pagina-ricetta{
+    background:var(--paper);
+    border:1px solid var(--border);
+    border-radius:18px;
+    box-shadow: var(--shadow);
+    padding:26px 24px 30px;
+    margin-bottom:30px;
+  }
+  .ricetta-titolo{ font-size:2rem; margin:6px 0 4px; line-height:1.25; }
+  .autore{ color:var(--ink-soft); font-size:0.92rem; margin-bottom:12px; }
+  .pagina-ricetta .tags{ margin-bottom:16px; }
+
+  .porzioni-box{
+    display:flex; align-items:center; gap:12px;
+    background:var(--bg); border:1px solid var(--border);
+    border-radius:12px; padding:8px 14px; width:fit-content; margin-bottom:16px;
+  }
+  .porzioni-box .label{ font-size:0.9rem; color:var(--ink-soft); }
+  .stepper{ display:flex; align-items:center; gap:10px; }
+  .stepper-btn{
+    width:34px; height:34px; border-radius:50%;
+    border:1px solid var(--accent); background:#fff; color:var(--accent);
+    font-size:1.2rem; line-height:1; cursor:pointer;
+  }
+  .stepper .valore{ font-weight:700; font-size:1.05rem; min-width:20px; text-align:center; }
+
+  .macro-box{
+    background:var(--macro-bg); border:1px solid var(--macro-border);
+    border-radius:14px; padding:12px 14px; font-size:0.92rem; margin-bottom:16px;
+  }
+  .macro-box .macro-title{ font-weight:700; margin-bottom:6px; color:#2c5a3a; }
+  .macro-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:4px 14px; }
+
+  .sezione{ margin-top:20px; }
+  .section-title{
+    margin:0 0 8px; font-size:1rem; text-transform:uppercase;
+    letter-spacing:0.05em; color:var(--ink-soft); font-family: var(--font-body); font-weight:700;
+  }
+  ul.ingredienti{ list-style:none; margin:0; padding:0; }
+  ul.ingredienti li{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:7px 0; border-bottom:1px dashed var(--border);
+  }
+  .ingrediente-vuoto{ color:var(--ink-soft); font-style:italic; }
+  .ingrediente-remove{
+    border:none; background:none; color:var(--ink-soft); opacity:0.4;
+    cursor:pointer; font-size:0.85rem; flex-shrink:0;
+  }
+  .ingrediente-remove:hover{ opacity:1; color:#a13939; }
+  .btn-add-ingrediente{
+    margin-top:10px; border:1px dashed var(--border); background:none;
+    color:var(--ink-soft); padding:7px 14px; border-radius:10px; cursor:pointer; font-size:0.88rem;
+  }
+  ol.passi{ margin:0; padding-left:22px; }
+  ol.passi li{ margin-bottom:8px; }
+  .nota-box{ white-space:pre-line; font-size:0.95rem; }
+  .nota-box.nota-vuota{ color:var(--ink-soft); font-style:italic; }
+
+  /* affordance elementi modificabili */
+  .editable{ cursor:text; border-bottom:1px dashed transparent; border-radius:3px; }
+  .editable:hover{ border-bottom-color: var(--accent); background: rgba(181,80,42,0.05); }
+  .edit-field{
+    font-family: inherit; font-size:inherit; width:100%;
+    border:1px solid var(--accent); border-radius:8px; padding:6px 8px;
+    background:#fff; color:var(--ink);
+  }
+  .edit-field-multiline{ resize:vertical; }
+
+  .nav-pagine{
+    display:flex; justify-content:space-between; gap:10px;
+    margin-top:28px; padding-top:16px; border-top:1px solid var(--border);
+  }
+  .nav-pagine button{
+    background:none; border:none; color:var(--accent);
+    cursor:pointer; font-size:0.9rem; max-width:45%; text-align:left;
+  }
+  .nav-next{ text-align:right !important; }
+
+  @media (min-width:720px){
+    .ricetta-titolo{ font-size:2.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="banner-dirty">
+  <span>Hai modifiche salvate solo in questo browser, non ancora nel file pubblicato.</span>
+  <button class="btn-export">Esporta ricettario aggiornato</button>
+  <button class="btn-dismiss-banner">Nascondi</button>
+</div>
+
+<div id="app"></div>
+
+<script type="application/json" id="ricette-data">
+[
+  {
+    "id": "sushi-cake-pollo",
+    "titolo": "Sushi Cake pollo croccante, avocado e cream cheese",
+    "autore": "dietitianrose",
+    "categoria": "Piatto Unico",
+    "difficolta": "Facile",
+    "tempo": "20 minuti",
+    "persone": 1,
+    "gruppo": "Sushi Cake",
+    "tags": [],
+    "ingredienti": [
+      { "quantita": 0.5, "unita": "cup", "nome": "riso a chicco corto/sushi, cotto" },
+      { "quantita": 2, "unita": "pezzi", "nome": "chicken tenders croccanti (air fryer), a cubetti" },
+      { "quantita": 0.5, "unita": "pezzi", "nome": "avocado, a fette" },
+      { "quantita": 2, "unita": "cucchiai", "nome": "cream cheese (circa)" },
+      { "quantita": 0.5, "unita": "pezzi", "nome": "foglio di alga nori (o tagliato a misura)" },
+      { "quantita": null, "unita": "q.b.", "nome": "cipollotto e semi di sesamo tostati, per servire" }
+    ],
+    "svolgimento": "1. Cuoci il riso secondo le istruzioni della confezione (va bene anche il riso pronto al microonde).\n2. Mentre il riso cuoce, prepara il ripieno e gli eventuali contorni di verdure.\n3. In un contenitore leggermente unto o foderato con pellicola (circa 600 ml), disponi uno strato di avocado e proteina.\n4. Copri con il riso e premi bene con le mani o il dorso di un cucchiaio.\n5. Aggiungi il nori sopra, capovolgi su un piatto, taglia a fette e servi.",
+    "note": "Idee di accompagnamento: carota in agrodolce veloce, insalata di cetrioli piccante, edamame, zenzero o wasabi."
+  },
+  {
+    "id": "sushi-cake-tonno",
+    "titolo": "Sushi Cake tonno e avocado",
+    "autore": "dietitianrose",
+    "categoria": "Piatto Unico",
+    "difficolta": "Facile",
+    "tempo": "20 minuti",
+    "persone": 1,
+    "gruppo": "Sushi Cake",
+    "tags": [],
+    "ingredienti": [
+      { "quantita": 0.5, "unita": "cup", "nome": "riso a chicco corto/sushi, cotto" },
+      { "quantita": 125, "unita": "g", "nome": "tonno (al naturale/in olio d'oliva), sgocciolato" },
+      { "quantita": 2, "unita": "cucchiaini", "nome": "maionese o yogurt (1-2 cucchiaini)" },
+      { "quantita": 0.5, "unita": "pezzi", "nome": "avocado, a fette" },
+      { "quantita": 0.5, "unita": "pezzi", "nome": "foglio di alga nori" },
+      { "quantita": null, "unita": "q.b.", "nome": "cipollotto e semi di sesamo tostati, per servire" }
+    ],
+    "svolgimento": "1. Cuoci il riso secondo le istruzioni della confezione (va bene anche il riso pronto al microonde).\n2. Mentre il riso cuoce, prepara il ripieno e gli eventuali contorni di verdure.\n3. In un contenitore leggermente unto o foderato con pellicola (circa 600 ml), disponi uno strato di avocado e proteina.\n4. Copri con il riso e premi bene.\n5. Aggiungi il nori sopra, capovolgi su un piatto, taglia a fette e servi.",
+    "note": "Idee di accompagnamento: carota in agrodolce veloce, insalata di cetrioli piccante, edamame, zenzero o wasabi."
+  },
+  {
+    "id": "sushi-cake-salmone",
+    "titolo": "Sushi Cake salmone e cream cheese",
+    "autore": "dietitianrose",
+    "categoria": "Piatto Unico",
+    "difficolta": "Facile",
+    "tempo": "20 minuti",
+    "persone": 1,
+    "gruppo": "Sushi Cake",
+    "tags": [],
+    "ingredienti": [
+      { "quantita": 0.5, "unita": "cup", "nome": "riso a chicco corto/sushi, cotto" },
+      { "quantita": 75, "unita": "g", "nome": "salmone affumicato/cotto, a fette (50-100g)" },
+      { "quantita": 2, "unita": "cucchiai", "nome": "cream cheese (circa)" },
+      { "quantita": 0.5, "unita": "pezzi", "nome": "foglio di alga nori" },
+      { "quantita": null, "unita": "q.b.", "nome": "cipollotto e semi di sesamo tostati, per servire" }
+    ],
+    "svolgimento": "1. Cuoci il riso secondo le istruzioni della confezione (va bene anche il riso pronto al microonde).\n2. Mentre il riso cuoce, prepara il ripieno e gli eventuali contorni di verdure.\n3. In un contenitore leggermente unto o foderato con pellicola (circa 600 ml), disponi uno strato di salmone.\n4. Copri con il riso e premi bene.\n5. Aggiungi il nori sopra, capovolgi su un piatto, taglia a fette e servi.",
+    "note": "Idee di accompagnamento: carota in agrodolce veloce, insalata di cetrioli piccante, edamame, zenzero o wasabi.\nSe in gravidanza: evitare salmone affumicato refrigerato a meno che non sia riscaldato fino a diventare bollente (linee guida australiane)."
+  },
+  {
+    "id": "sushi-cake-salmone-maxi",
+    "titolo": "Sushi Cake al salmone affumicato (versione maxi)",
+    "autore": "ayselshares",
+    "categoria": "Piatto Unico",
+    "difficolta": "Facile",
+    "tempo": "30 minuti",
+    "persone": 2,
+    "gruppo": "Sushi Cake",
+    "tags": [],
+    "ingredienti": [
+      { "quantita": 200, "unita": "g", "nome": "salmone affumicato" },
+      { "quantita": null, "unita": "q.b.", "nome": "riso per sushi, cotto" },
+      { "quantita": 0.5, "unita": "pezzi", "nome": "avocado" },
+      { "quantita": 2, "unita": "pezzi", "nome": "mini cetrioli" },
+      { "quantita": 3, "unita": "pezzi", "nome": "fogli di alga nori" },
+      { "quantita": 2.5, "unita": "cucchiai", "nome": "cream cheese (2-3 cucchiai)" },
+      { "quantita": null, "unita": "q.b.", "nome": "semi di sesamo" }
+    ],
+    "svolgimento": "1. Fodera un contenitore con pellicola trasparente e disponi il salmone affumicato sul fondo.\n2. Aggiungi uno strato di riso per sushi, un foglio di nori e spalma il cream cheese sopra.\n3. Aggiungi l'avocado a fette e le striscioline di cetriolo. Metti il secondo foglio di nori sopra, aggiungi un altro strato di riso e finisci con l'ultimo foglio di nori.\n4. Premi bene il tutto, capovolgi su un piatto, taglia a pezzi e cospargi con i semi di sesamo. Servi con salsa di soia e salsa teriyaki.",
+    "note": ""
+  },
+  {
+    "id": "uova-cinesi",
+    "titolo": "Uova cinesi (al vapore)",
+    "autore": "beardedscara",
+    "categoria": "Secondo",
+    "difficolta": "Facile",
+    "tempo": "20-30 minuti",
+    "persone": null,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": { "kcal": 320, "proteine": 19.4, "carboidrati": 1.8, "grassi": 25.9 },
+    "ingredienti": [
+      { "quantita": 3, "unita": "pezzi", "nome": "uova" },
+      { "quantita": 225, "unita": "ml", "nome": "acqua" },
+      { "quantita": 1, "unita": "cucchiaio", "nome": "olio di sesamo" },
+      { "quantita": null, "unita": "q.b.", "nome": "sale, cipollotto, salsa di soia, semi di sesamo" }
+    ],
+    "svolgimento": "1. Rompi le uova in una ciotola (in alternativa, usa una delle combinazioni isoproteiche indicate nella nota sotto).\n2. Aggiungi l'acqua e un pizzico di sale.\n3. Sbatti energicamente ed elimina la schiuma in superficie.\n4. Copri con pellicola.\n5. Cuoci a bagnomaria per 15-30 minuti.\n6. Incidi le uova e condisci a piacere con cipollotto, salsa di soia, semi di sesamo e olio di sesamo.",
+    "note": "Varianti proteiche equivalenti indicate dall'autore (valori conditi CON olio e sesamo):\n• 2 uova + 55g albume: ~277 kcal, 19,1g proteine, 1,5g carboidrati, 21,1g grassi\n• 1 uovo + 110g albume: ~234 kcal, 18,9g proteine, 1,5g carboidrati, 16,5g grassi\n• 165g albume: ~191 kcal, 18,6g proteine, 1,6g carboidrati, 11,8g grassi\nL'autore consiglia di abbinare una fonte di carboidrati (es. pane) e verdure fresche o cotte."
+  }
+]
+</script>
+
+<script>
+(function(){
+  "use strict";
+
+  const CATEGORIE_ORDINE = ["Antipasto","Primo","Piatto Unico","Secondo","Contorno","Zuppa","Dolce","Frutta","Altro"];
+  const DIFFICOLTA_OPZIONI = ["Facile","Media","Difficile"];
+  const DURATA_BUCKETS_ORDINE = ["≤15 min","16-30 min","31-60 min",">60 min"];
+
+  const RICETTE_BASE = JSON.parse(document.getElementById('ricette-data').textContent);
+  const app = document.getElementById('app');
+
+  let overrides = {};
+  let porzioniCorrenti = {};
+  const filtri = { search: "", portata: new Set(), durata: new Set(), difficolta: new Set(), gruppo: null };
+
+  function caricaOverrides(){
+    try{ overrides = JSON.parse(localStorage.getItem('ricettario_overrides') || '{}'); }
+    catch(e){ overrides = {}; }
+  }
+
+  function getRicette(){
+    return RICETTE_BASE.map(r => Object.assign({}, r, overrides[r.id] || {}));
+  }
+  function getRicettaById(id){
+    return getRicette().find(r => r.id === id);
+  }
+
+  function salvaCampo(id, campo, valore){
+    if(!overrides[id]) overrides[id] = {};
+    overrides[id][campo] = valore;
+    persistOverrides();
+  }
+  function persistOverrides(){
+    localStorage.setItem('ricettario_overrides', JSON.stringify(overrides));
+    localStorage.setItem('ricettario_dirty', '1');
+    sessionStorage.removeItem('banner_dismissed');
+    aggiornaBanner();
+  }
+  function aggiornaBanner(){
+    const dirty = localStorage.getItem('ricettario_dirty') === '1' && sessionStorage.getItem('banner_dismissed') !== '1';
+    document.getElementById('banner-dirty').style.display = dirty ? 'flex' : 'none';
+  }
+  function dismissBanner(){
+    sessionStorage.setItem('banner_dismissed', '1');
+    aggiornaBanner();
+  }
+  function esportaRicettario(){
+    const clone = document.documentElement.cloneNode(true);
+    const merged = getRicette();
+    clone.querySelector('#ricette-data').textContent = JSON.stringify(merged, null, 2);
+    const htmlStr = '<!DOCTYPE html>\n' + clone.outerHTML;
+    const blob = new Blob([htmlStr], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'Ricettario.html';
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+    localStorage.setItem('ricettario_dirty', '0');
+    aggiornaBanner();
+  }
+
+  function escapeHtml(str){
+    return String(str ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function bucketDurata(tempoStr){
+    const nums = (String(tempoStr).match(/\d+/g) || []).map(Number);
+    if(nums.length === 0) return "n/d";
+    let max = Math.max(...nums);
+    if(/ora|ore/i.test(tempoStr)) max = max * 60;
+    if(max <= 15) return "≤15 min";
+    if(max <= 30) return "16-30 min";
+    if(max <= 60) return "31-60 min";
+    return ">60 min";
+  }
+
+  function matchesFiltri(r){
+    if(filtri.gruppo && r.gruppo !== filtri.gruppo) return false;
+    if(filtri.portata.size && !filtri.portata.has(r.categoria)) return false;
+    if(filtri.difficolta.size && !filtri.difficolta.has(r.difficolta)) return false;
+    if(filtri.durata.size && !filtri.durata.has(bucketDurata(r.tempo))) return false;
+    if(filtri.search){
+      const s = filtri.search.toLowerCase();
+      const haystack = [
+        r.titolo, r.autore, r.categoria, r.tempo, r.gruppo || "",
+        ...(r.tags || []), ...r.ingredienti.map(i => i.nome)
+      ].join(" ").toLowerCase();
+      if(!haystack.includes(s)) return false;
+    }
+    return true;
+  }
+
+  function formatIngredienteScalato(ing, fattore){
+    if(ing.quantita === null || ing.quantita === undefined || ing.quantita === ''){
+      const unitLabel = ing.unita ? ing.unita + ' ' : '';
+      return `${unitLabel}${ing.nome}`.trim();
+    }
+    const scaled = Math.round(ing.quantita * fattore * 10) / 10;
+    const scaledStr = (scaled % 1 === 0) ? String(Math.round(scaled)) : String(scaled).replace('.', ',');
+    return `${scaledStr} ${ing.unita} ${ing.nome}`.trim();
+  }
+  function formatIngredienteRaw(ing){
+    if(ing.quantita === null || ing.quantita === undefined || ing.quantita === ''){
+      return `${ing.unita || ''} ${ing.nome || ''}`.trim();
+    }
+    const qStr = (ing.quantita % 1 === 0) ? String(ing.quantita) : String(ing.quantita).replace('.', ',');
+    return `${qStr} ${ing.unita} ${ing.nome}`.trim();
+  }
+  function parseIngredienteRaw(str){
+    str = (str || '').trim();
+    if(str === '') return { quantita: null, unita: '', nome: '' };
+    let m = str.match(/^(q\.?b\.?)\s+(.*)$/i);
+    if(m) return { quantita: null, unita: 'q.b.', nome: m[2] };
+    m = str.match(/^([\d.,]+)\s+(\S+)\s+(.*)$/);
+    if(m){
+      const q = parseFloat(m[1].replace(',', '.'));
+      return { quantita: isNaN(q) ? null : q, unita: m[2], nome: m[3] };
+    }
+    return { quantita: null, unita: '', nome: str };
+  }
+
+  function aggiungiIngrediente(id){
+    const r = getRicettaById(id);
+    salvaCampo(id, 'ingredienti', [...r.ingredienti, { quantita: null, unita: '', nome: '' }]);
+    render();
+  }
+  function rimuoviIngrediente(id, idx){
+    const r = getRicettaById(id);
+    salvaCampo(id, 'ingredienti', r.ingredienti.filter((_, i) => i !== idx));
+    render();
+  }
+  function modificaIngrediente(id, idx, testo){
+    const r = getRicettaById(id);
+    const parsed = parseIngredienteRaw(testo);
+    salvaCampo(id, 'ingredienti', r.ingredienti.map((ing, i) => i === idx ? parsed : ing));
+  }
+  function aggiungiTag(id, tag){
+    const r = getRicettaById(id);
+    const tags = [...(r.tags || [])];
+    if(!tags.includes(tag)) tags.push(tag);
+    salvaCampo(id, 'tags', tags);
+  }
+  function rimuoviTag(id, tag){
+    const r = getRicettaById(id);
+    salvaCampo(id, 'tags', (r.tags || []).filter(t => t !== tag));
+    render();
+  }
+  function cambiaDifficolta(id){
+    const r = getRicettaById(id);
+    const idx = DIFFICOLTA_OPZIONI.indexOf(r.difficolta);
+    const next = DIFFICOLTA_OPZIONI[(idx + 1) % DIFFICOLTA_OPZIONI.length];
+    salvaCampo(id, 'difficolta', next);
+    render();
+  }
+  function cambiaPorzioni(id, delta){
+    const r = getRicettaById(id);
+    const attuale = porzioniCorrenti[id] ?? r.persone;
+    porzioniCorrenti[id] = Math.max(1, attuale + delta);
+    render();
+  }
+
+  function avviaModifica(el, valoreAttuale, multiline, onCommit){
+    const input = document.createElement(multiline ? 'textarea' : 'input');
+    input.value = valoreAttuale;
+    input.className = 'edit-field' + (multiline ? ' edit-field-multiline' : '');
+    if(multiline) input.rows = Math.max(3, valoreAttuale.split('\n').length + 1);
+    el.replaceWith(input);
+    input.focus();
+    if(input.select) input.select();
+    let done = false;
+    const commit = () => { if(done) return; done = true; onCommit(input.value); render(); };
+    const cancel = () => { if(done) return; done = true; render(); };
+    input.addEventListener('keydown', e => {
+      if(e.key === 'Enter' && !(multiline && e.shiftKey)){ e.preventDefault(); commit(); }
+      else if(e.key === 'Escape'){ e.preventDefault(); cancel(); }
+    });
+    input.addEventListener('blur', commit);
+  }
+
+  function mostraInputTag(btn){
+    const id = btn.dataset.id;
+    const input = document.createElement('input');
+    input.type = 'text'; input.className = 'edit-field tag-input'; input.placeholder = 'nuovo tag';
+    btn.replaceWith(input);
+    input.focus();
+    let done = false;
+    const commit = () => {
+      if(done) return; done = true;
+      const v = input.value.trim();
+      if(v) aggiungiTag(id, v);
+      render();
+    };
+    input.addEventListener('keydown', e => {
+      if(e.key === 'Enter'){ e.preventDefault(); commit(); }
+      else if(e.key === 'Escape'){ e.preventDefault(); done = true; render(); }
+    });
+    input.addEventListener('blur', commit);
+  }
+
+  // ---------------- ROUTING / RENDER ----------------
+  function render(){
+    const hash = location.hash || '#/';
+    if(hash === '#/' || hash === '') renderCopertina();
+    else if(hash === '#/indice') renderIndice();
+    else if(hash.startsWith('#/ricetta/')) renderRicetta(decodeURIComponent(hash.replace('#/ricetta/', '')));
+    else renderCopertina();
+    window.scrollTo(0, 0);
+  }
+
+  function renderCopertina(){
+    const tot = RICETTE_BASE.length;
+    const capitoli = new Set(RICETTE_BASE.map(r => r.categoria)).size;
+    app.innerHTML = `
+      <div class="copertina">
+        <div class="copertina-ornamento">❦</div>
+        <h1 class="copertina-titolo">Il mio Ricettario</h1>
+        <p class="copertina-sottotitolo">Ricette raccolte, una pagina alla volta</p>
+        <p class="copertina-info">${tot} ricette · ${capitoli} capitoli</p>
+        <button class="btn-sfoglia" data-action="go-indice">Sfoglia il ricettario →</button>
+      </div>
+    `;
+  }
+
+  function renderIndice(){
+    const tutte = getRicette();
+    const categoriePresenti = new Set(tutte.map(r => r.categoria));
+    const durataPresenti = new Set(tutte.map(r => bucketDurata(r.tempo)));
+    app.innerHTML = `
+      <button class="back-link" data-action="go-cover">← Copertina</button>
+      <h1 class="titolo-pagina">Indice</h1>
+      ${filtri.gruppo ? `<div class="chip-gruppo-attivo">Gruppo: ${escapeHtml(filtri.gruppo)} <span class="chip-x" data-action="clear-gruppo">✕</span></div>` : ''}
+      <input id="search-box" type="text" placeholder="Cerca per titolo, autore, ingrediente, tempo..." value="${escapeHtml(filtri.search)}">
+      <div class="filtro-riga">
+        <span class="filtro-label">PORTATA</span>
+        <div class="filtro-tags">
+          ${CATEGORIE_ORDINE.filter(c => categoriePresenti.has(c)).map(c =>
+            `<button class="filtro-tag ${filtri.portata.has(c) ? 'active' : ''}" data-tipo="portata" data-valore="${escapeHtml(c)}">${escapeHtml(c)}</button>`
+          ).join('')}
+        </div>
+      </div>
+      <div class="filtro-riga">
+        <span class="filtro-label">DURATA</span>
+        <div class="filtro-tags">
+          ${DURATA_BUCKETS_ORDINE.filter(b => durataPresenti.has(b)).map(b =>
+            `<button class="filtro-tag ${filtri.durata.has(b) ? 'active' : ''}" data-tipo="durata" data-valore="${escapeHtml(b)}">${escapeHtml(b)}</button>`
+          ).join('')}
+        </div>
+      </div>
+      <div class="filtro-riga">
+        <span class="filtro-label">DIFFICOLTÀ</span>
+        <div class="filtro-tags">
+          ${DIFFICOLTA_OPZIONI.map(d =>
+            `<button class="filtro-tag ${filtri.difficolta.has(d) ? 'active' : ''}" data-tipo="difficolta" data-valore="${escapeHtml(d)}">${escapeHtml(d)}</button>`
+          ).join('')}
+        </div>
+      </div>
+      <div id="risultati-indice"></div>
+    `;
+    document.getElementById('search-box').addEventListener('input', e => {
+      filtri.search = e.target.value;
+      renderRisultati();
+    });
+    renderRisultati();
+  }
+
+  function renderVoceIndice(r){
+    return `
+      <div class="voce-indice" data-action="go-ricetta" data-id="${r.id}">
+        <div class="voce-titolo">${escapeHtml(r.titolo)}</div>
+        <div class="voce-autore">@${escapeHtml(r.autore)}</div>
+        <div class="tags">
+          <span class="tag categoria">${escapeHtml(r.categoria)}</span>
+          <span class="tag difficolta-${r.difficolta}">${escapeHtml(r.difficolta)}</span>
+          <span class="tag tempo">⏱ ${escapeHtml(r.tempo)}</span>
+          ${r.gruppo ? `<span class="tag gruppo" data-action="filtra-gruppo" data-gruppo="${escapeHtml(r.gruppo)}">🔗 ${escapeHtml(r.gruppo)}</span>` : ''}
+          ${(r.tags || []).map(t => `<span class="tag manuale">${escapeHtml(t)}</span>`).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderRisultati(){
+    const container = document.getElementById('risultati-indice');
+    const trovate = getRicette().filter(matchesFiltri);
+    if(trovate.length === 0){
+      container.innerHTML = '<p class="no-results">Nessuna ricetta trovata.</p>';
+      return;
+    }
+    let html = '';
+    CATEGORIE_ORDINE.forEach(cat => {
+      const delCap = trovate.filter(r => r.categoria === cat);
+      if(delCap.length === 0) return;
+      html += `<h2 class="capitolo-titolo">${escapeHtml(cat)}</h2><div class="capitolo-divider"></div>`;
+      html += delCap.map(renderVoceIndice).join('');
+    });
+    container.innerHTML = html;
+  }
+
+  function renderRicetta(id){
+    const r = getRicettaById(id);
+    if(!r){
+      app.innerHTML = '<p class="no-results">Ricetta non trovata. <a href="#/indice">Torna all\'indice</a></p>';
+      return;
+    }
+    const tutte = getRicette();
+    const pos = tutte.findIndex(x => x.id === id);
+    const prev = tutte[pos - 1];
+    const next = tutte[pos + 1];
+
+    const persone = r.persone ? (porzioniCorrenti[id] ?? r.persone) : null;
+    const fattore = r.persone ? persone / r.persone : 1;
+
+    let macroHtml = '';
+    if(r.macronutrienti){
+      const m = r.macronutrienti;
+      macroHtml = `
+        <div class="macro-box">
+          <div class="macro-title">Valori nutrizionali (per la dose base)</div>
+          <div class="macro-grid">
+            <div>Kcal: ${escapeHtml(m.kcal)}</div>
+            <div>Proteine: ${escapeHtml(m.proteine)} g</div>
+            <div>Carboidrati: ${escapeHtml(m.carboidrati)} g</div>
+            <div>Grassi: ${escapeHtml(m.grassi)} g</div>
+          </div>
+        </div>`;
+    }
+
+    let porzioniHtml = '';
+    if(r.persone){
+      porzioniHtml = `
+        <div class="porzioni-box">
+          <span class="label">Porzioni</span>
+          <div class="stepper">
+            <button class="stepper-btn" data-id="${r.id}" data-delta="-1">−</button>
+            <span class="valore">${persone}</span>
+            <button class="stepper-btn" data-id="${r.id}" data-delta="1">+</button>
+          </div>
+        </div>`;
+    }
+
+    const ingredientiHtml = r.ingredienti.map((ing, idx) => {
+      const testo = formatIngredienteScalato(ing, fattore).trim();
+      const vuoto = testo === '';
+      const displayText = vuoto ? '(clicca per compilare)' : testo;
+      return `
+      <li>
+        <span class="editable ${vuoto ? 'ingrediente-vuoto' : ''}" data-id="${r.id}" data-campo="ingrediente" data-idx="${idx}">${escapeHtml(displayText)}</span>
+        <button class="ingrediente-remove" data-id="${r.id}" data-idx="${idx}" title="Rimuovi ingrediente">✕</button>
+      </li>
+    `;
+    }).join('');
+
+    const passiHtml = r.svolgimento.split('\n').filter(l => l.trim() !== '').map(l =>
+      `<li>${escapeHtml(l.replace(/^\d+\.\s*/, ''))}</li>`
+    ).join('');
+
+    const tagsExtra = `
+      ${r.gruppo ? `<span class="tag gruppo" data-action="filtra-gruppo" data-gruppo="${escapeHtml(r.gruppo)}">🔗 ${escapeHtml(r.gruppo)}</span>` : ''}
+      ${(r.tags || []).map(t => `<span class="tag manuale">${escapeHtml(t)} <span class="tag-remove" data-id="${r.id}" data-tag="${escapeHtml(t)}">✕</span></span>`).join('')}
+      <button class="btn-add-tag" data-id="${r.id}">+ tag</button>
+    `;
+
+    app.innerHTML = `
+      <div class="pagina-ricetta">
+        <button class="back-link" data-action="go-indice">← Indice</button>
+        <h1 class="editable ricetta-titolo" data-id="${r.id}" data-campo="titolo">${escapeHtml(r.titolo)}</h1>
+        <div class="autore">di @${escapeHtml(r.autore)}</div>
+        <div class="tags">
+          <span class="tag categoria">${escapeHtml(r.categoria)}</span>
+          <span class="tag tag-difficolta-editabile difficolta-${r.difficolta}" data-id="${r.id}" title="Clicca per cambiare difficoltà">${escapeHtml(r.difficolta)}</span>
+          <span class="tag tempo editable" data-id="${r.id}" data-campo="tempo">⏱ ${escapeHtml(r.tempo)}</span>
+          ${tagsExtra}
+        </div>
+        ${porzioniHtml}
+        ${macroHtml}
+        <div class="sezione">
+          <h3 class="section-title">Ingredienti</h3>
+          <ul class="ingredienti">${ingredientiHtml}</ul>
+          <button class="btn-add-ingrediente" data-id="${r.id}">+ aggiungi ingrediente</button>
+        </div>
+        <div class="sezione">
+          <h3 class="section-title">Preparazione</h3>
+          <ol class="passi editable" data-id="${r.id}" data-campo="svolgimento" data-multiline="1">${passiHtml}</ol>
+        </div>
+        <div class="sezione">
+          <h3 class="section-title">Note</h3>
+          <div class="editable nota-box ${r.note ? '' : 'nota-vuota'}" data-id="${r.id}" data-campo="note" data-multiline="1">${r.note ? escapeHtml(r.note).replace(/\n/g, '<br>') : 'Clicca per aggiungere una nota…'}</div>
+        </div>
+        <div class="nav-pagine">
+          ${prev ? `<button class="nav-prev" data-action="nav-ricetta" data-id="${prev.id}">← ${escapeHtml(prev.titolo)}</button>` : '<span></span>'}
+          ${next ? `<button class="nav-next" data-action="nav-ricetta" data-id="${next.id}">${escapeHtml(next.titolo)} →</button>` : '<span></span>'}
+        </div>
+      </div>
+    `;
+  }
+
+  // ---------------- EVENTI DELEGATI ----------------
+  document.addEventListener('click', e => {
+    let el;
+
+    if((el = e.target.closest('[data-action="filtra-gruppo"]'))){
+      filtri.gruppo = el.dataset.gruppo;
+      filtri.search = ''; filtri.portata = new Set(); filtri.durata = new Set(); filtri.difficolta = new Set();
+      location.hash = '#/indice';
+      renderIndice();
+      return;
+    }
+    if((el = e.target.closest('[data-action="clear-gruppo"]'))){
+      filtri.gruppo = null;
+      renderIndice();
+      return;
+    }
+    if((el = e.target.closest('[data-action="go-ricetta"]'))){
+      location.hash = '#/ricetta/' + encodeURIComponent(el.dataset.id);
+      return;
+    }
+    if((el = e.target.closest('[data-action="nav-ricetta"]'))){
+      location.hash = '#/ricetta/' + encodeURIComponent(el.dataset.id);
+      return;
+    }
+    if((el = e.target.closest('[data-action="go-indice"]'))){
+      location.hash = '#/indice';
+      return;
+    }
+    if((el = e.target.closest('[data-action="go-cover"]'))){
+      location.hash = '#/';
+      return;
+    }
+    if((el = e.target.closest('.filtro-tag'))){
+      const tipo = el.dataset.tipo, valore = el.dataset.valore;
+      const set = filtri[tipo];
+      if(set.has(valore)) set.delete(valore); else set.add(valore);
+      el.classList.toggle('active');
+      renderRisultati();
+      return;
+    }
+    if((el = e.target.closest('.stepper-btn'))){
+      cambiaPorzioni(el.dataset.id, parseInt(el.dataset.delta, 10));
+      return;
+    }
+    if((el = e.target.closest('.tag-difficolta-editabile'))){
+      cambiaDifficolta(el.dataset.id);
+      return;
+    }
+    if((el = e.target.closest('.tag-remove'))){
+      rimuoviTag(el.dataset.id, el.dataset.tag);
+      return;
+    }
+    if((el = e.target.closest('.btn-add-tag'))){
+      mostraInputTag(el);
+      return;
+    }
+    if((el = e.target.closest('.ingrediente-remove'))){
+      rimuoviIngrediente(el.dataset.id, parseInt(el.dataset.idx, 10));
+      return;
+    }
+    if((el = e.target.closest('.btn-add-ingrediente'))){
+      aggiungiIngrediente(el.dataset.id);
+      return;
+    }
+    if((el = e.target.closest('.btn-export'))){
+      esportaRicettario();
+      return;
+    }
+    if((el = e.target.closest('.btn-dismiss-banner'))){
+      dismissBanner();
+      return;
+    }
+    if((el = e.target.closest('.editable'))){
+      const id = el.dataset.id, campo = el.dataset.campo;
+      const multiline = el.dataset.multiline === '1';
+      const r = getRicettaById(id);
+      if(campo === 'ingrediente'){
+        const idx = parseInt(el.dataset.idx, 10);
+        avviaModifica(el, formatIngredienteRaw(r.ingredienti[idx]), false, v => modificaIngrediente(id, idx, v));
+      } else {
+        avviaModifica(el, r[campo] || '', multiline, v => salvaCampo(id, campo, v));
+      }
+      return;
+    }
+  });
+
+  window.addEventListener('hashchange', render);
+  document.addEventListener('DOMContentLoaded', () => {
+    caricaOverrides();
+    render();
+    aggiornaBanner();
+  });
+})();
+</script>
+
+</body>
+</html>
