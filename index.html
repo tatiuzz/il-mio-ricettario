@@ -481,6 +481,41 @@
   .freccia-portata:hover{ border-color:var(--accent); background:var(--accent-soft); }
 
   .tag.tag-pn{ background:#fde7d8; color:#a15a1f; }
+
+  /* ---------- back-link: centrato e più in alto ---------- */
+  .back-link{
+    display:block; width:100%; text-align:center;
+    padding:6px 0 10px; margin-top:-4px;
+  }
+
+  /* ---------- ordinamento a tasti ---------- */
+  .sort-bar{ display:flex; gap:8px; margin-bottom:12px; }
+  .sort-btn{
+    flex:1; padding:9px; border-radius:10px; border:1px solid var(--border);
+    background:var(--paper); cursor:pointer; font-size:0.85rem; font-weight:600; color:var(--ink-soft);
+  }
+  .sort-btn.active{ background:var(--accent); color:#fff; border-color:var(--accent); }
+
+  /* ---------- pulsante "torna su" ---------- */
+  #scroll-top-btn{
+    display:none; position:fixed; right:18px; bottom:22px; z-index:40;
+    width:46px; height:46px; border-radius:50%; border:none;
+    background:var(--accent); color:#fff; font-size:1.2rem; cursor:pointer;
+    box-shadow:0 4px 14px rgba(43,36,24,0.25);
+    align-items:center; justify-content:center;
+  }
+  #scroll-top-btn:hover{ filter:brightness(1.08); }
+
+  /* ---------- ricette correlate ---------- */
+  .correlate-lista{ display:flex; flex-direction:column; gap:8px; }
+  .correlata-card{
+    display:flex; align-items:center; gap:10px; text-align:left;
+    background:var(--bg); border:1px solid var(--border); border-radius:10px;
+    padding:10px 12px; cursor:pointer; font-family:var(--font-body); font-size:0.88rem;
+  }
+  .correlata-card:hover{ border-color:var(--accent); }
+  .correlata-numero{ color:var(--ink-soft); font-size:0.82em; flex-shrink:0; }
+  .correlata-titolo{ font-weight:600; }
 </style>
 </head>
 <body>
@@ -493,6 +528,7 @@
 
 <div id="app"></div>
 <div id="print-area"></div>
+<button id="scroll-top-btn" title="Torna su">↑</button>
 
 <script type="application/json" id="ricette-data">
 [
@@ -4812,86 +4848,6 @@
     "macroStimato": true
   },
   {
-    "id": "noodles-burro-arachidi-10-minuti",
-    "numero": 56,
-    "dataAggiunta": "2026-08-31",
-    "titolo": "Noodles al burro d'arachidi in 10 minuti",
-    "autore": "jack_masterchef14",
-    "categorie": [
-      "Primo"
-    ],
-    "dieta": [
-      "Vegano"
-    ],
-    "fredda": false,
-    "difficolta": "Facile",
-    "tempo": "10 minuti",
-    "persone": 1,
-    "gruppo": null,
-    "tags": [],
-    "macronutrienti": {
-      "kcal": 790,
-      "proteine": 23,
-      "carboidrati": 73,
-      "grassi": 45
-    },
-    "ingredienti": [
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "cipollotto (parte bianca e verde)"
-      },
-      {
-        "quantita": 0.5,
-        "unita": "spicchio",
-        "nome": "aglio"
-      },
-      {
-        "quantita": 2,
-        "unita": "manciate",
-        "nome": "semi di sesamo"
-      },
-      {
-        "quantita": 1,
-        "unita": "cucchiaio",
-        "nome": "zenzero"
-      },
-      {
-        "quantita": 3,
-        "unita": "cucchiai",
-        "nome": "burro d'arachidi"
-      },
-      {
-        "quantita": 1,
-        "unita": "cucchiaino",
-        "nome": "zucchero"
-      },
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "chilli crisp o peperoncino (opzionale)"
-      },
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "noodles (es. udon)"
-      },
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "olio di semi"
-      },
-      {
-        "quantita": 1,
-        "unita": "cucchiaio",
-        "nome": "salsa di soia"
-      }
-    ],
-    "svolgimento": "1. In una ciotola unisci burro d'arachidi, semi di sesamo, cipollotto, aglio e zenzero tritati finemente, peperoncino e zucchero.\n2. Versa sopra l'olio di semi bollente, poi aggiungi la salsa di soia e mescola bene (facoltativo: un goccio di olio di sesamo).\n3. Cuoci i noodles (es. udon) in acqua bollente per un paio di minuti, poi scolali direttamente nella ciotola e amalgama bene.\n4. Guarnisci con altro cipollotto verde.",
-    "note": "",
-    "macroStimato": true
-  },
-  {
     "id": "riso-basmati-piselli-gamberi",
     "numero": 57,
     "dataAggiunta": "2026-08-31",
@@ -9155,61 +9111,6 @@
     "macroStimato": true
   },
   {
-    "id": "condimento-pasta-cetriolo-yogurt-greco-e-aneto",
-    "numero": 114,
-    "dataAggiunta": "2026-09-04",
-    "titolo": "Condimento pasta con cetriolo, yogurt greco e aneto",
-    "autore": "_tornainformaconme_",
-    "categorie": [
-      "Condimenti e Salse"
-    ],
-    "dieta": [
-      "Vegetariano"
-    ],
-    "fredda": true,
-    "difficolta": "Facile",
-    "tempo": "5 minuti",
-    "persone": null,
-    "gruppo": "5 condimenti per la pasta leggeri, drenanti e antinfiammatori",
-    "tags": [],
-    "macronutrienti": {
-      "kcal": 120,
-      "proteine": 11,
-      "carboidrati": 7,
-      "grassi": 10
-    },
-    "ingredienti": [
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "cetriolo"
-      },
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "yogurt greco"
-      },
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "aneto"
-      },
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "succo di limone"
-      },
-      {
-        "quantita": null,
-        "unita": "un filo",
-        "nome": "olio EVO"
-      }
-    ],
-    "svolgimento": "1. Frullare il cetriolo con lo yogurt greco, l'aneto, il succo di limone e un filo d'olio.",
-    "note": "Il cetriolo ha effetto drenante e rinfrescante, lo yogurt greco aiuta l'equilibrio della flora intestinale, l'aneto è digestivo e carminativo.",
-    "macroStimato": true
-  },
-  {
     "id": "condimento-pasta-melanzane-tahina-e-limone",
     "numero": 115,
     "dataAggiunta": "2026-09-04",
@@ -12061,62 +11962,6 @@
     "macroStimato": true
   },
   {
-    "id": "chips-di-carote",
-    "numero": 154,
-    "dataAggiunta": "2026-09-08",
-    "titolo": "Chips di carote",
-    "autore": "cucinaedelizia",
-    "categorie": [
-      "Snack",
-      "Contorno"
-    ],
-    "dieta": [
-      "Vegano"
-    ],
-    "fredda": false,
-    "difficolta": "Facile",
-    "tempo": "20 minuti",
-    "persone": 2,
-    "gruppo": null,
-    "tags": [],
-    "ingredienti": [
-      {
-        "quantita": 2,
-        "unita": "pezzi",
-        "nome": "carote"
-      },
-      {
-        "quantita": 1,
-        "unita": "cucchiaio",
-        "nome": "olio extravergine d'oliva"
-      },
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "sale"
-      },
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "pepe"
-      },
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "spezie a piacere (es. paprika dolce)"
-      }
-    ],
-    "svolgimento": "1. Tagliare le carote a fette sottili.\n2. Metterle in una ciotola e condire con sale, olio, pepe e spezie a piacere.\n3. Mescolare e cuocere in forno o in friggitrice ad aria a 180°C per 15 minuti.",
-    "note": "",
-    "macronutrienti": {
-      "kcal": 70,
-      "proteine": 1,
-      "carboidrati": 8,
-      "grassi": 4
-    },
-    "macroStimato": true
-  },
-  {
     "id": "riso-croccante-gigante-salmone-avocado",
     "numero": 155,
     "dataAggiunta": "2026-09-08",
@@ -13797,58 +13642,6 @@
     ],
     "svolgimento": "1. Trita grossolanamente il seitan con cipollotto e zenzero e falli dorare bene in padella con olio di semi.\n2. Sfuma con salsa di soia e teriyaki per renderlo croccante; tienine un po' da parte.\n3. Cuoci i noodles e intanto prepara la salsa con tutti gli ingredienti (salsa di soia, aceto di riso, olio di sesamo, burro di arachidi, olio al peperoncino, acqua, amido di mais).\n4. Una volta cotti, sciacqua i noodles sotto acqua fredda e versali nella padella con il seitan.\n5. Aggiungi la salsa, che con il calore si rapprenderà diventando cremosa.\n6. Impiatta con il seitan tenuto da parte, arachidi tritate, parte verde del cipollotto e olio al peperoncino cinese.",
     "note": "Versione vegetale del piatto tradizionale, con seitan al posto della carne."
-  },
-  {
-    "id": "uova-al-vapore-cinesi",
-    "numero": 176,
-    "dataAggiunta": "2026-09-08",
-    "titolo": "Uova al vapore cinesi",
-    "titoloOriginale": null,
-    "autore": "alessio.pellizzoni",
-    "categorie": [
-      "Secondo",
-      "Antipasto"
-    ],
-    "dieta": [
-      "Vegetariano"
-    ],
-    "fredda": false,
-    "difficolta": "Facile",
-    "tempo": "20 minuti",
-    "persone": 2,
-    "gruppo": null,
-    "tags": [],
-    "macronutrienti": {
-      "kcal": 140,
-      "proteine": 12,
-      "carboidrati": 1,
-      "grassi": 10
-    },
-    "macroStimato": true,
-    "ingredienti": [
-      {
-        "quantita": 3,
-        "unita": "pezzi",
-        "nome": "uova"
-      },
-      {
-        "quantita": 225,
-        "unita": "ml",
-        "nome": "acqua"
-      },
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "sale"
-      },
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "guarnizione a piacere"
-      }
-    ],
-    "svolgimento": "1. Rompi le uova e sbattile con acqua (circa una volta e mezza il peso delle uova) e sale.\n2. Togli la schiuma in superficie e versa in una ciotola.\n3. Cuoci al vapore per 15 minuti.\n4. Condisci a piacere e servi.",
-    "note": ""
   },
   {
     "id": "polpette-vegane-farro-funghi",
@@ -20328,7 +20121,7 @@
     "difficolta": "Facile",
     "tempo": "10 minuti",
     "persone": 1,
-    "gruppo": "Colazione con pane tostato e frutto",
+    "gruppo": null,
     "tags": [],
     "macronutrienti": {
       "kcal": 269,
@@ -20366,57 +20159,6 @@
     ],
     "svolgimento": "1. In una tazzina mescola la crema di nocciole con il cacao in polvere e, a piacere, il miele, per ottenere una crema omogenea.\n2. Tosta il pane e farciscilo con la crema.\n3. Accompagna col kiwi.",
     "note": ""
-  },
-  {
-    "id": "pane-caldo-all-olio-evo-con-salvia-e-semi",
-    "numero": 279,
-    "dataAggiunta": "2026-10-01",
-    "titolo": "Pane caldo all'olio evo con salvia e semi",
-    "titoloOriginale": null,
-    "autore": "Medicina in cucina",
-    "categorie": [
-      "Snack"
-    ],
-    "dieta": [
-      "Vegano"
-    ],
-    "fredda": false,
-    "difficolta": "Facile",
-    "tempo": "10 minuti",
-    "persone": 1,
-    "gruppo": "Colazione con pane tostato e frutto",
-    "tags": [],
-    "macronutrienti": {
-      "kcal": 224,
-      "proteine": 7.8,
-      "carboidrati": 32,
-      "grassi": 7
-    },
-    "macroStimato": true,
-    "ingredienti": [
-      {
-        "quantita": 60,
-        "unita": "g",
-        "nome": "pane a lievitazione naturale"
-      },
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "olio evo, salvia"
-      },
-      {
-        "quantita": 1,
-        "unita": "cucchiaio",
-        "nome": "semi oleosi non tostati"
-      },
-      {
-        "quantita": 1,
-        "unita": "pezzi",
-        "nome": "frutto"
-      }
-    ],
-    "svolgimento": "1. Cuoci per qualche minuto le fette di pane in padella con un giro d'olio evo e 5-6 foglie di salvia, girando da entrambi i lati e facendo dorare appena.\n2. Condisci quindi con un pizzico di sale e con i semi oleosi.\n3. Accompagna con il frutto.",
-    "note": "Variante proposta nel testo originale per allergia al nichel o all'istamina, al posto del pane con crema di nocciole al cacao."
   },
   {
     "id": "frittata-morbida-di-zucchine-e-olive-con-zucchine-allo-zenzero",
@@ -23514,67 +23256,6 @@
     "note": ""
   },
   {
-    "id": "crepes-di-zucca",
-    "numero": 335,
-    "dataAggiunta": "2026-10-01",
-    "titolo": "Crêpes di zucca",
-    "titoloOriginale": null,
-    "autore": "giulycaggiari",
-    "categorie": [
-      "Piatto Unico"
-    ],
-    "dieta": [
-      "Vegetariano"
-    ],
-    "fredda": false,
-    "difficolta": "Media",
-    "tempo": "25-30 minuti",
-    "persone": 3,
-    "gruppo": "5 ricette con la zucca (giulycaggiari)",
-    "tags": [],
-    "macronutrienti": {
-      "kcal": 352,
-      "proteine": 17,
-      "carboidrati": 41,
-      "grassi": 14
-    },
-    "macroStimato": true,
-    "ingredienti": [
-      {
-        "quantita": 300,
-        "unita": "g",
-        "nome": "zucca cotta"
-      },
-      {
-        "quantita": 1,
-        "unita": "pezzi",
-        "nome": "uovo"
-      },
-      {
-        "quantita": 120,
-        "unita": "g",
-        "nome": "farina"
-      },
-      {
-        "quantita": 180,
-        "unita": "ml",
-        "nome": "latte"
-      },
-      {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "sale"
-      },
-      {
-        "quantita": 150,
-        "unita": "g",
-        "nome": "mozzarella"
-      }
-    ],
-    "svolgimento": "1. Frullate zucca, uovo, farina, latte e sale.\n2. Cuocete un mestolo di impasto alla volta in padella antiaderente, farcite con mozzarella e richiudete finché sarà filante.",
-    "note": ""
-  },
-  {
     "id": "muffin-zucca-e-cioccolato",
     "numero": 336,
     "dataAggiunta": "2026-10-01",
@@ -23724,7 +23405,7 @@
     "titoloOriginale": null,
     "autore": "_candy_healthy_",
     "categorie": [
-      "Piatto Unico"
+      "Basi e Preparazioni"
     ],
     "dieta": [
       "Vegetariano"
@@ -23783,13 +23464,7 @@
   const DIFFICOLTA_OPZIONI = ["Facile","Media","Difficile"];
   const DURATA_BUCKETS_ORDINE = ["≤15 min","16-30 min","31-60 min",">60 min"];
   const DIETA_OPZIONI = ["Vegano","Vegetariano","Carne","Pesce"];
-  const SORT_OPZIONI = [
-    { v: "recenti-desc", label: "Più recenti" },
-    { v: "recenti-asc", label: "Meno recenti" },
-    { v: "numero-desc", label: "Numero decrescente" },
-    { v: "numero-asc", label: "Numero crescente" },
-  ];
-  const DEFAULT_SORT = "recenti-desc";
+  const SORT_NEUTRO = "default";
 
   const RICETTE_BASE = JSON.parse(document.getElementById('ricette-data').textContent);
   const app = document.getElementById('app');
@@ -23945,18 +23620,21 @@
   function matchesFiltriBase(r){
     const categorie = r.categorie || [];
     const dieta = r.dieta || [];
+    const tags = r.tags || [];
     if(filtri.gruppo && r.gruppo !== filtri.gruppo) return false;
     if(filtri.difficolta.size && !filtri.difficolta.has(r.difficolta)) return false;
     if(filtri.durata.size && !filtri.durata.has(bucketDurata(r.tempo))) return false;
     if(filtri.dieta.size && !dieta.some(d => filtri.dieta.has(d))) return false;
     if(filtri.prep.has('Fredda') && !r.fredda) return false;
     if(filtri.speciali.has('preferiti') && !r.preferito) return false;
-    if(filtri.speciali.has('PN') && !(r.tags || []).includes('PN')) return false;
+    if(filtri.speciali.has('PN') && !tags.includes('PN')) return false;
+    if(filtri.speciali.has('daProvare') && tags.includes('PN')) return false;
     if(filtri.search){
       const s = filtri.search.toLowerCase();
       const haystack = [
         r.titolo, r.autore, ...categorie, r.tempo, r.gruppo || "",
-        ...dieta, ...(r.tags || []), ...r.ingredienti.map(i => i.nome)
+        String(r.numero ?? ''), '#' + (r.numero ?? ''),
+        ...dieta, ...tags, ...r.ingredienti.map(i => i.nome)
       ].join(" ").toLowerCase();
       if(!haystack.includes(s)) return false;
     }
@@ -23981,10 +23659,18 @@
         arr.sort((a, b) => (b.numero || 0) - (a.numero || 0));
         break;
       case 'recenti-desc':
+      case SORT_NEUTRO:
       default:
         arr.sort((a, b) => (b.dataAggiunta || '').localeCompare(a.dataAggiunta || '') || (b.numero || 0) - (a.numero || 0));
     }
     return arr;
+  }
+
+  function cicloSort(sortCorrente, campo){
+    const attivo = sortCorrente && sortCorrente.startsWith(campo);
+    if(!attivo) return campo + '-desc';
+    if(sortCorrente === campo + '-desc') return campo + '-asc';
+    return SORT_NEUTRO;
   }
 
   function formatIngredienteScalato(ing, fattore){
@@ -24106,12 +23792,12 @@
     if(hash === '#/recenti') return { page: 'redirect', to: '#/indice/tutte/recenti-desc' };
     if(hash.startsWith('#/indice/tutte')){
       const parti = hash.split('/');
-      return { page: 'tutte', sort: decodeURIComponent(parti[3] || DEFAULT_SORT) };
+      return { page: 'tutte', sort: decodeURIComponent(parti[3] || SORT_NEUTRO) };
     }
     if(hash.startsWith('#/indice/portata/')){
       const resto = hash.replace('#/indice/portata/', '');
       const parti = resto.split('/');
-      return { page: 'portata', categoria: decodeURIComponent(parti[0] || ''), sort: decodeURIComponent(parti[1] || DEFAULT_SORT) };
+      return { page: 'portata', categoria: decodeURIComponent(parti[0] || ''), sort: decodeURIComponent(parti[1] || SORT_NEUTRO) };
     }
     if(hash.startsWith('#/ricetta/')) return { page: 'ricetta', id: decodeURIComponent(hash.replace('#/ricetta/', '')) };
     return { page: 'copertina' };
@@ -24135,6 +23821,7 @@
     } else {
       window.scrollTo(0, 0);
     }
+    aggiornaBottoneScrollTop();
   }
 
   function refreshView(){
@@ -24224,11 +23911,15 @@
     `;
   }
 
-  function renderSortSelect(sort){
+  function renderSortBar(sort){
+    const statoRecenti = sort && sort.startsWith('recenti') ? sort : null;
+    const statoNumero = sort && sort.startsWith('numero') ? sort : null;
+    const freccia = (stato) => !stato ? '' : (stato.endsWith('-desc') ? ' ↓' : ' ↑');
     return `
-      <select id="sort-select" class="sort-select">
-        ${SORT_OPZIONI.map(o => `<option value="${o.v}" ${o.v === sort ? 'selected' : ''}>${escapeHtml(o.label)}</option>`).join('')}
-      </select>
+      <div class="sort-bar">
+        <button class="sort-btn ${statoRecenti ? 'active' : ''}" data-action="toggle-sort" data-campo="recenti">🕓 Recenti${freccia(statoRecenti)}</button>
+        <button class="sort-btn ${statoNumero ? 'active' : ''}" data-action="toggle-sort" data-campo="numero"># Numero${freccia(statoNumero)}</button>
+      </div>
     `;
   }
 
@@ -24275,26 +23966,30 @@
     `;
   }
 
+  function renderFiltriSpeciali(){
+    return `
+      <div class="filtro-tags filtro-speciali">
+        <button class="filtro-tag ${filtri.speciali.has('preferiti') ? 'active' : ''}" data-tipo="speciali" data-valore="preferiti">★ Preferiti</button>
+        <button class="filtro-tag ${filtri.speciali.has('PN') ? 'active' : ''}" data-tipo="speciali" data-valore="PN">🏷️ PN</button>
+        <button class="filtro-tag ${filtri.speciali.has('daProvare') ? 'active' : ''}" data-tipo="speciali" data-valore="daProvare">🧪 Da provare</button>
+      </div>
+    `;
+  }
+
   function renderListaTutte(sort){
     app.innerHTML = `
       <button class="back-link" data-action="go-indice">← Indice</button>
       <h1 class="titolo-pagina">Tutte le ricette</h1>
       ${filtri.gruppo ? `<div class="chip-gruppo-attivo">Gruppo: ${escapeHtml(filtri.gruppo)} <span class="chip-x" data-action="clear-gruppo">✕</span></div>` : ''}
-      ${renderSortSelect(sort)}
-      <input id="search-box" type="text" placeholder="Cerca per titolo, autore, ingrediente, tempo..." value="${escapeHtml(filtri.search)}">
-      <div class="filtro-tags filtro-speciali">
-        <button class="filtro-tag ${filtri.speciali.has('preferiti') ? 'active' : ''}" data-tipo="speciali" data-valore="preferiti">★ Preferiti</button>
-        <button class="filtro-tag ${filtri.speciali.has('PN') ? 'active' : ''}" data-tipo="speciali" data-valore="PN">🏷️ PN</button>
-      </div>
+      ${renderSortBar(sort)}
+      <input id="search-box" type="text" placeholder="Cerca per titolo, numero, autore, ingrediente..." value="${escapeHtml(filtri.search)}">
+      ${renderFiltriSpeciali()}
       ${renderFiltriComuni(true)}
       <div id="risultati-indice"></div>
     `;
     document.getElementById('search-box').addEventListener('input', e => {
       filtri.search = e.target.value;
       renderRisultatiTutte(sort);
-    });
-    document.getElementById('sort-select').addEventListener('change', e => {
-      navigate('#/indice/tutte/' + encodeURIComponent(e.target.value));
     });
     renderRisultatiTutte(sort);
   }
@@ -24317,37 +24012,27 @@
 
   function renderListaPortata(categoria, sort){
     const disponibili = categorieConRicette();
-    let idx = disponibili.indexOf(categoria);
-    if(idx === -1){
-      // categoria senza ricette (o sconosciuta): mostra comunque, ma le frecce useranno le categorie disponibili
-      idx = CATEGORIE_ORDINE.indexOf(categoria);
-    }
     const n = disponibili.length;
-    const prevCat = n ? disponibili[(disponibili.indexOf(categoria) - 1 + n) % n] || disponibili[n - 1] : null;
-    const nextCat = n ? disponibili[(disponibili.indexOf(categoria) + 1) % n] : null;
+    const idxAttuale = disponibili.indexOf(categoria);
+    const prevCat = n ? disponibili[(idxAttuale - 1 + n) % n] || disponibili[n - 1] : categoria;
+    const nextCat = n ? disponibili[(idxAttuale + 1) % n] : categoria;
 
     app.innerHTML = `
       <button class="back-link" data-action="go-indice">← Indice</button>
       <div class="nav-portate-frecce">
-        <button class="freccia-portata" data-action="go-portata" data-categoria="${escapeHtml(prevCat || categoria)}" title="Portata precedente">←</button>
+        <button class="freccia-portata" data-action="go-portata-freccia" data-categoria="${escapeHtml(prevCat)}" title="Portata precedente">←</button>
         <h1 class="titolo-portata-corrente">${CATEGORIE_EMOJI[categoria] || ''} ${escapeHtml(categoria)}</h1>
-        <button class="freccia-portata" data-action="go-portata" data-categoria="${escapeHtml(nextCat || categoria)}" title="Portata successiva">→</button>
+        <button class="freccia-portata" data-action="go-portata-freccia" data-categoria="${escapeHtml(nextCat)}" title="Portata successiva">→</button>
       </div>
-      ${renderSortSelect(sort)}
-      <input id="search-box" type="text" placeholder="Cerca per titolo, autore, ingrediente, tempo..." value="${escapeHtml(filtri.search)}">
-      <div class="filtro-tags filtro-speciali">
-        <button class="filtro-tag ${filtri.speciali.has('preferiti') ? 'active' : ''}" data-tipo="speciali" data-valore="preferiti">★ Preferiti</button>
-        <button class="filtro-tag ${filtri.speciali.has('PN') ? 'active' : ''}" data-tipo="speciali" data-valore="PN">🏷️ PN</button>
-      </div>
+      ${renderSortBar(sort)}
+      <input id="search-box" type="text" placeholder="Cerca per titolo, numero, autore, ingrediente..." value="${escapeHtml(filtri.search)}">
+      ${renderFiltriSpeciali()}
       ${renderFiltriComuni(false)}
       <div id="risultati-indice"></div>
     `;
     document.getElementById('search-box').addEventListener('input', e => {
       filtri.search = e.target.value;
       renderRisultatiPortata(categoria, sort);
-    });
-    document.getElementById('sort-select').addEventListener('change', e => {
-      navigate('#/indice/portata/' + encodeURIComponent(categoria) + '/' + encodeURIComponent(e.target.value));
     });
     renderRisultatiPortata(categoria, sort);
   }
@@ -24380,6 +24065,36 @@
           ${(r.dieta || []).map(d => `<span class="tag dieta">${escapeHtml(d)}</span>`).join('')}
           ${r.gruppo ? `<span class="tag gruppo" data-action="filtra-gruppo" data-gruppo="${escapeHtml(r.gruppo)}">🔗 ${escapeHtml(r.gruppo)}</span>` : ''}
           ${(r.tags || []).map(t => `<span class="tag manuale${t === 'PN' ? ' tag-pn' : ''}">${escapeHtml(t)}</span>`).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  function ricetteCorrelate(r, tutte){
+    let pool;
+    if(r.gruppo){
+      pool = tutte.filter(x => x.id !== r.id && x.gruppo === r.gruppo);
+    } else {
+      const categorie = r.categorie || [];
+      pool = tutte.filter(x => x.id !== r.id && (x.categorie || []).some(c => categorie.includes(c)));
+      pool.sort((a, b) => (b.numero || 0) - (a.numero || 0));
+    }
+    return pool.slice(0, 4);
+  }
+
+  function renderCorrelate(r, tutte){
+    const correlate = ricetteCorrelate(r, tutte);
+    if(correlate.length === 0) return '';
+    return `
+      <div class="sezione correlate-section">
+        <h3 class="section-title">${r.gruppo ? 'Altre ricette di questo gruppo' : 'Potrebbe piacerti anche'}</h3>
+        <div class="correlate-lista">
+          ${correlate.map(c => `
+            <button class="correlata-card" data-action="go-ricetta" data-id="${c.id}">
+              <span class="correlata-numero">#${c.numero ?? ''}</span>
+              <span class="correlata-titolo">${escapeHtml(c.titolo)}</span>
+            </button>
+          `).join('')}
         </div>
       </div>
     `;
@@ -24484,6 +24199,7 @@
           <h3 class="section-title">Note</h3>
           <div class="editable nota-box ${r.note ? '' : 'nota-vuota'}" data-id="${r.id}" data-campo="note" data-multiline="1">${r.note ? escapeHtml(r.note).replace(/\n/g, '<br>') : 'Clicca per aggiungere una nota…'}</div>
         </div>
+        ${renderCorrelate(r, tutte)}
         <div class="nav-pagine">
           ${prev ? `<button class="nav-prev" data-action="nav-ricetta" data-id="${prev.id}">← ${escapeHtml(prev.titolo)}</button>` : '<span></span>'}
           ${next ? `<button class="nav-next" data-action="nav-ricetta" data-id="${next.id}">${escapeHtml(next.titolo)} →</button>` : '<span></span>'}
@@ -24492,12 +24208,39 @@
     `;
   }
 
+  // ---------------- PULSANTE "TORNA SU" ----------------
+  function aggiornaBottoneScrollTop(){
+    const btn = document.getElementById('scroll-top-btn');
+    if(!btn) return;
+    btn.style.display = window.scrollY > 500 ? 'flex' : 'none';
+  }
+  window.addEventListener('scroll', aggiornaBottoneScrollTop, { passive: true });
+
+  // ---------------- SCORCIATOIE DA TASTIERA ----------------
+  document.addEventListener('keydown', e => {
+    const tag = (document.activeElement && document.activeElement.tagName) || '';
+    if(tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement?.isContentEditable) return;
+    const route = parseHash();
+    if(route.page !== 'ricetta') return;
+    if(e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    const r = getRicettaById(route.id);
+    if(!r) return;
+    const tutte = getRicette();
+    const pos = tutte.findIndex(x => x.id === route.id);
+    const target = e.key === 'ArrowLeft' ? tutte[pos - 1] : tutte[pos + 1];
+    if(target){ e.preventDefault(); navigate('#/ricetta/' + encodeURIComponent(target.id)); }
+  });
+
   // ---------------- EVENTI DELEGATI ----------------
   document.addEventListener('click', e => {
     let el;
 
     if((el = e.target.closest('[data-action="esci"]'))){
       tentaUscita();
+      return;
+    }
+    if((el = e.target.closest('#scroll-top-btn'))){
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
     if((el = e.target.closest('.btn-preferito'))){
@@ -24508,7 +24251,7 @@
     if((el = e.target.closest('[data-action="filtra-gruppo"]'))){
       resetFiltriBase();
       filtri.gruppo = el.dataset.gruppo;
-      navigate('#/indice/tutte/' + encodeURIComponent(DEFAULT_SORT));
+      navigate('#/indice/tutte/' + SORT_NEUTRO);
       return;
     }
     if((el = e.target.closest('[data-action="clear-gruppo"]'))){
@@ -24534,19 +24277,23 @@
     }
     if((el = e.target.closest('[data-action="go-tutte"]'))){
       resetFiltriBase();
-      navigate('#/indice/tutte/' + encodeURIComponent(DEFAULT_SORT));
+      navigate('#/indice/tutte/' + SORT_NEUTRO);
       return;
     }
     if((el = e.target.closest('[data-action="go-portata"]'))){
-      const cat = el.dataset.categoria;
-      // le frecce di navigazione tra portate mantengono i filtri attivi; le card dell'indice li azzerano
-      const fromLanding = !!e.target.closest('.griglia-portate');
-      if(fromLanding) resetFiltriBase();
-      navigate('#/indice/portata/' + encodeURIComponent(cat) + '/' + encodeURIComponent(DEFAULT_SORT));
+      resetFiltriBase();
+      navigate('#/indice/portata/' + encodeURIComponent(el.dataset.categoria) + '/' + SORT_NEUTRO);
+      return;
+    }
+    if((el = e.target.closest('[data-action="go-portata-freccia"]'))){
+      // le frecce di navigazione tra portate mantengono i filtri e l'ordinamento attivi
+      const route = parseHash();
+      const sort = (route.page === 'portata' && route.sort) ? route.sort : SORT_NEUTRO;
+      navigate('#/indice/portata/' + encodeURIComponent(el.dataset.categoria) + '/' + encodeURIComponent(sort));
       return;
     }
     if((el = e.target.closest('[data-action="go-recenti"]'))){
-      navigate('#/indice/tutte/' + encodeURIComponent('recenti-desc'));
+      navigate('#/indice/tutte/recenti-desc');
       return;
     }
     if((el = e.target.closest('[data-action="go-cover"]'))){
@@ -24555,6 +24302,14 @@
     }
     if((el = e.target.closest('[data-action="stampa-pdf"]'))){
       apriStampaRicettario();
+      return;
+    }
+    if((el = e.target.closest('[data-action="toggle-sort"]'))){
+      const campo = el.dataset.campo;
+      const route = parseHash();
+      const next = cicloSort(route.sort, campo);
+      if(route.page === 'tutte') navigate('#/indice/tutte/' + encodeURIComponent(next));
+      else if(route.page === 'portata') navigate('#/indice/portata/' + encodeURIComponent(route.categoria) + '/' + encodeURIComponent(next));
       return;
     }
     if((el = e.target.closest('.filtro-tag'))){
