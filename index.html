@@ -403,6 +403,84 @@
     #print-area li{ margin-bottom:3px; }
     #print-area .stampa-note{ font-size:0.8rem; font-style:italic; margin-top:6px; }
   }
+
+  /* ---------- indice: pagina di atterraggio ---------- */
+  .indice-titolo-grande{
+    text-align:center;
+    font-size:2.1rem;
+    margin:6px 0 20px;
+  }
+  .gruppi-bar-wrap{ margin-bottom:18px; }
+  .gruppi-bar-label{
+    font-size:0.72rem; letter-spacing:0.09em; color:var(--ink-soft);
+    font-weight:700; margin-bottom:8px;
+  }
+  .gruppi-bar{
+    display:flex; gap:8px; overflow-x:auto; padding-bottom:8px;
+    -webkit-overflow-scrolling:touch; scrollbar-width:thin;
+  }
+  .gruppi-bar::-webkit-scrollbar{ height:5px; }
+  .gruppi-bar::-webkit-scrollbar-thumb{ background:var(--border); border-radius:999px; }
+  .chip-gruppo-bar{
+    flex-shrink:0; white-space:nowrap;
+    background:#efe6f6; color:#6c3fa1; border:1px solid #e0d2ef;
+    padding:7px 15px; border-radius:999px; font-size:0.8rem; cursor:pointer;
+  }
+  .chip-gruppo-bar:hover{ filter:brightness(0.96); }
+
+  .btn-tutte{
+    display:block; width:100%; background:var(--accent); color:#fff; border:none;
+    border-radius:14px; padding:15px; font-size:1.02rem; font-weight:600;
+    cursor:pointer; margin-bottom:22px; box-shadow:var(--shadow);
+  }
+  .btn-tutte-conteggio{ font-weight:400; opacity:0.85; font-size:0.9em; }
+
+  .griglia-portate{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(100px, 1fr));
+    gap:10px; margin-bottom:10px;
+  }
+  .portata-card{
+    aspect-ratio:1; display:flex; flex-direction:column; align-items:center;
+    justify-content:center; gap:5px; background:var(--paper); border:1px solid var(--border);
+    border-radius:16px; cursor:pointer; padding:8px; text-align:center;
+    transition:box-shadow 0.15s ease, transform 0.1s ease;
+  }
+  .portata-card:hover{ box-shadow:var(--shadow); transform:translateY(-2px); border-color:var(--accent); }
+  .portata-card .emoji{ font-size:1.6rem; line-height:1; }
+  .portata-card .nome{ font-size:0.74rem; font-weight:600; line-height:1.2; }
+  .portata-card .conteggio{ font-size:0.68rem; color:var(--ink-soft); }
+
+  /* ---------- filtro portata sempre aperto ---------- */
+  .filtro-riga-fissa{ margin-bottom:10px; padding-top:9px; border-top:1px solid var(--border); }
+  .filtro-riga-titolo{
+    font-size:0.72rem; letter-spacing:0.09em; color:var(--ink-soft);
+    font-weight:700; padding:3px 0 8px;
+  }
+
+  /* ---------- ordinamento ---------- */
+  .sort-select{
+    width:100%; padding:11px 14px; font-size:0.88rem; border-radius:12px;
+    border:1px solid var(--border); background:var(--paper); margin-bottom:10px;
+    font-family:var(--font-body); color:var(--ink); cursor:pointer;
+  }
+  .sort-select:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+
+  .conteggio-risultati{ color:var(--ink-soft); font-size:0.8rem; margin:0 0 10px; }
+
+  /* ---------- navigazione tra portate ---------- */
+  .nav-portate-frecce{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:10px; margin:4px 0 14px;
+  }
+  .titolo-portata-corrente{ flex:1; text-align:center; font-size:1.35rem; margin:0; }
+  .freccia-portata{
+    flex-shrink:0; width:38px; height:38px; border-radius:50%;
+    border:1px solid var(--border); background:var(--paper); color:var(--accent);
+    font-size:1.1rem; cursor:pointer;
+  }
+  .freccia-portata:hover{ border-color:var(--accent); background:var(--accent-soft); }
+
+  .tag.tag-pn{ background:#fde7d8; color:#a15a1f; }
 </style>
 </head>
 <body>
@@ -2835,7 +2913,8 @@
       "carboidrati": 49,
       "grassi": 33
     },
-    "macroStimato": true
+    "macroStimato": true,
+    "preferito": true
   },
   {
     "id": "tempeh-al-limone-croccante",
@@ -3759,7 +3838,7 @@
     "titolo": "Maionese leggera all'acqua",
     "autore": "elisa.cuorecucinaechiacchiere",
     "categorie": [
-      "Altro"
+      "Condimenti e Salse"
     ],
     "dieta": [
       "Vegetariano"
@@ -4317,8 +4396,7 @@
     "titolo": "Riso per sushi (base)",
     "autore": "elisa.cuorecucinaechiacchiere",
     "categorie": [
-      "Contorno",
-      "Altro"
+      "Basi e Preparazioni"
     ],
     "dieta": [
       "Vegano"
@@ -5936,7 +6014,7 @@
     "titolo": "Salsa tartara vegetale",
     "autore": "giuliapisco",
     "categorie": [
-      "Altro"
+      "Condimenti e Salse"
     ],
     "dieta": [
       "Vegano"
@@ -8973,7 +9051,7 @@
     "titolo": "Condimento pasta con avocado, lime e basilico",
     "autore": "_tornainformaconme_",
     "categorie": [
-      "Altro"
+      "Condimenti e Salse"
     ],
     "dieta": [
       "Vegano"
@@ -9028,7 +9106,7 @@
     "titolo": "Crema di carote e zenzero per la pasta",
     "autore": "_tornainformaconme_",
     "categorie": [
-      "Altro"
+      "Condimenti e Salse"
     ],
     "dieta": [
       "Vegano"
@@ -9083,7 +9161,7 @@
     "titolo": "Condimento pasta con cetriolo, yogurt greco e aneto",
     "autore": "_tornainformaconme_",
     "categorie": [
-      "Altro"
+      "Condimenti e Salse"
     ],
     "dieta": [
       "Vegetariano"
@@ -9138,7 +9216,7 @@
     "titolo": "Condimento pasta con melanzane, tahina e limone",
     "autore": "_tornainformaconme_",
     "categorie": [
-      "Altro"
+      "Condimenti e Salse"
     ],
     "dieta": [
       "Vegano"
@@ -9193,7 +9271,7 @@
     "titolo": "Condimento pasta con rucola, noci e limone",
     "autore": "_tornainformaconme_",
     "categorie": [
-      "Altro"
+      "Condimenti e Salse"
     ],
     "dieta": [
       "Vegano"
@@ -10671,7 +10749,7 @@
     "titolo": "Uova pochè perfette (trucco facile)",
     "autore": "cottoaldente",
     "categorie": [
-      "Altro"
+      "Basi e Preparazioni"
     ],
     "dieta": [
       "Vegetariano"
@@ -10716,7 +10794,7 @@
     "titolo": "Mix per soffritto pronto (da freezer)",
     "autore": "cucinabotanica",
     "categorie": [
-      "Altro"
+      "Basi e Preparazioni"
     ],
     "dieta": [
       "Vegano"
@@ -10826,7 +10904,7 @@
     "titolo": "Pesto vegetale (da freezer)",
     "autore": "cucinabotanica",
     "categorie": [
-      "Altro"
+      "Condimenti e Salse"
     ],
     "dieta": [
       "Vegano"
@@ -13555,7 +13633,7 @@
     "titoloOriginale": null,
     "autore": "friggitrice_ad_aria",
     "categorie": [
-      "Altro"
+      "Condimenti e Salse"
     ],
     "dieta": [
       "Vegetariano"
@@ -23696,10 +23774,22 @@
 (function(){
   "use strict";
 
-  const CATEGORIE_ORDINE = ["Antipasto","Primo","Piatto Unico","Secondo","Contorno","Zuppa","Snack","Aperitivo","Frullati","Dolce","Frutta","Altro"];
+  const CATEGORIE_ORDINE = ["Antipasto","Primo","Piatto Unico","Secondo","Contorno","Zuppa","Snack","Aperitivo","Frullati","Dolce","Frutta","Condimenti e Salse","Basi e Preparazioni","Altro"];
+  const CATEGORIE_EMOJI = {
+    "Antipasto":"🥗","Primo":"🍝","Piatto Unico":"🍲","Secondo":"🍖","Contorno":"🥕",
+    "Zuppa":"🍜","Snack":"🍪","Aperitivo":"🍹","Frullati":"🥤","Dolce":"🍰","Frutta":"🍓",
+    "Condimenti e Salse":"🫙","Basi e Preparazioni":"📋","Altro":"✦"
+  };
   const DIFFICOLTA_OPZIONI = ["Facile","Media","Difficile"];
   const DURATA_BUCKETS_ORDINE = ["≤15 min","16-30 min","31-60 min",">60 min"];
   const DIETA_OPZIONI = ["Vegano","Vegetariano","Carne","Pesce"];
+  const SORT_OPZIONI = [
+    { v: "recenti-desc", label: "Più recenti" },
+    { v: "recenti-asc", label: "Meno recenti" },
+    { v: "numero-desc", label: "Numero decrescente" },
+    { v: "numero-asc", label: "Numero crescente" },
+  ];
+  const DEFAULT_SORT = "recenti-desc";
 
   const RICETTE_BASE = JSON.parse(document.getElementById('ricette-data').textContent);
   const app = document.getElementById('app');
@@ -23707,6 +23797,23 @@
   let overrides = {};
   let porzioniCorrenti = {};
   const filtri = { search: "", portata: new Set(), durata: new Set(), difficolta: new Set(), dieta: new Set(), prep: new Set(), speciali: new Set(), gruppo: null };
+
+  // ---- memoria di scorrimento / navigazione "indietro" ----
+  let scrollMemory = {};
+  let pendingBack = false;
+  function navigate(newHash){
+    scrollMemory[location.hash || '#/'] = window.scrollY;
+    location.hash = newHash;
+  }
+  function goBack(fallbackHash){
+    scrollMemory[location.hash || '#/'] = 0;
+    if(history.length > 1){
+      pendingBack = true;
+      history.back();
+    } else {
+      location.hash = fallbackHash || '#/indice';
+    }
+  }
 
   function caricaOverrides(){
     try{ overrides = JSON.parse(localStorage.getItem('ricettario_overrides') || '{}'); }
@@ -23835,16 +23942,16 @@
     return ">60 min";
   }
 
-  function matchesFiltri(r){
+  function matchesFiltriBase(r){
     const categorie = r.categorie || [];
     const dieta = r.dieta || [];
     if(filtri.gruppo && r.gruppo !== filtri.gruppo) return false;
-    if(filtri.portata.size && !categorie.some(c => filtri.portata.has(c))) return false;
     if(filtri.difficolta.size && !filtri.difficolta.has(r.difficolta)) return false;
     if(filtri.durata.size && !filtri.durata.has(bucketDurata(r.tempo))) return false;
     if(filtri.dieta.size && !dieta.some(d => filtri.dieta.has(d))) return false;
     if(filtri.prep.has('Fredda') && !r.fredda) return false;
     if(filtri.speciali.has('preferiti') && !r.preferito) return false;
+    if(filtri.speciali.has('PN') && !(r.tags || []).includes('PN')) return false;
     if(filtri.search){
       const s = filtri.search.toLowerCase();
       const haystack = [
@@ -23854,6 +23961,30 @@
       if(!haystack.includes(s)) return false;
     }
     return true;
+  }
+  function matchesFiltri(r){
+    const categorie = r.categorie || [];
+    if(filtri.portata.size && !categorie.some(c => filtri.portata.has(c))) return false;
+    return matchesFiltriBase(r);
+  }
+
+  function ordinaRicette(lista, sort){
+    const arr = [...lista];
+    switch(sort){
+      case 'recenti-asc':
+        arr.sort((a, b) => (a.dataAggiunta || '').localeCompare(b.dataAggiunta || '') || (a.numero || 0) - (b.numero || 0));
+        break;
+      case 'numero-asc':
+        arr.sort((a, b) => (a.numero || 0) - (b.numero || 0));
+        break;
+      case 'numero-desc':
+        arr.sort((a, b) => (b.numero || 0) - (a.numero || 0));
+        break;
+      case 'recenti-desc':
+      default:
+        arr.sort((a, b) => (b.dataAggiunta || '').localeCompare(a.dataAggiunta || '') || (b.numero || 0) - (a.numero || 0));
+    }
+    return arr;
   }
 
   function formatIngredienteScalato(ing, fattore){
@@ -23968,20 +24099,49 @@
   }
 
   // ---------------- ROUTING / RENDER ----------------
+  function parseHash(){
+    const hash = location.hash || '#/';
+    if(hash === '#/' || hash === '') return { page: 'copertina' };
+    if(hash === '#/indice') return { page: 'indice' };
+    if(hash === '#/recenti') return { page: 'redirect', to: '#/indice/tutte/recenti-desc' };
+    if(hash.startsWith('#/indice/tutte')){
+      const parti = hash.split('/');
+      return { page: 'tutte', sort: decodeURIComponent(parti[3] || DEFAULT_SORT) };
+    }
+    if(hash.startsWith('#/indice/portata/')){
+      const resto = hash.replace('#/indice/portata/', '');
+      const parti = resto.split('/');
+      return { page: 'portata', categoria: decodeURIComponent(parti[0] || ''), sort: decodeURIComponent(parti[1] || DEFAULT_SORT) };
+    }
+    if(hash.startsWith('#/ricetta/')) return { page: 'ricetta', id: decodeURIComponent(hash.replace('#/ricetta/', '')) };
+    return { page: 'copertina' };
+  }
+
   function render(){
     const hash = location.hash || '#/';
-    if(hash === '#/' || hash === '') renderCopertina();
-    else if(hash === '#/indice') renderIndice();
-    else if(hash === '#/recenti') renderIndiceRecenti();
-    else if(hash.startsWith('#/ricetta/')) renderRicetta(decodeURIComponent(hash.replace('#/ricetta/', '')));
+    const route = parseHash();
+    if(route.page === 'redirect'){ location.hash = route.to; return; }
+    if(route.page === 'copertina') renderCopertina();
+    else if(route.page === 'indice') renderIndiceLanding();
+    else if(route.page === 'tutte') renderListaTutte(route.sort);
+    else if(route.page === 'portata') renderListaPortata(route.categoria, route.sort);
+    else if(route.page === 'ricetta') renderRicetta(route.id);
     else renderCopertina();
-    window.scrollTo(0, 0);
+
+    if(pendingBack){
+      pendingBack = false;
+      const y = scrollMemory[hash] || 0;
+      requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, y)));
+    } else {
+      window.scrollTo(0, 0);
+    }
   }
 
   function refreshView(){
-    const hash = location.hash || '#/';
-    if(hash.startsWith('#/ricetta/')) renderRicetta(decodeURIComponent(hash.replace('#/ricetta/', '')));
-    else if((hash === '#/indice' || hash === '#/recenti') && document.getElementById('risultati-indice')) renderRisultati();
+    const route = parseHash();
+    if(route.page === 'ricetta') renderRicetta(route.id);
+    else if(route.page === 'tutte' && document.getElementById('risultati-indice')) renderRisultatiTutte(route.sort);
+    else if(route.page === 'portata' && document.getElementById('risultati-indice')) renderRisultatiPortata(route.categoria, route.sort);
     else render();
   }
 
@@ -24019,34 +24179,74 @@
     `;
   }
 
-  function renderIndice(){
-    filtri.speciali.delete('recenti');
-    renderPaginaIndice('portata');
+  function gruppiDisponibili(){
+    const set = new Set();
+    getRicette().forEach(r => { if(r.gruppo) set.add(r.gruppo); });
+    return [...set].sort((a, b) => a.localeCompare(b, 'it'));
   }
 
-  function renderIndiceRecenti(){
-    filtri.speciali.add('recenti');
-    renderPaginaIndice('recenti');
-  }
-
-  function renderPaginaIndice(modalita){
-    const tutte = getRicette();
-    const durataPresenti = new Set(tutte.map(r => bucketDurata(r.tempo)));
-    const tabsHtml = `
-      <div class="tab-indici">
-        <button class="${modalita === 'portata' ? 'active' : ''}" data-action="go-indice">📚 Per portata</button>
-        <button class="${modalita === 'recenti' ? 'active' : ''}" data-action="go-recenti">🕓 Ultime aggiunte</button>
+  function renderGruppiBar(){
+    const gruppi = gruppiDisponibili();
+    if(gruppi.length === 0) return '';
+    return `
+      <div class="gruppi-bar-wrap">
+        <div class="gruppi-bar-label">Gruppi di ricette collegate</div>
+        <div class="gruppi-bar">
+          ${gruppi.map(g => `<button class="chip-gruppo-bar" data-action="filtra-gruppo" data-gruppo="${escapeHtml(g)}">🔗 ${escapeHtml(g)}</button>`).join('')}
+        </div>
       </div>
     `;
-    const filtriPortataHtml = modalita === 'portata' ? `
-      <details class="filtro-riga">
-        <summary>PORTATA</summary>
+  }
+
+  function resetFiltriBase(){
+    filtri.search = ''; filtri.durata = new Set(); filtri.difficolta = new Set();
+    filtri.dieta = new Set(); filtri.prep = new Set(); filtri.speciali = new Set(); filtri.gruppo = null;
+  }
+
+  function renderIndiceLanding(){
+    const tutte = getRicette();
+    const conteggi = {};
+    CATEGORIE_ORDINE.forEach(c => { conteggi[c] = tutte.filter(r => (r.categorie || []).includes(c)).length; });
+    app.innerHTML = `
+      <button class="back-link" data-action="go-cover">← Copertina</button>
+      <h1 class="indice-titolo-grande">Indice</h1>
+      ${renderGruppiBar()}
+      <button class="btn-tutte" data-action="go-tutte">📖 Tutte le ricette <span class="btn-tutte-conteggio">(${tutte.length})</span></button>
+      <div class="griglia-portate">
+        ${CATEGORIE_ORDINE.map(c => `
+          <button class="portata-card" data-action="go-portata" data-categoria="${escapeHtml(c)}">
+            <span class="emoji">${CATEGORIE_EMOJI[c] || '•'}</span>
+            <span class="nome">${escapeHtml(c)}</span>
+            <span class="conteggio">${conteggi[c]}</span>
+          </button>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  function renderSortSelect(sort){
+    return `
+      <select id="sort-select" class="sort-select">
+        ${SORT_OPZIONI.map(o => `<option value="${o.v}" ${o.v === sort ? 'selected' : ''}>${escapeHtml(o.label)}</option>`).join('')}
+      </select>
+    `;
+  }
+
+  function renderFiltriComuni(incluresiPortata){
+    const tutte = getRicette();
+    const durataPresenti = new Set(tutte.map(r => bucketDurata(r.tempo)));
+    const portataHtml = incluresiPortata ? `
+      <div class="filtro-riga filtro-riga-fissa">
+        <div class="filtro-riga-titolo">PORTATA</div>
         <div class="filtro-tags">
           ${CATEGORIE_ORDINE.map(c =>
-            `<button class="filtro-tag ${filtri.portata.has(c) ? 'active' : ''}" data-tipo="portata" data-valore="${escapeHtml(c)}">${escapeHtml(c)}</button>`
+            `<button class="filtro-tag ${filtri.portata.has(c) ? 'active' : ''}" data-tipo="portata" data-valore="${escapeHtml(c)}">${CATEGORIE_EMOJI[c] || ''} ${escapeHtml(c)}</button>`
           ).join('')}
         </div>
-      </details>
+      </div>
+    ` : '';
+    return `
+      ${portataHtml}
       <details class="filtro-riga">
         <summary>DURATA</summary>
         <div class="filtro-tags">
@@ -24072,24 +24272,96 @@
           <button class="filtro-tag ${filtri.prep.has('Fredda') ? 'active' : ''}" data-tipo="prep" data-valore="Fredda">❄️ Fredda</button>
         </div>
       </details>
-    ` : '';
+    `;
+  }
+
+  function renderListaTutte(sort){
     app.innerHTML = `
-      <button class="back-link" data-action="go-cover">← Copertina</button>
-      <h1 class="titolo-pagina">${modalita === 'portata' ? 'Indice per portata' : 'Ultime aggiunte'}</h1>
-      ${tabsHtml}
+      <button class="back-link" data-action="go-indice">← Indice</button>
+      <h1 class="titolo-pagina">Tutte le ricette</h1>
       ${filtri.gruppo ? `<div class="chip-gruppo-attivo">Gruppo: ${escapeHtml(filtri.gruppo)} <span class="chip-x" data-action="clear-gruppo">✕</span></div>` : ''}
+      ${renderSortSelect(sort)}
       <input id="search-box" type="text" placeholder="Cerca per titolo, autore, ingrediente, tempo..." value="${escapeHtml(filtri.search)}">
       <div class="filtro-tags filtro-speciali">
         <button class="filtro-tag ${filtri.speciali.has('preferiti') ? 'active' : ''}" data-tipo="speciali" data-valore="preferiti">★ Preferiti</button>
+        <button class="filtro-tag ${filtri.speciali.has('PN') ? 'active' : ''}" data-tipo="speciali" data-valore="PN">🏷️ PN</button>
       </div>
-      ${filtriPortataHtml}
+      ${renderFiltriComuni(true)}
       <div id="risultati-indice"></div>
     `;
     document.getElementById('search-box').addEventListener('input', e => {
       filtri.search = e.target.value;
-      renderRisultati();
+      renderRisultatiTutte(sort);
     });
-    renderRisultati();
+    document.getElementById('sort-select').addEventListener('change', e => {
+      navigate('#/indice/tutte/' + encodeURIComponent(e.target.value));
+    });
+    renderRisultatiTutte(sort);
+  }
+
+  function renderRisultatiTutte(sort){
+    const container = document.getElementById('risultati-indice');
+    const trovate = ordinaRicette(getRicette().filter(matchesFiltri), sort);
+    if(trovate.length === 0){
+      container.innerHTML = '<p class="no-results">Nessuna ricetta trovata.</p>';
+      return;
+    }
+    container.innerHTML = `<p class="conteggio-risultati">${trovate.length} ricett${trovate.length === 1 ? 'a' : 'e'}</p>` +
+      trovate.map(renderVoceIndice).join('');
+  }
+
+  function categorieConRicette(){
+    const tutte = getRicette();
+    return CATEGORIE_ORDINE.filter(c => tutte.some(r => (r.categorie || []).includes(c)));
+  }
+
+  function renderListaPortata(categoria, sort){
+    const disponibili = categorieConRicette();
+    let idx = disponibili.indexOf(categoria);
+    if(idx === -1){
+      // categoria senza ricette (o sconosciuta): mostra comunque, ma le frecce useranno le categorie disponibili
+      idx = CATEGORIE_ORDINE.indexOf(categoria);
+    }
+    const n = disponibili.length;
+    const prevCat = n ? disponibili[(disponibili.indexOf(categoria) - 1 + n) % n] || disponibili[n - 1] : null;
+    const nextCat = n ? disponibili[(disponibili.indexOf(categoria) + 1) % n] : null;
+
+    app.innerHTML = `
+      <button class="back-link" data-action="go-indice">← Indice</button>
+      <div class="nav-portate-frecce">
+        <button class="freccia-portata" data-action="go-portata" data-categoria="${escapeHtml(prevCat || categoria)}" title="Portata precedente">←</button>
+        <h1 class="titolo-portata-corrente">${CATEGORIE_EMOJI[categoria] || ''} ${escapeHtml(categoria)}</h1>
+        <button class="freccia-portata" data-action="go-portata" data-categoria="${escapeHtml(nextCat || categoria)}" title="Portata successiva">→</button>
+      </div>
+      ${renderSortSelect(sort)}
+      <input id="search-box" type="text" placeholder="Cerca per titolo, autore, ingrediente, tempo..." value="${escapeHtml(filtri.search)}">
+      <div class="filtro-tags filtro-speciali">
+        <button class="filtro-tag ${filtri.speciali.has('preferiti') ? 'active' : ''}" data-tipo="speciali" data-valore="preferiti">★ Preferiti</button>
+        <button class="filtro-tag ${filtri.speciali.has('PN') ? 'active' : ''}" data-tipo="speciali" data-valore="PN">🏷️ PN</button>
+      </div>
+      ${renderFiltriComuni(false)}
+      <div id="risultati-indice"></div>
+    `;
+    document.getElementById('search-box').addEventListener('input', e => {
+      filtri.search = e.target.value;
+      renderRisultatiPortata(categoria, sort);
+    });
+    document.getElementById('sort-select').addEventListener('change', e => {
+      navigate('#/indice/portata/' + encodeURIComponent(categoria) + '/' + encodeURIComponent(e.target.value));
+    });
+    renderRisultatiPortata(categoria, sort);
+  }
+
+  function renderRisultatiPortata(categoria, sort){
+    const container = document.getElementById('risultati-indice');
+    const base = getRicette().filter(r => (r.categorie || []).includes(categoria) && matchesFiltriBase(r));
+    const trovate = ordinaRicette(base, sort);
+    if(trovate.length === 0){
+      container.innerHTML = '<p class="no-results">Nessuna ricetta trovata in questa portata.</p>';
+      return;
+    }
+    container.innerHTML = `<p class="conteggio-risultati">${trovate.length} ricett${trovate.length === 1 ? 'a' : 'e'}</p>` +
+      trovate.map(renderVoceIndice).join('');
   }
 
   function renderVoceIndice(r){
@@ -24107,36 +24379,10 @@
           ${r.fredda ? '<span class="tag fredda">❄️ Fredda</span>' : ''}
           ${(r.dieta || []).map(d => `<span class="tag dieta">${escapeHtml(d)}</span>`).join('')}
           ${r.gruppo ? `<span class="tag gruppo" data-action="filtra-gruppo" data-gruppo="${escapeHtml(r.gruppo)}">🔗 ${escapeHtml(r.gruppo)}</span>` : ''}
-          ${(r.tags || []).map(t => `<span class="tag manuale">${escapeHtml(t)}</span>`).join('')}
+          ${(r.tags || []).map(t => `<span class="tag manuale${t === 'PN' ? ' tag-pn' : ''}">${escapeHtml(t)}</span>`).join('')}
         </div>
       </div>
     `;
-  }
-
-  function renderRisultati(){
-    const container = document.getElementById('risultati-indice');
-    const trovate = getRicette().filter(matchesFiltri);
-    if(trovate.length === 0){
-      container.innerHTML = '<p class="no-results">Nessuna ricetta trovata.</p>';
-      return;
-    }
-    if(filtri.speciali.has('recenti')){
-      const ordinate = [...trovate].sort((a, b) => {
-        const da = a.dataAggiunta || '', db = b.dataAggiunta || '';
-        if(da !== db) return db.localeCompare(da);
-        return (b.numero || 0) - (a.numero || 0);
-      });
-      container.innerHTML = ordinate.map(renderVoceIndice).join('');
-      return;
-    }
-    let html = '';
-    CATEGORIE_ORDINE.forEach(cat => {
-      const delCap = trovate.filter(r => (r.categorie || []).includes(cat));
-      if(delCap.length === 0) return;
-      html += `<h2 class="capitolo-titolo">${escapeHtml(cat)}</h2><div class="capitolo-divider"></div>`;
-      html += delCap.map(renderVoceIndice).join('');
-    });
-    container.innerHTML = html;
   }
 
   function renderRicetta(id){
@@ -24201,7 +24447,7 @@
       ${r.fredda ? '<span class="tag fredda">❄️ Fredda</span>' : ''}
       ${(r.dieta || []).map(d => `<span class="tag dieta">${escapeHtml(d)}</span>`).join('')}
       ${r.gruppo ? `<span class="tag gruppo" data-action="filtra-gruppo" data-gruppo="${escapeHtml(r.gruppo)}">🔗 ${escapeHtml(r.gruppo)}</span>` : ''}
-      ${(r.tags || []).map(t => `<span class="tag manuale">${escapeHtml(t)} <span class="tag-remove" data-id="${r.id}" data-tag="${escapeHtml(t)}">✕</span></span>`).join('')}
+      ${(r.tags || []).map(t => `<span class="tag manuale${t === 'PN' ? ' tag-pn' : ''}">${escapeHtml(t)} <span class="tag-remove" data-id="${r.id}" data-tag="${escapeHtml(t)}">✕</span></span>`).join('')}
       <button class="btn-add-tag" data-id="${r.id}">+ tag</button>
     `;
 
@@ -24209,7 +24455,7 @@
 
     app.innerHTML = `
       <div class="pagina-ricetta">
-        <button class="back-link" data-action="go-indice">← Indice</button>
+        <button class="back-link" data-action="torna-indietro">← Indice</button>
         <div class="ricetta-titolo-riga">
           <h1 class="editable ricetta-titolo" data-id="${r.id}" data-campo="titolo">${escapeHtml(r.titolo)}</h1>
           <button class="btn-preferito btn-preferito-grande ${r.preferito ? 'attivo' : ''}" data-id="${r.id}" title="${r.preferito ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'}">${r.preferito ? '★' : '☆'}</button>
@@ -24223,8 +24469,8 @@
           <span class="tag tempo editable" data-id="${r.id}" data-campo="tempo">⏱ ${escapeHtml(r.tempo)}</span>
           ${tagsExtra}
         </div>
-        ${porzioniHtml}
         ${macroHtml}
+        ${porzioniHtml}
         <div class="sezione">
           <h3 class="section-title">Ingredienti</h3>
           <ul class="ingredienti">${ingredientiHtml}</ul>
@@ -24260,35 +24506,51 @@
       return;
     }
     if((el = e.target.closest('[data-action="filtra-gruppo"]'))){
+      resetFiltriBase();
       filtri.gruppo = el.dataset.gruppo;
-      filtri.search = ''; filtri.portata = new Set(); filtri.durata = new Set(); filtri.difficolta = new Set(); filtri.dieta = new Set(); filtri.prep = new Set();
-      location.hash = '#/indice';
-      renderIndice();
+      navigate('#/indice/tutte/' + encodeURIComponent(DEFAULT_SORT));
       return;
     }
     if((el = e.target.closest('[data-action="clear-gruppo"]'))){
       filtri.gruppo = null;
-      renderIndice();
+      refreshView();
       return;
     }
     if((el = e.target.closest('[data-action="go-ricetta"]'))){
-      location.hash = '#/ricetta/' + encodeURIComponent(el.dataset.id);
+      navigate('#/ricetta/' + encodeURIComponent(el.dataset.id));
       return;
     }
     if((el = e.target.closest('[data-action="nav-ricetta"]'))){
-      location.hash = '#/ricetta/' + encodeURIComponent(el.dataset.id);
+      navigate('#/ricetta/' + encodeURIComponent(el.dataset.id));
+      return;
+    }
+    if((el = e.target.closest('[data-action="torna-indietro"]'))){
+      goBack('#/indice');
       return;
     }
     if((el = e.target.closest('[data-action="go-indice"]'))){
-      location.hash = '#/indice';
+      navigate('#/indice');
+      return;
+    }
+    if((el = e.target.closest('[data-action="go-tutte"]'))){
+      resetFiltriBase();
+      navigate('#/indice/tutte/' + encodeURIComponent(DEFAULT_SORT));
+      return;
+    }
+    if((el = e.target.closest('[data-action="go-portata"]'))){
+      const cat = el.dataset.categoria;
+      // le frecce di navigazione tra portate mantengono i filtri attivi; le card dell'indice li azzerano
+      const fromLanding = !!e.target.closest('.griglia-portate');
+      if(fromLanding) resetFiltriBase();
+      navigate('#/indice/portata/' + encodeURIComponent(cat) + '/' + encodeURIComponent(DEFAULT_SORT));
       return;
     }
     if((el = e.target.closest('[data-action="go-recenti"]'))){
-      location.hash = '#/recenti';
+      navigate('#/indice/tutte/' + encodeURIComponent('recenti-desc'));
       return;
     }
     if((el = e.target.closest('[data-action="go-cover"]'))){
-      location.hash = '#/';
+      navigate('#/');
       return;
     }
     if((el = e.target.closest('[data-action="stampa-pdf"]'))){
@@ -24300,7 +24562,7 @@
       const set = filtri[tipo];
       if(set.has(valore)) set.delete(valore); else set.add(valore);
       el.classList.toggle('active');
-      renderRisultati();
+      refreshView();
       return;
     }
     if((el = e.target.closest('.stepper-btn'))){
