@@ -131,13 +131,22 @@
 
   /* ---------- indice ---------- */
   .back-link{
-    background:none;
-    border:none;
-    color:var(--ink-soft);
-    font-size:0.9rem;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    width:fit-content;
+    margin:10px auto 18px;
+    background:var(--paper);
+    border:1px solid var(--border);
+    color:var(--ink);
+    font-weight:700;
+    font-size:1.15rem;
+    padding:13px 28px;
+    border-radius:999px;
     cursor:pointer;
-    padding:16px 0 4px;
+    box-shadow:var(--shadow);
   }
+  .back-link:hover{ border-color:var(--accent); color:var(--accent); }
   .titolo-pagina{ margin:4px 0 14px; font-size:1.6rem; }
   .tab-indici{ display:flex; gap:8px; margin-bottom:14px; }
   .tab-indici button{
@@ -481,12 +490,6 @@
   .freccia-portata:hover{ border-color:var(--accent); background:var(--accent-soft); }
 
   .tag.tag-pn{ background:#fde7d8; color:#a15a1f; }
-
-  /* ---------- back-link: centrato e più in alto ---------- */
-  .back-link{
-    display:block; width:100%; text-align:center;
-    padding:6px 0 10px; margin-top:-4px;
-  }
 
   /* ---------- ordinamento a tasti ---------- */
   .sort-bar{ display:flex; gap:8px; margin-bottom:12px; }
@@ -8611,7 +8614,8 @@
     ],
     "svolgimento": "1. Sbuccia e sbollenta i piselli per venti minuti, poi mettili subito in acqua e ghiaccio.\n2. Frullali con la ricotta, olio, sale, pepe e basilico.\n3. Salta le bietoline a fuoco vivo con aglio, olio, sale e peperoncino.\n4. Impiatta la crema alla base del piatto, sopra adagia le bietoline, foglioline di basilico e le foglie di cappero.",
     "note": "",
-    "macroStimato": true
+    "macroStimato": true,
+    "preferito": true
   },
   {
     "id": "panino-caprese-con-burrata-e-confit-di-pomodorini",
