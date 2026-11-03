@@ -330,6 +330,12 @@
     text-transform:uppercase; letter-spacing:0.03em; background:#fff3cd; color:#8a6d1d;
     border:1px solid #e8d38a; border-radius:999px; padding:1px 8px; vertical-align:middle;
   }
+  .macro-badge-verificata{
+    display:inline-block; margin-left:6px; font-size:0.68rem; font-weight:600;
+    text-transform:uppercase; letter-spacing:0.03em; background:#dcecd9; color:#2c6a3f;
+    border:1px solid #a9d1a0; border-radius:999px; padding:1px 8px; vertical-align:middle;
+  }
+  .macro-box-100g{ background:var(--bg); margin-top:-6px; }
   .macro-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:4px 14px; }
 
   .sezione{ margin-top:20px; }
@@ -344,6 +350,13 @@
     font-size:0.92rem;
   }
   .ingrediente-vuoto{ color:var(--ink-soft); font-style:italic; }
+  .ingrediente-riga{ display:inline-flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .ingrediente-badge-stimato{
+    display:inline-block; font-size:0.62rem; font-weight:600;
+    text-transform:uppercase; letter-spacing:0.02em; background:#fff3cd; color:#8a6d1d;
+    border:1px solid #e8d38a; border-radius:999px; padding:0 6px; vertical-align:middle;
+    flex-shrink:0;
+  }
   .ingrediente-remove{
     border:none; background:none; color:var(--ink-soft); opacity:0.4;
     cursor:pointer; font-size:0.8rem; flex-shrink:0;
@@ -411,6 +424,7 @@
     #print-area ul, #print-area ol{ margin:0 0 8px; padding-left:18px; font-size:0.85rem; }
     #print-area li{ margin-bottom:3px; }
     #print-area .stampa-note{ font-size:0.8rem; font-style:italic; margin-top:6px; }
+    #print-area .stampa-nota-stima{ font-size:0.74rem; font-style:italic; color:#777; margin-top:2px; }
   }
 
   /* ---------- indice: pagina di atterraggio ---------- */
@@ -22600,12 +22614,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 262,
+      "proteine": 7.1,
+      "carboidrati": 38.2,
+      "grassi": 9.4
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 268,
       "proteine": 7.6,
       "carboidrati": 40,
-      "grassi": 9.5
+      "grassi": 9.5,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 60,
@@ -22651,12 +22674,21 @@
     "gruppo": "Secondo alla curcuma con spinaci/bietole e carote",
     "tags": [],
     "macronutrienti": {
+      "kcal": 380,
+      "proteine": 20.3,
+      "carboidrati": 62.7,
+      "grassi": 6.3
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 142,
       "proteine": 8.8,
       "carboidrati": 28,
-      "grassi": 0.7
+      "grassi": 0.7,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 70,
@@ -22674,14 +22706,21 @@
         "nome": "spinaci"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "cipolla"
+        "quantita": 50,
+        "unita": "g",
+        "nome": "cipolla",
+        "stimato": true
+      },
+      {
+        "quantita": 5,
+        "unita": "g",
+        "nome": "olio evo",
+        "stimato": true
       },
       {
         "quantita": null,
         "unita": "q.b.",
-        "nome": "olio evo, curcuma, pepe, salvia"
+        "nome": "curcuma, pepe, salvia"
       }
     ],
     "svolgimento": "1. In una casseruola fai stufare dolcemente la cipolla tritata con un fondo di olio evo e foglie di salvia, poi aggiungi le carote tagliate a cubetti e fai insaporire per due minuti.\n2. Aggiungi quindi le lenticchie secche, copri con acqua e fai cuocere con coperchio per il tempo necessario.\n3. Verso fine cottura aggiungi anche gli spinaci tagliati grossolanamente con le mani.\n4. Alla fine condisci con sale, pepe, un po' di curcuma e olio evo, mescolando bene.",
@@ -22707,12 +22746,21 @@
     "gruppo": "Secondo alla curcuma con spinaci/bietole e carote",
     "tags": [],
     "macronutrienti": {
+      "kcal": 320,
+      "proteine": 47.3,
+      "carboidrati": 16.2,
+      "grassi": 8.8
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 295,
       "proteine": 47,
       "carboidrati": 14,
-      "grassi": 6
+      "grassi": 6,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 225,
@@ -22730,9 +22778,15 @@
         "nome": "bietole"
       },
       {
+        "quantita": 5,
+        "unita": "g",
+        "nome": "olio evo",
+        "stimato": true
+      },
+      {
         "quantita": null,
         "unita": "q.b.",
-        "nome": "olio evo, curcuma, pepe, salvia"
+        "nome": "curcuma, pepe, salvia"
       }
     ],
     "svolgimento": "1. Cuoci il pesce in padella con un filo d'olio evo, qualche foglia di salvia e poca acqua se necessario; alla fine condisci con mezzo cucchiaino di curcuma, sale, pepe e olio evo a crudo.\n2. Accompagna con carote e bietole, cotti in padella.",
@@ -22758,12 +22812,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 514,
+      "proteine": 16.7,
+      "carboidrati": 63.1,
+      "grassi": 22.1
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 386,
       "proteine": 16,
       "carboidrati": 63,
-      "grassi": 8.6
+      "grassi": 8.6,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 75,
@@ -22781,9 +22844,15 @@
         "nome": "abbondante di pinoli"
       },
       {
+        "quantita": 10,
+        "unita": "g",
+        "nome": "olio evo",
+        "stimato": true
+      },
+      {
         "quantita": null,
         "unita": "q.b.",
-        "nome": "olio evo, menta, basilico"
+        "nome": "menta, basilico"
       }
     ],
     "svolgimento": "1. Taglia le zucchine a rondelle e cuocile in padella con un filo d'olio evo e sale, per 5-6 minuti.\n2. Frulla una metà delle zucchine al mixer con i pinoli, le erbe aromatiche e un giro d'olio evo, ottenendo una crema omogenea.\n3. Cuoci la pasta e condiscila con la crema e con le restanti zucchine cotte.",
@@ -22809,12 +22878,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 333,
+      "proteine": 10.4,
+      "carboidrati": 57.2,
+      "grassi": 8.9
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 297,
       "proteine": 8.4,
       "carboidrati": 47,
-      "grassi": 8.2
+      "grassi": 8.2,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 45,
@@ -22860,12 +22938,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 577,
+      "proteine": 24.6,
+      "carboidrati": 58.9,
+      "grassi": 29.8
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 513,
       "proteine": 24,
       "carboidrati": 58,
-      "grassi": 23
+      "grassi": 23,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 70,
@@ -22888,9 +22975,15 @@
         "nome": "semi oleosi"
       },
       {
+        "quantita": 5,
+        "unita": "g",
+        "nome": "olio evo",
+        "stimato": true
+      },
+      {
         "quantita": null,
         "unita": "q.b.",
-        "nome": "olio evo, limone, basilico"
+        "nome": "limone, basilico"
       }
     ],
     "svolgimento": "1. Cuoci il grano saraceno e condiscilo con la rucola fresca sminuzzata a mano, e la feta sbriciolata.\n2. Puoi aggiungere anche qualche pomodorino fresco tagliato a metà.\n3. Completa con i semi oleosi e condisci il tutto con sale, olio evo, una spruzzata di succo di limone e un ciuffo di basilico fresco sminuzzato a mano.",
@@ -22916,12 +23009,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 371,
+      "proteine": 17.8,
+      "carboidrati": 32.3,
+      "grassi": 20.1
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 356,
       "proteine": 15,
       "carboidrati": 31,
-      "grassi": 20
+      "grassi": 20,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 1,
@@ -22982,12 +23084,21 @@
     "gruppo": "Teglia al forno con patate e pomodori",
     "tags": [],
     "macronutrienti": {
+      "kcal": 436,
+      "proteine": 50.3,
+      "carboidrati": 42.0,
+      "grassi": 9.0
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 407,
       "proteine": 50,
       "carboidrati": 37,
-      "grassi": 6.3
+      "grassi": 6.3,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 225,
@@ -23005,9 +23116,15 @@
         "nome": "pomodori"
       },
       {
+        "quantita": 5,
+        "unita": "g",
+        "nome": "olio evo",
+        "stimato": true
+      },
+      {
         "quantita": null,
         "unita": "q.b.",
-        "nome": "olio evo, origano, salvia, pepe"
+        "nome": "origano, salvia, pepe"
       },
       {
         "quantita": 1,
@@ -23038,12 +23155,21 @@
     "gruppo": "Teglia al forno con patate e pomodori",
     "tags": [],
     "macronutrienti": {
+      "kcal": 371,
+      "proteine": 18.2,
+      "carboidrati": 42.9,
+      "grassi": 15.1
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 256,
       "proteine": 12,
       "carboidrati": 37,
-      "grassi": 6.7
+      "grassi": 6.7,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 2,
@@ -23061,9 +23187,15 @@
         "nome": "pomodori"
       },
       {
+        "quantita": 5,
+        "unita": "g",
+        "nome": "olio evo",
+        "stimato": true
+      },
+      {
         "quantita": null,
         "unita": "q.b.",
-        "nome": "olio evo, origano, salvia, pepe"
+        "nome": "origano, salvia, pepe"
       }
     ],
     "svolgimento": "1. Taglia le patate a fette molto sottili e i pomodori a spicchi.\n2. Disponi gli ortaggi su una teglia da forno rivestita da carta forno, condisci con sale, pepe, un filo d'olio evo e qualche foglia di salvia e cuoci a 180°C per 10-15 minuti.\n3. Accompagna con le uova cotte in camicia o al tegamino con tuorlo morbido.",
@@ -23089,12 +23221,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 319,
+      "proteine": 17.9,
+      "carboidrati": 43.6,
+      "grassi": 9.6
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 261,
       "proteine": 9.6,
       "carboidrati": 54,
-      "grassi": 1.4
+      "grassi": 1.4,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 60,
@@ -23107,9 +23248,15 @@
         "nome": "acqua"
       },
       {
+        "quantita": 5,
+        "unita": "g",
+        "nome": "olio evo",
+        "stimato": true
+      },
+      {
         "quantita": null,
         "unita": "q.b.",
-        "nome": "olio evo, pepe, curcuma, prezzemolo"
+        "nome": "pepe, curcuma, prezzemolo"
       },
       {
         "quantita": 225,
@@ -23145,12 +23292,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 468,
+      "proteine": 13.9,
+      "carboidrati": 31.9,
+      "grassi": 34.5
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 238,
       "proteine": 3.8,
       "carboidrati": 9,
-      "grassi": 22
+      "grassi": 22,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 1,
@@ -23216,12 +23372,21 @@
     "gruppo": "5 ricette con la zucca (giulycaggiari)",
     "tags": [],
     "macronutrienti": {
+      "kcal": 419,
+      "proteine": 17.1,
+      "carboidrati": 75.0,
+      "grassi": 6.1
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 350,
       "proteine": 13,
       "carboidrati": 70,
-      "grassi": 3.2
+      "grassi": 3.2,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 100,
@@ -23249,9 +23414,10 @@
         "nome": "acqua o brodo"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "olio evo"
+        "quantita": 5,
+        "unita": "g",
+        "nome": "olio evo",
+        "stimato": true
       },
       {
         "quantita": null,
@@ -23292,12 +23458,21 @@
     "gruppo": "5 ricette con la zucca (giulycaggiari)",
     "tags": [],
     "macronutrienti": {
+      "kcal": 496,
+      "proteine": 14.2,
+      "carboidrati": 77.4,
+      "grassi": 15.4
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 677,
       "proteine": 15,
       "carboidrati": 83,
-      "grassi": 35
+      "grassi": 35,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 120,
@@ -23320,9 +23495,10 @@
         "nome": "latte di cocco"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "cavolo nero"
+        "quantita": 60,
+        "unita": "g",
+        "nome": "cavolo nero",
+        "stimato": true
       },
       {
         "quantita": null,
@@ -23330,9 +23506,10 @@
         "nome": "curcuma"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "olio evo"
+        "quantita": 5,
+        "unita": "g",
+        "nome": "olio evo",
+        "stimato": true
       },
       {
         "quantita": null,
@@ -23363,12 +23540,21 @@
     "gruppo": "5 ricette con la zucca (giulycaggiari)",
     "tags": [],
     "macronutrienti": {
+      "kcal": 164,
+      "proteine": 4.2,
+      "carboidrati": 19.3,
+      "grassi": 7.8
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 161,
       "proteine": 3.8,
       "carboidrati": 19,
-      "grassi": 7.6
+      "grassi": 7.6,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 150,
@@ -23439,12 +23625,21 @@
     "gruppo": "5 ricette con la zucca (giulycaggiari)",
     "tags": [],
     "macronutrienti": {
+      "kcal": 309,
+      "proteine": 11.6,
+      "carboidrati": 53.9,
+      "grassi": 4.9
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 276,
       "proteine": 9.5,
       "carboidrati": 52,
-      "grassi": 3.2
+      "grassi": 3.2,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 120,
@@ -23504,13 +23699,29 @@
     "persone": 2,
     "gruppo": null,
     "tags": [],
+    "porzioneTipica": "1 crêpe su 2 totali",
     "macronutrienti": {
+      "kcal": 188,
+      "proteine": 8.2,
+      "carboidrati": 29.0,
+      "grassi": 4.2
+    },
+    "macronutrienti100g": {
+      "kcal": 130,
+      "proteine": 5.6,
+      "carboidrati": 20.0,
+      "grassi": 2.9
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 154,
       "proteine": 7.5,
       "carboidrati": 26,
-      "grassi": 3
+      "grassi": 3,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 100,
@@ -23557,12 +23768,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 425,
+      "proteine": 18.8,
+      "carboidrati": 29.3,
+      "grassi": 26.4
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 405,
       "proteine": 19,
       "carboidrati": 27,
-      "grassi": 26
+      "grassi": 26,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 1,
@@ -23595,9 +23815,10 @@
         "nome": "pangrattato"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "olio extravergine d'oliva"
+        "quantita": 5,
+        "unita": "g",
+        "nome": "olio extravergine d'oliva",
+        "stimato": true
       },
       {
         "quantita": 1,
@@ -23605,9 +23826,10 @@
         "nome": "tuorlo"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "semi di sesamo"
+        "quantita": 8,
+        "unita": "g",
+        "nome": "semi di sesamo",
+        "stimato": true
       },
       {
         "quantita": null,
@@ -23638,12 +23860,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 243,
+      "proteine": 13.7,
+      "carboidrati": 14.8,
+      "grassi": 14.7
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 225,
       "proteine": 14,
       "carboidrati": 12,
-      "grassi": 14
+      "grassi": 14,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 0.5,
@@ -23691,6 +23922,8 @@
   },
   {
     "id": "vellutata-di-zucca",
+    "numero": 154,
+    "dataAggiunta": "2026-10-14",
     "titolo": "Vellutata di zucca",
     "titoloOriginale": null,
     "autore": "dietista.paolastavolone",
@@ -23707,12 +23940,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 442,
+      "proteine": 17.1,
+      "carboidrati": 50.9,
+      "grassi": 21.2
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 475,
       "proteine": 17,
       "carboidrati": 60,
-      "grassi": 20
+      "grassi": 20,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 250,
@@ -23741,12 +23983,12 @@
       }
     ],
     "svolgimento": "1. Taglia zucca e patate a cubetti e cuocile in acqua per 20 minuti.\n2. Frulla con la ricotta.\n3. Completa con semi di zucca e olio.",
-    "note": "",
-    "numero": 154,
-    "dataAggiunta": "2026-10-14"
+    "note": ""
   },
   {
     "id": "vellutata-di-broccoli",
+    "numero": 176,
+    "dataAggiunta": "2026-10-14",
     "titolo": "Vellutata di broccoli",
     "titoloOriginale": null,
     "autore": "dietista.paolastavolone",
@@ -23764,11 +24006,20 @@
     "tags": [],
     "macronutrienti": {
       "kcal": 410,
-      "proteine": 20,
-      "carboidrati": 68,
-      "grassi": 6
+      "proteine": 20.5,
+      "carboidrati": 68.5,
+      "grassi": 8.5
     },
     "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
+      "kcal": 410,
+      "proteine": 20,
+      "carboidrati": 68,
+      "grassi": 6,
+      "macroStimato": true
+    },
     "ingredienti": [
       {
         "quantita": 250,
@@ -23797,12 +24048,12 @@
       }
     ],
     "svolgimento": "1. Cuoci broccoli e piselli in acqua per circa 15-20 minuti.\n2. Frulla con il prezzemolo.\n3. Completa con pane e olio.",
-    "note": "",
-    "numero": 176,
-    "dataAggiunta": "2026-10-14"
+    "note": ""
   },
   {
     "id": "vellutata-di-funghi",
+    "numero": 279,
+    "dataAggiunta": "2026-10-14",
     "titolo": "Vellutata di funghi",
     "titoloOriginale": null,
     "autore": "dietista.paolastavolone",
@@ -23819,12 +24070,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 529,
+      "proteine": 27.4,
+      "carboidrati": 85.9,
+      "grassi": 10.1
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 480,
       "proteine": 25,
       "carboidrati": 77,
-      "grassi": 9
+      "grassi": 9,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 200,
@@ -23858,12 +24118,12 @@
       }
     ],
     "svolgimento": "1. Cuoci i funghi in una padella antiaderente con poca acqua.\n2. Aggiungi i ceci e acqua calda e lascia insaporire.\n3. Frulla e unisci lo yogurt a fuoco spento.\n4. Completa con prezzemolo, scorza di limone e crostini.",
-    "note": "",
-    "numero": 279,
-    "dataAggiunta": "2026-10-14"
+    "note": ""
   },
   {
     "id": "vellutata-di-cavolfiore",
+    "numero": 335,
+    "dataAggiunta": "2026-10-14",
     "titolo": "Vellutata di cavolfiore",
     "titoloOriginale": null,
     "autore": "dietista.paolastavolone",
@@ -23880,12 +24140,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 470,
+      "proteine": 23.8,
+      "carboidrati": 75.8,
+      "grassi": 9.2
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 450,
       "proteine": 22,
       "carboidrati": 75,
-      "grassi": 8
+      "grassi": 8,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 250,
@@ -23914,12 +24183,12 @@
       }
     ],
     "svolgimento": "1. Taglia cavolfiore e patate e cuocili in acqua per 20 minuti.\n2. Aggiungi i cannellini e frulla regolando il liquido.\n3. Completa con coriandolo e mandorle a lamelle.",
-    "note": "",
-    "numero": 335,
-    "dataAggiunta": "2026-10-14"
+    "note": ""
   },
   {
     "id": "vellutata-di-porri",
+    "numero": 339,
+    "dataAggiunta": "2026-10-14",
     "titolo": "Vellutata di porri",
     "titoloOriginale": null,
     "autore": "dietista.paolastavolone",
@@ -23937,11 +24206,20 @@
     "tags": [],
     "macronutrienti": {
       "kcal": 590,
-      "proteine": 32,
-      "carboidrati": 68,
-      "grassi": 21
+      "proteine": 30.8,
+      "carboidrati": 68.0,
+      "grassi": 21.4
     },
     "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
+      "kcal": 590,
+      "proteine": 32,
+      "carboidrati": 68,
+      "grassi": 21,
+      "macroStimato": true
+    },
     "ingredienti": [
       {
         "quantita": 200,
@@ -23970,12 +24248,12 @@
       }
     ],
     "svolgimento": "1. Taglia porri e patate.\n2. Cuocili in acqua per circa 20 minuti, poi frulla.\n3. Cuoci il salmone a cubetti in padella e servilo sulla vellutata con prezzemolo e olio.",
-    "note": "",
-    "numero": 339,
-    "dataAggiunta": "2026-10-14"
+    "note": ""
   },
   {
     "id": "vellutata-di-finocchi",
+    "numero": 340,
+    "dataAggiunta": "2026-10-14",
     "titolo": "Vellutata di finocchi",
     "titoloOriginale": null,
     "autore": "dietista.paolastavolone",
@@ -23992,12 +24270,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 492,
+      "proteine": 20.2,
+      "carboidrati": 48.8,
+      "grassi": 24.5
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 445,
       "proteine": 19,
       "carboidrati": 38,
-      "grassi": 24
+      "grassi": 24,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 300,
@@ -24026,12 +24313,12 @@
       }
     ],
     "svolgimento": "1. Taglia i finocchi e cuocili in acqua per 20 minuti.\n2. Frulla con metà della feta.\n3. Completa con la feta restante sbriciolata, pepe e olio.\n4. Accompagna con pane integrale tostato.",
-    "note": "",
-    "numero": 340,
-    "dataAggiunta": "2026-10-14"
+    "note": ""
   },
   {
     "id": "vellutata-di-barbabietola",
+    "numero": 341,
+    "dataAggiunta": "2026-10-14",
     "titolo": "Vellutata di barbabietola",
     "titoloOriginale": null,
     "autore": "dietista.paolastavolone",
@@ -24050,12 +24337,21 @@
       "PN"
     ],
     "macronutrienti": {
+      "kcal": 441,
+      "proteine": 22.4,
+      "carboidrati": 50.7,
+      "grassi": 17.1
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 450,
       "proteine": 23,
       "carboidrati": 51,
-      "grassi": 18
+      "grassi": 18,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 250,
@@ -24084,12 +24380,12 @@
       }
     ],
     "svolgimento": "1. Scalda la barbabietola a cubetti con poca acqua e frulla fino a ottenere una crema.\n2. Cuoci le uova, sgusciale e tagliale a metà.\n3. Servile sulla vellutata e completa con aneto, olio e pane integrale tostato.",
-    "note": "",
-    "numero": 341,
-    "dataAggiunta": "2026-10-14"
+    "note": ""
   },
   {
     "id": "risotto-scamorza-e-noci",
+    "numero": 342,
+    "dataAggiunta": "2026-10-14",
     "titolo": "Risotto scamorza e noci",
     "titoloOriginale": null,
     "autore": "cucinaedelizia",
@@ -24106,12 +24402,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 502,
+      "proteine": 18.8,
+      "carboidrati": 64.6,
+      "grassi": 19.1
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 522,
       "proteine": 20,
       "carboidrati": 66,
-      "grassi": 20
+      "grassi": 20,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 160,
@@ -24119,9 +24424,10 @@
         "nome": "riso"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "brodo"
+        "quantita": 450,
+        "unita": "ml",
+        "nome": "brodo",
+        "stimato": true
       },
       {
         "quantita": 80,
@@ -24129,23 +24435,25 @@
         "nome": "scamorza"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "parmigiano"
+        "quantita": 10,
+        "unita": "g",
+        "nome": "parmigiano",
+        "stimato": true
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "noci"
+        "quantita": 20,
+        "unita": "g",
+        "nome": "noci",
+        "stimato": true
       }
     ],
     "svolgimento": "1. Tosta il riso e cuoci con il brodo.\n2. Manteca con la scamorza e il parmigiano.\n3. Completa con le noci.",
-    "note": "",
-    "numero": 342,
-    "dataAggiunta": "2026-10-14"
+    "note": ""
   },
   {
     "id": "pasta-funghi-e-salsiccia",
+    "numero": 343,
+    "dataAggiunta": "2026-10-14",
     "titolo": "Pasta funghi e salsiccia",
     "titoloOriginale": null,
     "autore": "cucinaedelizia",
@@ -24162,12 +24470,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 675,
+      "proteine": 27.4,
+      "carboidrati": 62.9,
+      "grassi": 34.8
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 680,
       "proteine": 28,
       "carboidrati": 65,
-      "grassi": 33
+      "grassi": 33,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 160,
@@ -24191,12 +24508,12 @@
       }
     ],
     "svolgimento": "1. Rosola la salsiccia con i funghi.\n2. Aggiungi il formaggio cremoso.\n3. Salta la pasta con poca acqua di cottura.",
-    "note": "",
-    "numero": 343,
-    "dataAggiunta": "2026-10-14"
+    "note": ""
   },
   {
     "id": "pollo-patate-e-zucca",
+    "numero": 344,
+    "dataAggiunta": "2026-10-14",
     "titolo": "Pollo patate e zucca",
     "titoloOriginale": null,
     "autore": "cucinaedelizia",
@@ -24213,12 +24530,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 406,
+      "proteine": 50.6,
+      "carboidrati": 36.4,
+      "grassi": 5.8
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 377,
       "proteine": 37,
       "carboidrati": 36,
-      "grassi": 9
+      "grassi": 9,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 300,
@@ -24226,9 +24552,10 @@
         "nome": "petto di pollo"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "farina"
+        "quantita": 10,
+        "unita": "g",
+        "nome": "farina",
+        "stimato": true
       },
       {
         "quantita": 250,
@@ -24241,18 +24568,19 @@
         "nome": "zucca"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "brodo"
+        "quantita": 150,
+        "unita": "ml",
+        "nome": "brodo",
+        "stimato": true
       }
     ],
     "svolgimento": "1. Infarina leggermente il pollo e rosolalo.\n2. Aggiungi le patate, la zucca e poco brodo.\n3. Cuoci finché si forma una bella cremina.",
-    "note": "",
-    "numero": 344,
-    "dataAggiunta": "2026-10-14"
+    "note": ""
   },
   {
     "id": "gnocchi-zucca-e-speck",
+    "numero": 345,
+    "dataAggiunta": "2026-10-14",
     "titolo": "Gnocchi zucca e speck",
     "titoloOriginale": null,
     "autore": "cucinaedelizia",
@@ -24269,12 +24597,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 497,
+      "proteine": 22.5,
+      "carboidrati": 71.5,
+      "grassi": 12.7
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 487,
       "proteine": 23,
       "carboidrati": 70,
-      "grassi": 13
+      "grassi": 13,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 250,
@@ -24287,9 +24624,10 @@
         "nome": "gnocchi"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "parmigiano"
+        "quantita": 10,
+        "unita": "g",
+        "nome": "parmigiano",
+        "stimato": true
       },
       {
         "quantita": 100,
@@ -24298,12 +24636,12 @@
       }
     ],
     "svolgimento": "1. Frulla la zucca cotta.\n2. Aggiungi gli gnocchi e il parmigiano.\n3. Completa con lo speck croccante.",
-    "note": "",
-    "numero": 345,
-    "dataAggiunta": "2026-10-14"
+    "note": ""
   },
   {
     "id": "pasta-broccoli-e-stracchino",
+    "numero": 346,
+    "dataAggiunta": "2026-10-14",
     "titolo": "Pasta broccoli e stracchino",
     "titoloOriginale": null,
     "autore": "cucinaedelizia",
@@ -24322,12 +24660,21 @@
       "PN"
     ],
     "macronutrienti": {
+      "kcal": 456,
+      "proteine": 22.0,
+      "carboidrati": 66.3,
+      "grassi": 12.2
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 467,
       "proteine": 23,
       "carboidrati": 69,
-      "grassi": 11
+      "grassi": 11,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 250,
@@ -24346,12 +24693,12 @@
       }
     ],
     "svolgimento": "1. Cuoci i broccoli, schiacciandone una parte.\n2. Aggiungi lo stracchino.\n3. Manteca con la pasta.",
-    "note": "",
-    "numero": 346,
-    "dataAggiunta": "2026-10-14"
+    "note": ""
   },
   {
     "id": "gnocchi-spinaci-e-formaggio",
+    "numero": 347,
+    "dataAggiunta": "2026-10-14",
     "titolo": "Gnocchi spinaci e formaggio",
     "titoloOriginale": null,
     "autore": "cucinaedelizia",
@@ -24368,12 +24715,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 499,
+      "proteine": 15.0,
+      "carboidrati": 68.1,
+      "grassi": 18.0
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 505,
       "proteine": 15,
       "carboidrati": 68,
-      "grassi": 18
+      "grassi": 18,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 200,
@@ -24391,18 +24747,19 @@
         "nome": "gnocchi"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "parmigiano"
+        "quantita": 15,
+        "unita": "g",
+        "nome": "parmigiano",
+        "stimato": true
       }
     ],
     "svolgimento": "1. Fai appassire gli spinaci.\n2. Aggiungi il formaggio cremoso e unisci gli gnocchi.\n3. Manteca con il parmigiano.",
-    "note": "",
-    "numero": 347,
-    "dataAggiunta": "2026-10-14"
+    "note": ""
   },
   {
     "id": "riso-radicchio-e-scamorza",
+    "numero": 348,
+    "dataAggiunta": "2026-10-14",
     "titolo": "Riso radicchio e scamorza",
     "titoloOriginale": null,
     "autore": "cucinaedelizia",
@@ -24419,12 +24776,21 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 464,
+      "proteine": 19.4,
+      "carboidrati": 66.2,
+      "grassi": 13.9
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 474,
       "proteine": 19,
       "carboidrati": 68,
-      "grassi": 14
+      "grassi": 14,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 200,
@@ -24437,9 +24803,10 @@
         "nome": "riso"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "brodo"
+        "quantita": 450,
+        "unita": "ml",
+        "nome": "brodo",
+        "stimato": true
       },
       {
         "quantita": 100,
@@ -24448,12 +24815,12 @@
       }
     ],
     "svolgimento": "1. Fai appassire il radicchio.\n2. Aggiungi il riso e cuoci con il brodo.\n3. Manteca con la scamorza.",
-    "note": "",
-    "numero": 348,
-    "dataAggiunta": "2026-10-14"
+    "note": ""
   },
   {
     "id": "zuppa-di-funghi",
+    "numero": 349,
+    "dataAggiunta": "2026-10-21",
     "titolo": "Zuppa di funghi",
     "titoloOriginale": null,
     "autore": "carmen.rose",
@@ -24470,27 +24837,39 @@
     "gruppo": null,
     "tags": [],
     "macronutrienti": {
+      "kcal": 210,
+      "proteine": 8.1,
+      "carboidrati": 22.0,
+      "grassi": 10.1
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 220,
       "proteine": 8,
       "carboidrati": 16,
-      "grassi": 11
+      "grassi": 11,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "porcini freschi"
+        "quantita": 100,
+        "unita": "g",
+        "nome": "porcini freschi",
+        "stimato": true
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "champignon"
+        "quantita": 100,
+        "unita": "g",
+        "nome": "champignon",
+        "stimato": true
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "finferli (per la zuppa)"
+        "quantita": 50,
+        "unita": "g",
+        "nome": "finferli (per la zuppa)",
+        "stimato": true
       },
       {
         "quantita": 20,
@@ -24528,8 +24907,8 @@
         "nome": "acqua di ammollo dei porcini, ben filtrata"
       },
       {
-        "quantita": null,
-        "unita": "250-300 ml",
+        "quantita": 275,
+        "unita": "ml",
         "nome": "brodo vegetale"
       },
       {
@@ -24553,9 +24932,10 @@
         "nome": "sale e pepe"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "finferli (per completare, da rosolare)"
+        "quantita": 40,
+        "unita": "g",
+        "nome": "finferli (per completare, da rosolare)",
+        "stimato": true
       },
       {
         "quantita": null,
@@ -24568,9 +24948,10 @@
         "nome": "paprika"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "olio extravergine d'oliva (per finire)"
+        "quantita": 5,
+        "unita": "g",
+        "nome": "olio extravergine d'oliva (per finire)",
+        "stimato": true
       },
       {
         "quantita": 1,
@@ -24578,15 +24959,14 @@
         "nome": "panna da cucina (per completare)"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "pane tostato, per scarpetta"
+        "quantita": 40,
+        "unita": "g",
+        "nome": "pane tostato, per scarpetta",
+        "stimato": true
       }
     ],
     "svolgimento": "1. Metti in ammollo i porcini secchi e tieni da parte l'acqua di ammollo, che userai per la zuppa.\n2. Pulisci i porcini freschi e gli champignon e tagliali a fette. Sfilaccia i finferli e tienine alcuni da parte per il tocco croccante finale.\n3. In una pentola scalda l'olio extravergine d'oliva, aggiungi la cipolla tritata finemente e lo spicchio d'aglio e lascia soffriggere. Unisci tutti i funghi e falli rosolare per qualche minuto.\n4. Sfuma con il vino bianco e, quando sarà evaporato, aggiungi la farina e mescola bene.\n5. Versa il brodo vegetale e l'acqua di ammollo dei porcini ben filtrata, aggiungi il rametto di timo, copri con il coperchio e lascia cuocere per circa 15-20 minuti.\n6. A fine cottura aggiungi il miso e un cucchiaio di panna, mescolando bene. Per una consistenza più cremosa frulla una piccola parte della zuppa, oppure lasciala rustica con i funghi interi.\n7. Nel frattempo rosola in padella i finferli tenuti da parte fino a renderli dorati e croccanti.\n8. Impiatta la zuppa e completa con i finferli croccanti, un altro cucchiaio di panna, aneto fresco, una spolverata di paprika e un filo d'olio extravergine d'oliva.\n9. Servi ben calda, accompagnata da pane tostato per fare scarpetta.",
-    "note": "Dose per 2-3 porzioni secondo il post originale (qui calcolata su 3 porzioni).",
-    "numero": 349,
-    "dataAggiunta": "2026-10-21"
+    "note": "Dose per 2-3 porzioni secondo il post originale (qui calcolata su 3 porzioni)."
   },
   {
     "id": "zucca-lenticchie-rosse-e-yogurt-greco",
@@ -24608,12 +24988,21 @@
     "gruppo": "7 zuppe veloci ed economiche (doc_giuliano)",
     "tags": [],
     "macronutrienti": {
+      "kcal": 388,
+      "proteine": 23.2,
+      "carboidrati": 55.0,
+      "grassi": 9.4
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 373,
       "proteine": 23,
       "carboidrati": 55,
-      "grassi": 8
+      "grassi": 8,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 250,
@@ -24670,11 +25059,20 @@
     "tags": [],
     "macronutrienti": {
       "kcal": 444,
-      "proteine": 22,
-      "carboidrati": 68,
-      "grassi": 12
+      "proteine": 21.5,
+      "carboidrati": 67.4,
+      "grassi": 11.6
     },
     "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
+      "kcal": 444,
+      "proteine": 22,
+      "carboidrati": 68,
+      "grassi": 12,
+      "macroStimato": true
+    },
     "ingredienti": [
       {
         "quantita": 120,
@@ -24731,11 +25129,20 @@
     "tags": [],
     "macronutrienti": {
       "kcal": 434,
-      "proteine": 22,
-      "carboidrati": 68,
-      "grassi": 9
+      "proteine": 22.2,
+      "carboidrati": 68.1,
+      "grassi": 9.4
     },
     "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
+      "kcal": 434,
+      "proteine": 22,
+      "carboidrati": 68,
+      "grassi": 9,
+      "macroStimato": true
+    },
     "ingredienti": [
       {
         "quantita": 200,
@@ -24791,12 +25198,21 @@
     "gruppo": "7 zuppe veloci ed economiche (doc_giuliano)",
     "tags": [],
     "macronutrienti": {
+      "kcal": 414,
+      "proteine": 25.0,
+      "carboidrati": 46.3,
+      "grassi": 15.4
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 418,
       "proteine": 25,
       "carboidrati": 47,
-      "grassi": 15
+      "grassi": 15,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 150,
@@ -24814,9 +25230,10 @@
         "nome": "fiocchi di latte"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "cipolla"
+        "quantita": 40,
+        "unita": "g",
+        "nome": "cipolla",
+        "stimato": true
       },
       {
         "quantita": 5,
@@ -24852,12 +25269,21 @@
     "gruppo": "7 zuppe veloci ed economiche (doc_giuliano)",
     "tags": [],
     "macronutrienti": {
+      "kcal": 287,
+      "proteine": 15.3,
+      "carboidrati": 33.5,
+      "grassi": 12.8
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 293,
       "proteine": 16,
       "carboidrati": 34,
-      "grassi": 13
+      "grassi": 13,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 300,
@@ -24880,9 +25306,10 @@
         "nome": "olio evo"
       },
       {
-        "quantita": null,
-        "unita": "q.b.",
-        "nome": "salsa di soia (poca)"
+        "quantita": 10,
+        "unita": "ml",
+        "nome": "salsa di soia (poca)",
+        "stimato": true
       },
       {
         "quantita": null,
@@ -24913,12 +25340,21 @@
     "gruppo": "7 zuppe veloci ed economiche (doc_giuliano)",
     "tags": [],
     "macronutrienti": {
+      "kcal": 412,
+      "proteine": 39.7,
+      "carboidrati": 41.8,
+      "grassi": 10.2
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
       "kcal": 415,
       "proteine": 40,
       "carboidrati": 41,
-      "grassi": 10
+      "grassi": 10,
+      "macroStimato": true
     },
-    "macroStimato": true,
     "ingredienti": [
       {
         "quantita": 200,
@@ -24980,11 +25416,20 @@
     "tags": [],
     "macronutrienti": {
       "kcal": 455,
-      "proteine": 20,
-      "carboidrati": 62,
-      "grassi": 15
+      "proteine": 20.2,
+      "carboidrati": 62.0,
+      "grassi": 14.8
     },
     "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-03",
+    "macronutrientiPrecedenti": {
+      "kcal": 455,
+      "proteine": 20,
+      "carboidrati": 62,
+      "grassi": 15,
+      "macroStimato": true
+    },
     "ingredienti": [
       {
         "quantita": 180,
@@ -25135,20 +25580,27 @@
     ];
     if(r.persone) metaParti.push(`${r.persone} porzioni`);
     if(r.fredda) metaParti.push('❄️ Fredda');
-    const ingredientiHtml = (r.ingredienti || []).map(ing =>
-      `<li>${escapeHtml(formatIngredienteScalato(ing, 1).trim())}</li>`
-    ).join('');
+    let haStimati = false;
+    const ingredientiHtml = (r.ingredienti || []).map(ing => {
+      if(ing.stimato) haStimati = true;
+      return `<li>${escapeHtml(formatIngredienteScalato(ing, 1).trim())}${ing.stimato ? ' *' : ''}</li>`;
+    }).join('');
     const passiHtml = (r.svolgimento || '').split('\n').filter(l => l.trim() !== '').map(l =>
       `<li>${escapeHtml(l.replace(/^\d+\.\s*/, ''))}</li>`
     ).join('');
+    const porzioneLabel = r.porzioneTipica ? ` (${escapeHtml(r.porzioneTipica)})` : '';
+    const macro100gStr = r.macronutrienti100g
+      ? ` — per 100 g: ${escapeHtml(r.macronutrienti100g.kcal)} kcal, P ${escapeHtml(r.macronutrienti100g.proteine)} g, C ${escapeHtml(r.macronutrienti100g.carboidrati)} g, G ${escapeHtml(r.macronutrienti100g.grassi)} g`
+      : '';
     return `
       <article class="stampa-ricetta">
         <h2>#${r.numero ?? ''} ${escapeHtml(r.titolo)}</h2>
         ${r.titoloOriginale ? `<div class="stampa-originale">${escapeHtml(r.titoloOriginale)}</div>` : ''}
         <div class="stampa-meta">${metaParti.filter(Boolean).join(' · ')}</div>
-        ${m ? `<div class="stampa-macro">Valori nutrizionali per porzione${r.macroStimato ? ' (stimati)' : ''}: ${escapeHtml(m.kcal)} kcal · Proteine ${escapeHtml(m.proteine)} g · Carboidrati ${escapeHtml(m.carboidrati)} g · Grassi ${escapeHtml(m.grassi)} g</div>` : ''}
+        ${m ? `<div class="stampa-macro">Valori nutrizionali per porzione${porzioneLabel}${r.macroStimato ? ' (stimati)' : ''}${r.nutrizioneVerificata ? ' ✓ nutrizione verificata' : ''}: ${escapeHtml(m.kcal)} kcal · Proteine ${escapeHtml(m.proteine)} g · Carboidrati ${escapeHtml(m.carboidrati)} g · Grassi ${escapeHtml(m.grassi)} g${macro100gStr}</div>` : ''}
         <h4>Ingredienti</h4>
         <ul>${ingredientiHtml}</ul>
+        ${haStimati ? `<div class="stampa-nota-stima">* quantità stimata, non indicata nel post originale</div>` : ''}
         <h4>Preparazione</h4>
         <ol>${passiHtml}</ol>
         ${r.note ? `<div class="stampa-note">Note: ${escapeHtml(r.note)}</div>` : ''}
@@ -25689,9 +26141,13 @@
     let macroHtml = '';
     if(r.macronutrienti){
       const m = r.macronutrienti;
+      const porzioneLabel = r.porzioneTipica ? ` (${escapeHtml(r.porzioneTipica)})` : '';
+      const titoloPorzione = r.macronutrienti100g ? `Valori nutrizionali per porzione${porzioneLabel}` : 'Valori nutrizionali (per porzione)';
+      const badgeStimato = r.macroStimato ? ' <span class="macro-badge-stimato" title="Valori stimati automaticamente in base agli ingredienti">stimato</span>' : '';
+      const badgeVerificata = r.nutrizioneVerificata ? ` <span class="macro-badge-verificata" title="Ricalcolato ingrediente per ingrediente${r.nutrizioneVerificataIl ? ' il ' + escapeHtml(formattaData(r.nutrizioneVerificataIl)) : ''}">nutrizione verificata</span>` : '';
       macroHtml = `
         <div class="macro-box">
-          <div class="macro-title">Valori nutrizionali (per porzione)${r.macroStimato ? ' <span class="macro-badge-stimato" title="Valori stimati automaticamente in base agli ingredienti">stimato</span>' : ''}</div>
+          <div class="macro-title">${titoloPorzione}${badgeStimato}${badgeVerificata}</div>
           <div class="macro-grid">
             <div>Kcal: ${escapeHtml(m.kcal)}</div>
             <div>Proteine: ${escapeHtml(m.proteine)} g</div>
@@ -25699,6 +26155,19 @@
             <div>Grassi: ${escapeHtml(m.grassi)} g</div>
           </div>
         </div>`;
+      if(r.macronutrienti100g){
+        const m2 = r.macronutrienti100g;
+        macroHtml += `
+        <div class="macro-box macro-box-100g">
+          <div class="macro-title">Valori nutrizionali per 100 g di prodotto</div>
+          <div class="macro-grid">
+            <div>Kcal: ${escapeHtml(m2.kcal)}</div>
+            <div>Proteine: ${escapeHtml(m2.proteine)} g</div>
+            <div>Carboidrati: ${escapeHtml(m2.carboidrati)} g</div>
+            <div>Grassi: ${escapeHtml(m2.grassi)} g</div>
+          </div>
+        </div>`;
+      }
     }
 
     let porzioniHtml = '';
@@ -25718,9 +26187,13 @@
       const testo = formatIngredienteScalato(ing, fattore).trim();
       const vuoto = testo === '';
       const displayText = vuoto ? '(clicca per compilare)' : testo;
+      const badgeStimato = ing.stimato ? '<span class="ingrediente-badge-stimato" title="Quantità stimata, non indicata esplicitamente nel post originale">stima</span>' : '';
       return `
       <li>
-        <span class="editable ${vuoto ? 'ingrediente-vuoto' : ''}" data-id="${r.id}" data-campo="ingrediente" data-idx="${idx}">${escapeHtml(displayText)}</span>
+        <span class="ingrediente-riga">
+          <span class="editable ${vuoto ? 'ingrediente-vuoto' : ''}" data-id="${r.id}" data-campo="ingrediente" data-idx="${idx}">${escapeHtml(displayText)}</span>
+          ${badgeStimato}
+        </span>
         <button class="ingrediente-remove" data-id="${r.id}" data-idx="${idx}" title="Rimuovi ingrediente">✕</button>
       </li>
     `;
