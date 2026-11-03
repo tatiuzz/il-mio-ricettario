@@ -6,26 +6,27 @@
 <title>Il mio Ricettario</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #faf6f0;
-    --paper: #fffdfa;
-    --ink: #2b241e;
-    --ink-soft: #6f6255;
-    --accent: #b5502a;
-    --accent-soft: #f4e3d6;
-    --border: #e9ddcd;
-    --macro-bg: #eef6f0;
-    --macro-border: #cfe8d6;
-    --fredda-bg: #e3f0f8;
-    --fredda-ink: #276186;
-    --dieta-bg: #f1ece0;
-    --dieta-ink: #7a6a3f;
-    --star: #c99a1e;
-    --shadow: 0 3px 14px rgba(43,36,24,0.08);
-    --font-display: "Playfair Display", Georgia, "Iowan Old Style", serif;
-    --font-body: "Work Sans", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --bg: #FAF6F3;
+    --paper: #FFFFFF;
+    --ink: #4A3730;
+    --ink-soft: #8A6F66;
+    --accent: #6B5A52;
+    --accent-soft: #F3DBD9;
+    --border: #C4AFA5;
+    --macro-bg: #E3EEDD;
+    --macro-border: #CBE0C0;
+    --macro-ink: #4B6B42;
+    --fredda-bg: #E4EEF3;
+    --fredda-ink: #3E6E85;
+    --dieta-bg: #F5ECD9;
+    --dieta-ink: #8A6A3F;
+    --star: #C9A227;
+    --shadow: 0 4px 14px rgba(196,163,155,0.16);
+    --font-display: "Libre Baskerville", Georgia, "Times New Roman", serif;
+    --font-body: "DM Sans", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   html{ font-size:14px; scroll-behavior:smooth; }
   *{ box-sizing:border-box; }
@@ -38,41 +39,9 @@
     line-height:1.55;
     padding-bottom:60px;
   }
-  h1,h2,h3{ font-family: var(--font-display); font-weight:700; }
+  h1,h2,h3{ font-family: var(--font-display); font-weight:700; color:var(--accent); }
   a{ color:var(--accent); }
   button{ font-family: var(--font-body); }
-
-  /* ---------- banner modifiche non esportate ---------- */
-  #banner-dirty{
-    display:none;
-    align-items:center;
-    justify-content:center;
-    gap:14px;
-    flex-wrap:wrap;
-    background:#3d3128;
-    color:#f6ede1;
-    padding:10px 16px;
-    font-size:0.85rem;
-    text-align:center;
-  }
-  #banner-dirty .btn-export{
-    background:var(--accent);
-    color:#fff;
-    border:none;
-    padding:6px 14px;
-    border-radius:999px;
-    cursor:pointer;
-    font-weight:600;
-  }
-  #banner-dirty .btn-dismiss-banner{
-    background:transparent;
-    border:1px solid #8a7d6d;
-    color:#f6ede1;
-    padding:5px 10px;
-    border-radius:999px;
-    cursor:pointer;
-    font-size:0.78rem;
-  }
 
   #app{ max-width: 900px; margin: 0 auto; padding: 0 16px; }
 
@@ -249,34 +218,15 @@
     gap:5px;
   }
   .tag.categoria{ background:var(--accent-soft); color:var(--accent); }
-  .tag.difficolta-Facile{ background:#e4f3e0; color:#3f7a30; }
-  .tag.difficolta-Media{ background:#fbeecb; color:#8a6414; }
-  .tag.difficolta-Difficile{ background:#f6dede; color:#a13939; }
-  .tag.tag-difficolta-editabile{ cursor:pointer; }
-  .tag.tag-difficolta-editabile:hover{ filter:brightness(0.95); }
-  .tag.tempo{ background:#e6eef6; color:#31577a; }
+  .tag.difficolta-Facile{ background:#e3eedd; color:#4b6b42; }
+  .tag.difficolta-Media{ background:#f5ecd9; color:#8a6a3f; }
+  .tag.difficolta-Difficile{ background:#f3dbd9; color:#8a4a42; }
+  .tag.tempo{ background:var(--fredda-bg); color:var(--fredda-ink); }
   .tag.fredda{ background:var(--fredda-bg); color:var(--fredda-ink); }
   .tag.dieta{ background:var(--dieta-bg); color:var(--dieta-ink); }
-  .tag.gruppo{ background:#efe6f6; color:#6c3fa1; cursor:pointer; }
+  .tag.gruppo{ background:var(--accent-soft); color:var(--accent); cursor:pointer; }
   .tag.gruppo:hover{ filter:brightness(0.96); }
-  .tag.manuale{ background:#f0f0ec; color:#55503f; }
-  .tag-remove{ cursor:pointer; font-weight:700; opacity:0.6; }
-  .tag-remove:hover{ opacity:1; }
-  .btn-add-tag{
-    border:1px dashed var(--border);
-    background:none;
-    color:var(--ink-soft);
-    padding:4px 10px;
-    border-radius:999px;
-    font-size:0.76rem;
-    cursor:pointer;
-  }
-  .tag-input{
-    font-size:0.76rem;
-    padding:4px 10px;
-    border-radius:999px;
-    border:1px solid var(--accent);
-  }
+  .tag.manuale{ background:#F0E6DC; color:var(--ink-soft); }
 
   .btn-preferito{
     background:none;
@@ -324,16 +274,16 @@
     background:var(--macro-bg); border:1px solid var(--macro-border);
     border-radius:14px; padding:12px 14px; font-size:0.86rem; margin-bottom:16px;
   }
-  .macro-box .macro-title{ font-weight:700; margin-bottom:6px; color:#2c5a3a; }
+  .macro-box .macro-title{ font-weight:700; margin-bottom:6px; color:var(--macro-ink); }
   .macro-badge-stimato{
     display:inline-block; margin-left:6px; font-size:0.68rem; font-weight:600;
-    text-transform:uppercase; letter-spacing:0.03em; background:#fff3cd; color:#8a6d1d;
+    text-transform:uppercase; letter-spacing:0.03em; background:var(--dieta-bg); color:var(--dieta-ink);
     border:1px solid #e8d38a; border-radius:999px; padding:1px 8px; vertical-align:middle;
   }
   .macro-badge-verificata{
     display:inline-block; margin-left:6px; font-size:0.68rem; font-weight:600;
-    text-transform:uppercase; letter-spacing:0.03em; background:#dcecd9; color:#2c6a3f;
-    border:1px solid #a9d1a0; border-radius:999px; padding:1px 8px; vertical-align:middle;
+    text-transform:uppercase; letter-spacing:0.03em; background:var(--macro-bg); color:var(--macro-ink);
+    border:1px solid var(--macro-border); border-radius:999px; padding:1px 8px; vertical-align:middle;
   }
   .macro-box-100g{ background:var(--bg); margin-top:-6px; }
   .macro-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap:4px 14px; }
@@ -346,41 +296,27 @@
   ul.ingredienti{ list-style:none; margin:0; padding:0; }
   ul.ingredienti li{
     display:flex; align-items:center; justify-content:space-between; gap:10px;
-    padding:7px 0; border-bottom:1px dashed var(--border);
+    padding:8px 0; border-bottom:1px dashed var(--border);
     font-size:0.92rem;
   }
   .ingrediente-vuoto{ color:var(--ink-soft); font-style:italic; }
-  .ingrediente-riga{ display:inline-flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .ingrediente-riga{ display:inline-flex; align-items:baseline; gap:7px; flex-wrap:wrap; }
+  .ingrediente-qty{
+    font-weight:700; color:var(--accent); font-family:var(--font-display);
+    white-space:nowrap;
+  }
+  .ingrediente-nome{ color:var(--ink); }
   .ingrediente-badge-stimato{
     display:inline-block; font-size:0.62rem; font-weight:600;
-    text-transform:uppercase; letter-spacing:0.02em; background:#fff3cd; color:#8a6d1d;
+    text-transform:uppercase; letter-spacing:0.02em; background:var(--dieta-bg); color:var(--dieta-ink);
     border:1px solid #e8d38a; border-radius:999px; padding:0 6px; vertical-align:middle;
     flex-shrink:0;
-  }
-  .ingrediente-remove{
-    border:none; background:none; color:var(--ink-soft); opacity:0.4;
-    cursor:pointer; font-size:0.8rem; flex-shrink:0;
-  }
-  .ingrediente-remove:hover{ opacity:1; color:#a13939; }
-  .btn-add-ingrediente{
-    margin-top:10px; border:1px dashed var(--border); background:none;
-    color:var(--ink-soft); padding:7px 14px; border-radius:10px; cursor:pointer; font-size:0.82rem;
   }
   ol.passi{ margin:0; padding-left:20px; font-size:0.92rem; }
   ol.passi li{ margin-bottom:8px; }
   .nota-box{ white-space:pre-line; font-size:0.88rem; }
   .nota-box.nota-vuota{ color:var(--ink-soft); font-style:italic; }
   .meta-riga{ color:var(--ink-soft); font-size:0.78rem; margin:2px 0 12px; }
-
-  /* affordance elementi modificabili */
-  .editable{ cursor:text; border-bottom:1px dashed transparent; border-radius:3px; }
-  .editable:hover{ border-bottom-color: var(--accent); background: rgba(181,80,42,0.05); }
-  .edit-field{
-    font-family: inherit; font-size:inherit; width:100%;
-    border:1px solid var(--accent); border-radius:8px; padding:6px 8px;
-    background:#fff; color:var(--ink);
-  }
-  .edit-field-multiline{ resize:vertical; }
 
   .nav-pagine{
     display:flex; justify-content:space-between; gap:10px;
@@ -400,7 +336,7 @@
   #print-area{ display:none; }
   @media print{
     body{ background:#fff; padding-bottom:0; }
-    #banner-dirty, #app{ display:none !important; }
+    #app{ display:none !important; }
     #print-area{ display:block !important; max-width:none; margin:0; padding:0; color:#1a1512; }
     #print-area .stampa-copertina{ text-align:center; margin-bottom:26px; page-break-after:always; }
     #print-area .stampa-copertina h1{ font-family: var(--font-display); font-size:2rem; margin:0 0 6px; }
@@ -433,23 +369,21 @@
     font-size:2.1rem;
     margin:6px 0 20px;
   }
-  .gruppi-bar-wrap{ margin-bottom:18px; }
-  .gruppi-bar-label{
+  /* ---------- segnalibri: gruppi di ricette collegate ---------- */
+  .segnalibri-wrap{ margin-top:30px; }
+  .segnalibri-label{
     font-size:0.72rem; letter-spacing:0.09em; color:var(--ink-soft);
-    font-weight:700; margin-bottom:8px;
+    font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:6px;
   }
-  .gruppi-bar{
-    display:flex; gap:8px; overflow-x:auto; padding-bottom:8px;
-    -webkit-overflow-scrolling:touch; scrollbar-width:thin;
+  .segnalibri-griglia{ display:flex; flex-direction:column; gap:8px; }
+  .segnalibro-btn{
+    display:flex; align-items:center; gap:9px; width:100%; text-align:left;
+    background:var(--paper); border:1px solid var(--border); border-left:4px solid var(--accent);
+    border-radius:4px 12px 12px 4px; padding:10px 14px; font-size:0.85rem;
+    color:var(--ink); cursor:pointer; font-family:var(--font-body);
   }
-  .gruppi-bar::-webkit-scrollbar{ height:5px; }
-  .gruppi-bar::-webkit-scrollbar-thumb{ background:var(--border); border-radius:999px; }
-  .chip-gruppo-bar{
-    flex-shrink:0; white-space:nowrap;
-    background:#efe6f6; color:#6c3fa1; border:1px solid #e0d2ef;
-    padding:7px 15px; border-radius:999px; font-size:0.8rem; cursor:pointer;
-  }
-  .chip-gruppo-bar:hover{ filter:brightness(0.96); }
+  .segnalibro-btn:hover{ background:var(--accent-soft); }
+  .segnalibro-icona{ flex-shrink:0; opacity:0.85; }
 
   .btn-tutte{
     display:block; width:100%; background:var(--accent); color:#fff; border:none;
@@ -536,12 +470,6 @@
 </style>
 </head>
 <body>
-
-<div id="banner-dirty">
-  <span>Hai modifiche salvate solo in questo browser, non ancora nel file pubblicato.</span>
-  <button class="btn-export">Esporta ricettario aggiornato</button>
-  <button class="btn-dismiss-banner">Nascondi</button>
-</div>
 
 <div id="app"></div>
 <div id="print-area"></div>
@@ -22602,7 +22530,7 @@
     "titoloOriginale": null,
     "autore": "Medicina in cucina",
     "categorie": [
-      "Dolce"
+      "Snack"
     ],
     "dieta": [
       "Vegano"
@@ -25486,7 +25414,7 @@
   const RICETTE_BASE = JSON.parse(document.getElementById('ricette-data').textContent);
   const app = document.getElementById('app');
 
-  let overrides = {};
+  let preferiti = new Set();
   let porzioniCorrenti = {};
   const filtri = { search: "", portata: new Set(), durata: new Set(), difficolta: new Set(), dieta: new Set(), prep: new Set(), speciali: new Set(), gruppo: null };
 
@@ -25507,50 +25435,24 @@
     }
   }
 
-  function caricaOverrides(){
-    try{ overrides = JSON.parse(localStorage.getItem('ricettario_overrides') || '{}'); }
-    catch(e){ overrides = {}; }
+  // Il ricettario è di sola consultazione: i "preferiti" sono un segnalibro
+  // personale salvato solo in questo browser, non una modifica ai dati della ricetta.
+  function caricaPreferiti(){
+    try{
+      const salvati = JSON.parse(localStorage.getItem('ricettario_preferiti'));
+      if(Array.isArray(salvati)){ preferiti = new Set(salvati); return; }
+    } catch(e){ /* ignora */ }
+    preferiti = new Set(RICETTE_BASE.filter(r => r.preferito).map(r => r.id));
+  }
+  function salvaPreferiti(){
+    localStorage.setItem('ricettario_preferiti', JSON.stringify([...preferiti]));
   }
 
   function getRicette(){
-    return RICETTE_BASE.map(r => Object.assign({}, r, overrides[r.id] || {}));
+    return RICETTE_BASE.map(r => Object.assign({}, r, { preferito: preferiti.has(r.id) }));
   }
   function getRicettaById(id){
     return getRicette().find(r => r.id === id);
-  }
-
-  function salvaCampo(id, campo, valore){
-    if(!overrides[id]) overrides[id] = {};
-    overrides[id][campo] = valore;
-    persistOverrides();
-  }
-  function persistOverrides(){
-    localStorage.setItem('ricettario_overrides', JSON.stringify(overrides));
-    localStorage.setItem('ricettario_dirty', '1');
-    sessionStorage.removeItem('banner_dismissed');
-    aggiornaBanner();
-  }
-  function aggiornaBanner(){
-    const dirty = localStorage.getItem('ricettario_dirty') === '1' && sessionStorage.getItem('banner_dismissed') !== '1';
-    document.getElementById('banner-dirty').style.display = dirty ? 'flex' : 'none';
-  }
-  function dismissBanner(){
-    sessionStorage.setItem('banner_dismissed', '1');
-    aggiornaBanner();
-  }
-  function esportaRicettario(){
-    const clone = document.documentElement.cloneNode(true);
-    const merged = getRicette();
-    clone.querySelector('#ricette-data').textContent = JSON.stringify(merged, null, 2);
-    const htmlStr = '<!DOCTYPE html>\n' + clone.outerHTML;
-    const blob = new Blob([htmlStr], { type: 'text/html' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url; a.download = 'Ricettario.html';
-    document.body.appendChild(a); a.click(); a.remove();
-    URL.revokeObjectURL(url);
-    localStorage.setItem('ricettario_dirty', '0');
-    aggiornaBanner();
   }
 
   function escapeHtml(str){
@@ -25697,68 +25599,55 @@
     return SORT_NEUTRO;
   }
 
+  // unità per cui la parola dell'unità non va mostrata (si conta "a pezzi": es. "1 avocado", non "1 pezzi avocado")
+  const UNITA_SENZA_ETICHETTA = new Set(['pezzi', 'pezzo']);
+  // unità di peso/volume continue: per queste le quantità decimali restano in formato numerico (es. "1,2 kg")
+  const UNITA_METRICHE = new Set(['g', 'ml', 'kg', 'l']);
+  // frazioni comuni in cucina, usate per leggere in modo naturale le quantità non intere
+  // per unità "a pezzi" o di misura casalinga (cucchiai, tazze, spicchi...)
+  const FRAZIONI_COMUNI = [
+    [1,2],[1,3],[2,3],[1,4],[3,4],[1,5],[2,5],[3,5],[4,5],
+    [1,6],[5,6],[1,8],[3,8],[5,8],[7,8]
+  ];
+  function formatQuantitaFrazionaria(num){
+    const tol = 0.03;
+    const intero = Math.floor(num);
+    const resto = num - intero;
+    if(resto < tol) return String(intero);
+    for(const [n, d] of FRAZIONI_COMUNI){
+      if(Math.abs(resto - n / d) < tol){
+        const frazStr = `${n}/${d}`;
+        return intero > 0 ? `${intero} ${frazStr}` : frazStr;
+      }
+    }
+    const arrotondato = Math.round(num * 100) / 100;
+    return String(arrotondato).replace('.', ',');
+  }
+  // Scompone un ingrediente (già scalato per il fattore porzioni) in quantità+unità e nome,
+  // per poterli mostrare con stili distinti. Ritorna { qty, nome }; qty è '' se non quantificato.
+  function formatIngredienteParti(ing, fattore){
+    const unita = ing.unita || '';
+    if(ing.quantita === null || ing.quantita === undefined || ing.quantita === ''){
+      const qty = UNITA_SENZA_ETICHETTA.has(unita) ? '' : unita;
+      return { qty, nome: ing.nome || '' };
+    }
+    const scaled = ing.quantita * fattore;
+    let qStr;
+    if(UNITA_METRICHE.has(unita)){
+      const rounded = Math.round(scaled * 10) / 10;
+      qStr = (rounded % 1 === 0) ? String(Math.round(rounded)) : String(rounded).replace('.', ',');
+    } else {
+      qStr = formatQuantitaFrazionaria(scaled);
+    }
+    const unitLabel = UNITA_SENZA_ETICHETTA.has(unita) ? '' : unita;
+    const qty = [qStr, unitLabel].filter(Boolean).join(' ');
+    return { qty, nome: ing.nome || '' };
+  }
   function formatIngredienteScalato(ing, fattore){
-    if(ing.quantita === null || ing.quantita === undefined || ing.quantita === ''){
-      const unitLabel = ing.unita ? ing.unita + ' ' : '';
-      return `${unitLabel}${ing.nome}`.trim();
-    }
-    const scaled = Math.round(ing.quantita * fattore * 10) / 10;
-    const scaledStr = (scaled % 1 === 0) ? String(Math.round(scaled)) : String(scaled).replace('.', ',');
-    return `${scaledStr} ${ing.unita} ${ing.nome}`.trim();
-  }
-  function formatIngredienteRaw(ing){
-    if(ing.quantita === null || ing.quantita === undefined || ing.quantita === ''){
-      return `${ing.unita || ''} ${ing.nome || ''}`.trim();
-    }
-    const qStr = (ing.quantita % 1 === 0) ? String(ing.quantita) : String(ing.quantita).replace('.', ',');
-    return `${qStr} ${ing.unita} ${ing.nome}`.trim();
-  }
-  function parseIngredienteRaw(str){
-    str = (str || '').trim();
-    if(str === '') return { quantita: null, unita: '', nome: '' };
-    let m = str.match(/^(q\.?b\.?)\s+(.*)$/i);
-    if(m) return { quantita: null, unita: 'q.b.', nome: m[2] };
-    m = str.match(/^([\d.,]+)\s+(\S+)\s+(.*)$/);
-    if(m){
-      const q = parseFloat(m[1].replace(',', '.'));
-      return { quantita: isNaN(q) ? null : q, unita: m[2], nome: m[3] };
-    }
-    return { quantita: null, unita: '', nome: str };
+    const { qty, nome } = formatIngredienteParti(ing, fattore);
+    return [qty, nome].filter(Boolean).join(' ').trim();
   }
 
-  function aggiungiIngrediente(id){
-    const r = getRicettaById(id);
-    salvaCampo(id, 'ingredienti', [...r.ingredienti, { quantita: null, unita: '', nome: '' }]);
-    render();
-  }
-  function rimuoviIngrediente(id, idx){
-    const r = getRicettaById(id);
-    salvaCampo(id, 'ingredienti', r.ingredienti.filter((_, i) => i !== idx));
-    render();
-  }
-  function modificaIngrediente(id, idx, testo){
-    const r = getRicettaById(id);
-    const parsed = parseIngredienteRaw(testo);
-    salvaCampo(id, 'ingredienti', r.ingredienti.map((ing, i) => i === idx ? parsed : ing));
-  }
-  function aggiungiTag(id, tag){
-    const r = getRicettaById(id);
-    const tags = [...(r.tags || [])];
-    if(!tags.includes(tag)) tags.push(tag);
-    salvaCampo(id, 'tags', tags);
-  }
-  function rimuoviTag(id, tag){
-    const r = getRicettaById(id);
-    salvaCampo(id, 'tags', (r.tags || []).filter(t => t !== tag));
-    render();
-  }
-  function cambiaDifficolta(id){
-    const r = getRicettaById(id);
-    const idx = DIFFICOLTA_OPZIONI.indexOf(r.difficolta);
-    const next = DIFFICOLTA_OPZIONI[(idx + 1) % DIFFICOLTA_OPZIONI.length];
-    salvaCampo(id, 'difficolta', next);
-    render();
-  }
   function cambiaPorzioni(id, delta){
     const r = getRicettaById(id);
     const attuale = porzioniCorrenti[id] ?? r.persone;
@@ -25766,46 +25655,8 @@
     render();
   }
   function toggleFavorito(id){
-    const r = getRicettaById(id);
-    salvaCampo(id, 'preferito', !r.preferito);
-  }
-
-  function avviaModifica(el, valoreAttuale, multiline, onCommit){
-    const input = document.createElement(multiline ? 'textarea' : 'input');
-    input.value = valoreAttuale;
-    input.className = 'edit-field' + (multiline ? ' edit-field-multiline' : '');
-    if(multiline) input.rows = Math.max(3, valoreAttuale.split('\n').length + 1);
-    el.replaceWith(input);
-    input.focus();
-    if(input.select) input.select();
-    let done = false;
-    const commit = () => { if(done) return; done = true; onCommit(input.value); render(); };
-    const cancel = () => { if(done) return; done = true; render(); };
-    input.addEventListener('keydown', e => {
-      if(e.key === 'Enter' && !(multiline && e.shiftKey)){ e.preventDefault(); commit(); }
-      else if(e.key === 'Escape'){ e.preventDefault(); cancel(); }
-    });
-    input.addEventListener('blur', commit);
-  }
-
-  function mostraInputTag(btn){
-    const id = btn.dataset.id;
-    const input = document.createElement('input');
-    input.type = 'text'; input.className = 'edit-field tag-input'; input.placeholder = 'nuovo tag';
-    btn.replaceWith(input);
-    input.focus();
-    let done = false;
-    const commit = () => {
-      if(done) return; done = true;
-      const v = input.value.trim();
-      if(v) aggiungiTag(id, v);
-      render();
-    };
-    input.addEventListener('keydown', e => {
-      if(e.key === 'Enter'){ e.preventDefault(); commit(); }
-      else if(e.key === 'Escape'){ e.preventDefault(); done = true; render(); }
-    });
-    input.addEventListener('blur', commit);
+    if(preferiti.has(id)) preferiti.delete(id); else preferiti.add(id);
+    salvaPreferiti();
   }
 
   // ---------------- ROUTING / RENDER ----------------
@@ -25896,14 +25747,14 @@
     return [...set].sort((a, b) => a.localeCompare(b, 'it'));
   }
 
-  function renderGruppiBar(){
+  function renderSegnalibriGruppi(){
     const gruppi = gruppiDisponibili();
     if(gruppi.length === 0) return '';
     return `
-      <div class="gruppi-bar-wrap">
-        <div class="gruppi-bar-label">Gruppi di ricette collegate</div>
-        <div class="gruppi-bar">
-          ${gruppi.map(g => `<button class="chip-gruppo-bar" data-action="filtra-gruppo" data-gruppo="${escapeHtml(g)}">🔗 ${escapeHtml(g)}</button>`).join('')}
+      <div class="segnalibri-wrap">
+        <div class="segnalibri-label">🔖 Gruppi di ricette collegate</div>
+        <div class="segnalibri-griglia">
+          ${gruppi.map(g => `<button class="segnalibro-btn" data-action="filtra-gruppo" data-gruppo="${escapeHtml(g)}"><span class="segnalibro-icona">🔖</span> ${escapeHtml(g)}</button>`).join('')}
         </div>
       </div>
     `;
@@ -25921,7 +25772,6 @@
     app.innerHTML = `
       <button class="back-link" data-action="go-cover">← Copertina</button>
       <h1 class="indice-titolo-grande">Indice</h1>
-      ${renderGruppiBar()}
       <button class="btn-tutte" data-action="go-tutte">📖 Tutte le ricette <span class="btn-tutte-conteggio">(${tutte.length})</span></button>
       <div class="griglia-portate">
         ${CATEGORIE_ORDINE.map(c => `
@@ -25932,6 +25782,7 @@
           </button>
         `).join('')}
       </div>
+      ${renderSegnalibriGruppi()}
     `;
   }
 
@@ -26183,18 +26034,17 @@
         </div>`;
     }
 
-    const ingredientiHtml = r.ingredienti.map((ing, idx) => {
-      const testo = formatIngredienteScalato(ing, fattore).trim();
-      const vuoto = testo === '';
-      const displayText = vuoto ? '(clicca per compilare)' : testo;
+    const ingredientiHtml = r.ingredienti.map((ing) => {
+      const { qty, nome } = formatIngredienteParti(ing, fattore);
+      const vuoto = !qty && !nome;
       const badgeStimato = ing.stimato ? '<span class="ingrediente-badge-stimato" title="Quantità stimata, non indicata esplicitamente nel post originale">stima</span>' : '';
       return `
       <li>
-        <span class="ingrediente-riga">
-          <span class="editable ${vuoto ? 'ingrediente-vuoto' : ''}" data-id="${r.id}" data-campo="ingrediente" data-idx="${idx}">${escapeHtml(displayText)}</span>
+        <span class="ingrediente-riga ${vuoto ? 'ingrediente-vuoto' : ''}">
+          ${qty ? `<span class="ingrediente-qty">${escapeHtml(qty)}</span>` : ''}
+          <span class="ingrediente-nome">${escapeHtml(nome)}</span>
           ${badgeStimato}
         </span>
-        <button class="ingrediente-remove" data-id="${r.id}" data-idx="${idx}" title="Rimuovi ingrediente">✕</button>
       </li>
     `;
     }).join('');
@@ -26207,8 +26057,7 @@
       ${r.fredda ? '<span class="tag fredda">❄️ Fredda</span>' : ''}
       ${(r.dieta || []).map(d => `<span class="tag dieta">${escapeHtml(d)}</span>`).join('')}
       ${r.gruppo ? `<span class="tag gruppo" data-action="filtra-gruppo" data-gruppo="${escapeHtml(r.gruppo)}">🔗 ${escapeHtml(r.gruppo)}</span>` : ''}
-      ${(r.tags || []).map(t => `<span class="tag manuale${t === 'PN' ? ' tag-pn' : ''}">${escapeHtml(t)} <span class="tag-remove" data-id="${r.id}" data-tag="${escapeHtml(t)}">✕</span></span>`).join('')}
-      <button class="btn-add-tag" data-id="${r.id}">+ tag</button>
+      ${(r.tags || []).map(t => `<span class="tag manuale${t === 'PN' ? ' tag-pn' : ''}">${escapeHtml(t)}</span>`).join('')}
     `;
 
     const categorieHtml = (r.categorie || []).map(c => `<span class="tag categoria">${escapeHtml(c)}</span>`).join('');
@@ -26217,7 +26066,7 @@
       <div class="pagina-ricetta">
         <button class="back-link" data-action="torna-indietro">← Indice</button>
         <div class="ricetta-titolo-riga">
-          <h1 class="editable ricetta-titolo" data-id="${r.id}" data-campo="titolo">${escapeHtml(r.titolo)}</h1>
+          <h1 class="ricetta-titolo">${escapeHtml(r.titolo)}</h1>
           <button class="btn-preferito btn-preferito-grande ${r.preferito ? 'attivo' : ''}" data-id="${r.id}" title="${r.preferito ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'}">${r.preferito ? '★' : '☆'}</button>
         </div>
         ${r.titoloOriginale ? `<div class="titolo-originale">${escapeHtml(r.titoloOriginale)}</div>` : ''}
@@ -26225,8 +26074,8 @@
         <div class="meta-riga">#${r.numero ?? ''} · aggiunta il ${formattaData(r.dataAggiunta) || '—'}</div>
         <div class="tags">
           ${categorieHtml}
-          <span class="tag tag-difficolta-editabile difficolta-${r.difficolta}" data-id="${r.id}" title="Clicca per cambiare difficoltà">${escapeHtml(r.difficolta)}</span>
-          <span class="tag tempo editable" data-id="${r.id}" data-campo="tempo">⏱ ${escapeHtml(r.tempo)}</span>
+          <span class="tag difficolta-${r.difficolta}">${escapeHtml(r.difficolta)}</span>
+          <span class="tag tempo">⏱ ${escapeHtml(r.tempo)}</span>
           ${tagsExtra}
         </div>
         ${macroHtml}
@@ -26234,15 +26083,14 @@
         <div class="sezione">
           <h3 class="section-title">Ingredienti</h3>
           <ul class="ingredienti">${ingredientiHtml}</ul>
-          <button class="btn-add-ingrediente" data-id="${r.id}">+ aggiungi ingrediente</button>
         </div>
         <div class="sezione">
           <h3 class="section-title">Preparazione</h3>
-          <ol class="passi editable" data-id="${r.id}" data-campo="svolgimento" data-multiline="1">${passiHtml}</ol>
+          <ol class="passi">${passiHtml}</ol>
         </div>
         <div class="sezione">
           <h3 class="section-title">Note</h3>
-          <div class="editable nota-box ${r.note ? '' : 'nota-vuota'}" data-id="${r.id}" data-campo="note" data-multiline="1">${r.note ? escapeHtml(r.note).replace(/\n/g, '<br>') : 'Clicca per aggiungere una nota…'}</div>
+          <div class="nota-box ${r.note ? '' : 'nota-vuota'}">${r.note ? escapeHtml(r.note).replace(/\n/g, '<br>') : 'Nessuna nota.'}</div>
         </div>
         ${renderCorrelate(r, tutte)}
         <div class="nav-pagine">
@@ -26369,53 +26217,12 @@
       cambiaPorzioni(el.dataset.id, parseInt(el.dataset.delta, 10));
       return;
     }
-    if((el = e.target.closest('.tag-difficolta-editabile'))){
-      cambiaDifficolta(el.dataset.id);
-      return;
-    }
-    if((el = e.target.closest('.tag-remove'))){
-      rimuoviTag(el.dataset.id, el.dataset.tag);
-      return;
-    }
-    if((el = e.target.closest('.btn-add-tag'))){
-      mostraInputTag(el);
-      return;
-    }
-    if((el = e.target.closest('.ingrediente-remove'))){
-      rimuoviIngrediente(el.dataset.id, parseInt(el.dataset.idx, 10));
-      return;
-    }
-    if((el = e.target.closest('.btn-add-ingrediente'))){
-      aggiungiIngrediente(el.dataset.id);
-      return;
-    }
-    if((el = e.target.closest('.btn-export'))){
-      esportaRicettario();
-      return;
-    }
-    if((el = e.target.closest('.btn-dismiss-banner'))){
-      dismissBanner();
-      return;
-    }
-    if((el = e.target.closest('.editable'))){
-      const id = el.dataset.id, campo = el.dataset.campo;
-      const multiline = el.dataset.multiline === '1';
-      const r = getRicettaById(id);
-      if(campo === 'ingrediente'){
-        const idx = parseInt(el.dataset.idx, 10);
-        avviaModifica(el, formatIngredienteRaw(r.ingredienti[idx]), false, v => modificaIngrediente(id, idx, v));
-      } else {
-        avviaModifica(el, r[campo] || '', multiline, v => salvaCampo(id, campo, v));
-      }
-      return;
-    }
   });
 
   window.addEventListener('hashchange', render);
   document.addEventListener('DOMContentLoaded', () => {
-    caricaOverrides();
+    caricaPreferiti();
     render();
-    aggiornaBanner();
   });
 })();
 </script>
