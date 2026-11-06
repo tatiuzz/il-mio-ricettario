@@ -79,24 +79,6 @@
     padding:8px 16px; border-radius:999px; cursor:pointer; font-size:0.82rem;
   }
   .btn-secondario:hover{ border-color:var(--accent); color:var(--accent); }
-  .copertina-esci{ margin-top:22px; display:flex; flex-direction:column; align-items:center; gap:6px; }
-  .btn-esci{
-    background:none;
-    border:1px solid var(--border);
-    color:var(--ink-soft);
-    padding:8px 20px;
-    border-radius:999px;
-    cursor:pointer;
-    font-size:0.82rem;
-  }
-  .btn-esci:hover{ border-color:var(--accent); color:var(--accent); }
-  #esci-hint{
-    display:none;
-    font-size:0.76rem;
-    color:var(--ink-soft);
-    max-width:280px;
-    margin:0;
-  }
 
   /* ---------- indice ---------- */
   .back-link{
@@ -116,6 +98,8 @@
     box-shadow:var(--shadow);
   }
   .back-link:hover{ border-color:var(--accent); color:var(--accent); }
+  .nav-ricetta-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin:10px 0 18px; }
+  .nav-ricetta-top .back-link{ margin:0; }
   .titolo-pagina{ margin:4px 0 14px; font-size:1.6rem; }
   .tab-indici{ display:flex; gap:8px; margin-bottom:14px; }
   .tab-indici button{
@@ -363,18 +347,54 @@
     #print-area .stampa-nota-stima{ font-size:0.74rem; font-style:italic; color:#777; margin-top:2px; }
   }
 
-  /* ---------- indice: pagina di atterraggio ---------- */
+  /* ---------- indice: pagina di atterraggio (fissa, senza scorrimento) ---------- */
+  body.vista-indice{
+    height:100vh;
+    height:100dvh;
+    overflow:hidden;
+    padding-bottom:0;
+  }
+  body.vista-indice #app{
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    padding-top:10px;
+    padding-bottom:10px;
+  }
+  .indice-fissa{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+    min-height:0;
+  }
+  .indice-riga-top{
+    display:flex; align-items:center; gap:10px; margin:0 0 8px; flex-shrink:0;
+  }
+  .indice-riga-top .back-link.back-link-mini{
+    margin:0; flex-shrink:0; padding:7px 14px; font-size:0.78rem;
+  }
   .indice-titolo-grande{
-    text-align:center;
-    font-size:2.1rem;
-    margin:6px 0 20px;
+    flex:1;
+    text-align:left;
+    font-size:1.35rem;
+    margin:0;
   }
-  /* ---------- segnalibri: gruppi di ricette collegate ---------- */
-  .segnalibri-wrap{ margin-top:30px; }
-  .segnalibri-label{
-    font-size:0.72rem; letter-spacing:0.09em; color:var(--ink-soft);
-    font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:6px;
+  .search-box-home{
+    width:100%;
+    padding:9px 13px;
+    font-size:0.85rem;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:var(--paper);
+    margin-bottom:8px;
+    font-family: var(--font-body);
+    flex-shrink:0;
   }
+  .search-box-home:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+
+  /* ---------- segnalibri: gruppi di ricette collegate (pagina dedicata) ---------- */
+  .gruppi-pagina-intro{ font-size:0.85rem; color:var(--ink-soft); margin:0 0 16px; }
+  .segnalibri-wrap{ margin-top:4px; }
   .segnalibri-griglia{ display:flex; flex-direction:column; gap:8px; }
   .segnalibro-btn{
     display:flex; align-items:center; gap:9px; width:100%; text-align:left;
@@ -385,27 +405,47 @@
   .segnalibro-btn:hover{ background:var(--accent-soft); }
   .segnalibro-icona{ flex-shrink:0; opacity:0.85; }
 
+  /* ---------- barra "gruppi" a tendina scorrevole (in Tutte le ricette / Portata) ---------- */
+  .gruppi-select-wrap{ margin-bottom:14px; }
+  .gruppi-select-label{
+    display:block; font-size:0.72rem; letter-spacing:0.09em; color:var(--ink-soft);
+    font-weight:700; margin-bottom:8px;
+  }
+  .gruppi-select{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:0.85rem;
+    padding:2px;
+  }
+  .gruppi-select option{ padding:7px 10px; }
+  .gruppi-select:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+
   .btn-tutte{
     display:block; width:100%; background:var(--accent); color:#fff; border:none;
-    border-radius:14px; padding:15px; font-size:1.02rem; font-weight:600;
-    cursor:pointer; margin-bottom:22px; box-shadow:var(--shadow);
+    border-radius:14px; padding:12px; font-size:0.95rem; font-weight:600;
+    cursor:pointer; margin-bottom:8px; box-shadow:var(--shadow); flex-shrink:0;
   }
   .btn-tutte-conteggio{ font-weight:400; opacity:0.85; font-size:0.9em; }
 
   .griglia-portate{
-    display:grid; grid-template-columns:repeat(auto-fill, minmax(100px, 1fr));
-    gap:10px; margin-bottom:10px;
+    flex:1 1 auto; min-height:0;
+    display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:1fr;
+    gap:7px; margin-bottom:0;
   }
   .portata-card{
-    aspect-ratio:1; display:flex; flex-direction:column; align-items:center;
-    justify-content:center; gap:5px; background:var(--paper); border:1px solid var(--border);
-    border-radius:16px; cursor:pointer; padding:8px; text-align:center;
+    display:flex; flex-direction:column; align-items:center;
+    justify-content:center; gap:3px; background:var(--paper); border:1px solid var(--border);
+    border-radius:14px; cursor:pointer; padding:4px; text-align:center; min-height:0;
     transition:box-shadow 0.15s ease, transform 0.1s ease;
   }
   .portata-card:hover{ box-shadow:var(--shadow); transform:translateY(-2px); border-color:var(--accent); }
-  .portata-card .emoji{ font-size:1.6rem; line-height:1; }
-  .portata-card .nome{ font-size:0.74rem; font-weight:600; line-height:1.2; }
-  .portata-card .conteggio{ font-size:0.68rem; color:var(--ink-soft); }
+  .portata-card .emoji{ font-size:1.25rem; line-height:1; }
+  .portata-card .nome{ font-size:0.62rem; font-weight:600; line-height:1.15; }
+  .portata-card .conteggio{ font-size:0.56rem; color:var(--ink-soft); }
 
   /* ---------- filtro portata sempre aperto ---------- */
   .filtro-riga-fissa{ margin-bottom:10px; padding-top:9px; border-top:1px solid var(--border); }
@@ -777,7 +817,7 @@
     "titolo": "Colazione bilanciata pronta la sera prima",
     "autore": "beardedscara",
     "categorie": [
-      "Altro"
+      "Colazione"
     ],
     "dieta": [
       "Vegetariano"
@@ -27858,6 +27898,1875 @@
     ],
     "svolgimento": "1. Cuoci la zucca a cubetti e i cavolini in forno.\n2. Idrata il cous cous con acqua calda.\n3. Aggiungi le verdure, la feta sbriciolata, l'uvetta, le noci pecan e la tahina diluita con poca acqua.",
     "note": "Parte della serie \"7 schisce per la tua settimana\" di @dietista.paolastavolone (schiscetta della domenica)."
+  },
+  {
+    "id": "risotto-allo-zafferano-con-stracciatella-e-pistacchi",
+    "numero": 371,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Risotto allo zafferano con stracciatella e pistacchi",
+    "titoloOriginale": null,
+    "autore": "Cime di Web!",
+    "categorie": [
+      "Primo"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": false,
+    "difficolta": "Media",
+    "tempo": "35 minuti",
+    "persone": 4,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 538,
+      "proteine": 13.7,
+      "carboidrati": 68.4,
+      "grassi": 24.0
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 320,
+        "unita": "g",
+        "nome": "riso carnaroli"
+      },
+      {
+        "quantita": 1000,
+        "unita": "ml",
+        "nome": "brodo vegetale"
+      },
+      {
+        "quantita": 150,
+        "unita": "ml",
+        "nome": "panna da cucina"
+      },
+      {
+        "quantita": 20,
+        "unita": "g",
+        "nome": "burro",
+        "stimato": true
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "zafferano (2 bustine)"
+      },
+      {
+        "quantita": 40,
+        "unita": "g",
+        "nome": "pistacchi"
+      },
+      {
+        "quantita": 30,
+        "unita": "g",
+        "nome": "scalogno",
+        "stimato": true
+      },
+      {
+        "quantita": 120,
+        "unita": "g",
+        "nome": "stracciatella"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "sale e pepe"
+      }
+    ],
+    "svolgimento": "1. Scaldate il brodo fino a raggiungere il bollore e lasciatelo sul fuoco a fiamma bassa.\n2. Tritate lo scalogno e rosolatelo in casseruola con olio e una noce di burro a fiamma bassa per circa 5 minuti.\n3. Aggiungete il riso e rosolatelo per qualche minuto finché il chicco diventa caldo, bagnate con il brodo e da quel momento cuocete per 9 minuti, aggiungendo brodo man mano che si asciuga.\n4. Nel frattempo scaldate la panna con lo zafferano.\n5. Trascorsi i primi nove minuti di cottura aggiungete la salsa allo zafferano e proseguite la cottura per altri nove minuti, aggiungendo se serve il brodo.\n6. A fine cottura fuori dal fuoco mantecate con una noce di burro e aggiustate di sale e pepe.\n7. Impiattate il risotto, aggiungete la stracciatella a temperatura ambiente e cospargete con granella di pistacchi.",
+    "note": "Da un foglio di ricetta stampato a marchio 'Cime di Web!'."
+  },
+  {
+    "id": "focaccia-al-pesto-e-formaggio-in-padella",
+    "numero": 372,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Focaccia al pesto e formaggio in padella",
+    "titoloOriginale": null,
+    "autore": "Cime di Web!",
+    "categorie": [
+      "Antipasto"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": false,
+    "difficolta": "Media",
+    "tempo": "40 minuti",
+    "persone": 7,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 291,
+      "proteine": 9.4,
+      "carboidrati": 33.4,
+      "grassi": 13.2
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 300,
+        "unita": "g",
+        "nome": "farina 00"
+      },
+      {
+        "quantita": 150,
+        "unita": "ml",
+        "nome": "acqua"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "lievito istantaneo (1/2 bustina)"
+      },
+      {
+        "quantita": 30,
+        "unita": "ml",
+        "nome": "olio evo"
+      },
+      {
+        "quantita": 200,
+        "unita": "g",
+        "nome": "stracchino"
+      },
+      {
+        "quantita": 45,
+        "unita": "g",
+        "nome": "pesto"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "sale"
+      }
+    ],
+    "svolgimento": "1. In una ciotola unire la farina, l'acqua tiepida, il lievito, l'olio e un pizzico di sale; impastate fino a ottenere un panetto liscio e omogeneo.\n2. Dividete il panetto in due, stendetene una parte e trasferitela in una padella di 26 cm di diametro, spennellata con olio.\n3. Ricoprite tutta la superficie della focaccia con il pesto e lo stracchino, poi richiudete con il restante impasto stesso.\n4. Sigillate bene i bordi, aiutandovi con l'acqua se necessario.\n5. Cuocete per 13 minuti con il coperchio, quindi girate la focaccia, avendo cura di spennellare nuovamente il fondo della padella, continuando la cottura per altri 13 minuti.\n6. Non cuocete la focaccia a fuoco alto.",
+    "note": "Da un foglio di ricetta stampato a marchio 'Cime di Web!'. Ingredienti per 6/8 persone: valori calcolati su 7 porzioni. In alternativa all'olio extravergine d'oliva, la ricetta indica anche l'olio di semi."
+  },
+  {
+    "id": "polpettone-con-zucca",
+    "numero": 373,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Polpettone con zucca",
+    "titoloOriginale": null,
+    "autore": "Cime di Web!",
+    "categorie": [
+      "Secondo"
+    ],
+    "dieta": [
+      "Carne"
+    ],
+    "fredda": false,
+    "difficolta": "Media",
+    "tempo": "1 ora 30 minuti",
+    "persone": 6,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 761,
+      "proteine": 47.0,
+      "carboidrati": 30.4,
+      "grassi": 50.7
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 1000,
+        "unita": "g",
+        "nome": "zucca"
+      },
+      {
+        "quantita": 500,
+        "unita": "g",
+        "nome": "manzo macinato"
+      },
+      {
+        "quantita": 500,
+        "unita": "g",
+        "nome": "maiale macinato"
+      },
+      {
+        "quantita": 200,
+        "unita": "g",
+        "nome": "ricotta"
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "parmigiano"
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "pangrattato"
+      },
+      {
+        "quantita": 110,
+        "unita": "g",
+        "nome": "uova"
+      },
+      {
+        "quantita": 15,
+        "unita": "g",
+        "nome": "olio evo",
+        "stimato": true
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "sale, pepe e timo"
+      }
+    ],
+    "svolgimento": "1. Private la zucca di buccia e semi, tagliatela a fette spesse 2 cm e disponetele in una teglia foderata di carta da forno. Condite con sale, pepe, un filo di olio e timo.\n2. Cuocete nel forno ventilato a 180°C per 35-40 minuti, voltando le fette se necessario.\n3. Amalgamate in una ciotola le carni macinate con la ricotta, il parmigiano grattugiato e il pangrattato, poi incorporate le uova e regolate di sale.\n4. Trasferite il composto su un foglio di carta da forno e modellatelo con le mani, formando un classico polpettone. Arrotolatelo nel foglio di carta da forno e sigillatene le estremità con un filo da cucina, come se fosse una caramella.\n5. Adagiate il polpettone su una teglia e cuocetelo a 180°C per circa 40 minuti.\n6. Schiacciate con uno schiacciapatate metà della zucca e adagiatela in un piatto da portata.\n7. Accomodatevi il polpettone a fette e la restante zucca a spicchi e servite.",
+    "note": "Da un foglio di ricetta stampato a marchio 'Cime di Web!'."
+  },
+  {
+    "id": "granita-al-limone",
+    "numero": 374,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Granita al limone",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Dolce"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "10 minuti + congelamento",
+    "persone": 4,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 153,
+      "proteine": 0.2,
+      "carboidrati": 40.0,
+      "grassi": 0.1
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "zucchero"
+      },
+      {
+        "quantita": 150,
+        "unita": "ml",
+        "nome": "succo di limone"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "scorza di 5 limoni e citronella (1 gambo)"
+      },
+      {
+        "quantita": 500,
+        "unita": "ml",
+        "nome": "acqua"
+      }
+    ],
+    "svolgimento": "1. Metti lo zucchero, la scorza di limone e la citronella in una padella con 200 ml di acqua. Porta a ebollizione mescolando e lascia cuocere per 5 minuti.\n2. Scola il liquido e aggiungi il succo di limone e i restanti 300 ml di acqua.\n3. Riempi una vaschetta per il ghiaccio con il composto.\n4. Una volta congelati, metti i cubetti di ghiaccio nel frullatore e aziona il tritaghiaccio.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed."
+  },
+  {
+    "id": "pesto-di-avocado",
+    "numero": 375,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Pesto di avocado",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Condimenti e Salse"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": false,
+    "difficolta": "Facile",
+    "tempo": "10 minuti",
+    "persone": null,
+    "gruppo": null,
+    "tags": [],
+    "porzioneTipica": "2 cucchiai (circa 30 g)",
+    "macronutrienti": {
+      "kcal": 72,
+      "proteine": 1.6,
+      "carboidrati": 2.5,
+      "grassi": 6.7
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 50,
+        "unita": "g",
+        "nome": "mandorle"
+      },
+      {
+        "quantita": 10,
+        "unita": "g",
+        "nome": "aglio",
+        "stimato": true
+      },
+      {
+        "quantita": 40,
+        "unita": "g",
+        "nome": "basilico",
+        "stimato": true
+      },
+      {
+        "quantita": 50,
+        "unita": "ml",
+        "nome": "olio evo"
+      },
+      {
+        "quantita": 600,
+        "unita": "g",
+        "nome": "avocado"
+      },
+      {
+        "quantita": 60,
+        "unita": "g",
+        "nome": "parmigiano"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "sale e pepe"
+      }
+    ],
+    "svolgimento": "1. Versa tutti gli ingredienti nel vaso del frullatore e metti il coperchio insieme alla spatola.\n2. Accendi il frullatore a velocità minima e frulla per 1 minuto.\n3. Con la spatola, mescola e spingi gli ingredienti verso la lama perché non restino attaccati alle pareti del vaso.\n4. Aumenta gradualmente fino a velocità media e frulla ancora per 1 minuto.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed. Valori per 2 cucchiai (circa 30 g). Aglio e basilico nel libretto sono indicati rispettivamente come '2 chiodi di garofano' e '2 mazzi grandi': quantità in grammi stimate."
+  },
+  {
+    "id": "burro-di-arachidi-fatto-in-casa",
+    "numero": 376,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Burro di arachidi fatto in casa",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Condimenti e Salse"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": false,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": null,
+    "gruppo": null,
+    "tags": [],
+    "porzioneTipica": "1 cucchiaio (circa 15 g)",
+    "macronutrienti": {
+      "kcal": 89,
+      "proteine": 3.4,
+      "carboidrati": 2.2,
+      "grassi": 8.0
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 500,
+        "unita": "g",
+        "nome": "arachidi"
+      },
+      {
+        "quantita": 50,
+        "unita": "g",
+        "nome": "olio vegetale"
+      }
+    ],
+    "svolgimento": "1. Versa le arachidi nel vaso del frullatore e metti il coperchio insieme alla spatola.\n2. Accendi il frullatore a velocità minima e frulla per 2 minuti.\n3. Con la spatola, mescola e spingi gli ingredienti verso la lama perché non restino attaccati alle pareti del vaso.\n4. Ferma il frullatore e versa l'olio vegetale nel vaso.\n5. Aumenta lentamente fino a velocità media e frulla ancora per 2 minuti.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed. Valori per 1 cucchiaio (circa 15 g)."
+  },
+  {
+    "id": "gazpacho",
+    "numero": 377,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Gazpacho",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Zuppa"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "15 minuti + raffreddamento",
+    "persone": 4,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 330,
+      "proteine": 3.9,
+      "carboidrati": 20.9,
+      "grassi": 26.1
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 500,
+        "unita": "g",
+        "nome": "pomodori"
+      },
+      {
+        "quantita": 100,
+        "unita": "g",
+        "nome": "cetriolo"
+      },
+      {
+        "quantita": 70,
+        "unita": "g",
+        "nome": "pepe verde"
+      },
+      {
+        "quantita": 100,
+        "unita": "g",
+        "nome": "peperone rosso"
+      },
+      {
+        "quantita": 50,
+        "unita": "g",
+        "nome": "cipolla"
+      },
+      {
+        "quantita": 50,
+        "unita": "g",
+        "nome": "peperoncini rossi (poco piccanti)"
+      },
+      {
+        "quantita": 10,
+        "unita": "g",
+        "nome": "aglio",
+        "stimato": true
+      },
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "pane"
+      },
+      {
+        "quantita": 100,
+        "unita": "ml",
+        "nome": "aceto"
+      },
+      {
+        "quantita": 100,
+        "unita": "ml",
+        "nome": "olio evo"
+      },
+      {
+        "quantita": 300,
+        "unita": "ml",
+        "nome": "acqua"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "sale e pepe"
+      }
+    ],
+    "svolgimento": "1. Rimuovi il cuore dei pomodori e dell'aglio; rimuovi anche i semi e l'interno dei peperoni.\n2. Taglia grossolanamente tutti gli ingredienti.\n3. Versa tutti gli ingredienti nel vaso del frullatore e chiudi il coperchio.\n4. Frulla a velocità massima per 1 minuto.\n5. Tieni in frigorifero e servi freddo.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed."
+  },
+  {
+    "id": "gelato-allo-yogurt-istantaneo-al-gusto-di-fragola",
+    "numero": 378,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Gelato allo yogurt istantaneo al gusto di fragola",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Dolce"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 4,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 162,
+      "proteine": 6.3,
+      "carboidrati": 24.3,
+      "grassi": 5.4
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 600,
+        "unita": "g",
+        "nome": "fragole"
+      },
+      {
+        "quantita": 600,
+        "unita": "g",
+        "nome": "yogurt bianco"
+      },
+      {
+        "quantita": 30,
+        "unita": "g",
+        "nome": "miele di castagno"
+      }
+    ],
+    "svolgimento": "1. Versa tutti gli ingredienti nel vaso del frullatore e metti il coperchio insieme alla spatola.\n2. Accendi il frullatore a velocità media e frulla per 1 minuto.\n3. Con la spatola, mescola e spingi gli ingredienti verso la lama perché non restino attaccati alle pareti del vaso.\n4. Aumenta gradualmente la velocità fino al massimo e frulla ancora per 1 minuto.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed. Le fragole devono essere congelate, come indicato dalla ricetta originale."
+  },
+  {
+    "id": "cavolo-rosso-e-mela-con-prugne-e-farina-di-avena",
+    "numero": 379,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Cavolo rosso e mela con prugne e farina di avena",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 295,
+      "proteine": 9.4,
+      "carboidrati": 57.0,
+      "grassi": 5.7
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 200,
+        "unita": "ml",
+        "nome": "acqua"
+      },
+      {
+        "quantita": 200,
+        "unita": "ml",
+        "nome": "yogurt bianco"
+      },
+      {
+        "quantita": 100,
+        "unita": "g",
+        "nome": "cavolo rosso"
+      },
+      {
+        "quantita": 120,
+        "unita": "g",
+        "nome": "prugne"
+      },
+      {
+        "quantita": 360,
+        "unita": "g",
+        "nome": "mela"
+      },
+      {
+        "quantita": 50,
+        "unita": "g",
+        "nome": "farina d'avena"
+      }
+    ],
+    "svolgimento": "1. Versa acqua e yogurt nel vaso del frullatore ad alta velocità.\n2. Aggiungi il cavolo rosso, le prugne denocciolate e la mela a pezzi.\n3. Frulla fino a ottenere una crema omogenea e liscia.\n4. Versa nella bowl e completa con la farina d'avena.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed. La pagina fotografata riporta solo l'elenco ingredienti, senza procedimento: il procedimento è stato ricostruito seguendo lo schema delle altre ricette 'bowl' dello stesso libretto."
+  },
+  {
+    "id": "fragole-e-cavolo-rosso-con-carota-e-cocco",
+    "numero": 380,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Fragole e cavolo rosso con carota e cocco",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 490,
+      "proteine": 7.3,
+      "carboidrati": 30.3,
+      "grassi": 40.7
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 400,
+        "unita": "ml",
+        "nome": "latte di cocco"
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "cavolo rosso"
+      },
+      {
+        "quantita": 1,
+        "unita": "pezzi",
+        "nome": "carote"
+      },
+      {
+        "quantita": 300,
+        "unita": "g",
+        "nome": "fragole"
+      },
+      {
+        "quantita": 70,
+        "unita": "g",
+        "nome": "lime"
+      }
+    ],
+    "svolgimento": "1. Versa il latte di cocco nel vaso del frullatore ad alta velocità.\n2. Aggiungi il cavolo rosso, la carota, le fragole e la limetta sbucciata.\n3. Frulla fino a ottenere una crema omogenea e liscia.\n4. Versa nella bowl e servi.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed. La pagina fotografata riporta solo l'elenco ingredienti, senza procedimento: il procedimento è stato ricostruito seguendo lo schema delle altre ricette 'bowl' dello stesso libretto."
+  },
+  {
+    "id": "yogurt-alla-ciliegia-con-peperone-rosso",
+    "numero": 381,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Yogurt alla ciliegia con peperone rosso",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 186,
+      "proteine": 6.1,
+      "carboidrati": 36.4,
+      "grassi": 3.9
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 200,
+        "unita": "ml",
+        "nome": "acqua"
+      },
+      {
+        "quantita": 200,
+        "unita": "ml",
+        "nome": "yogurt bianco"
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "peperone rosso"
+      },
+      {
+        "quantita": 192,
+        "unita": "g",
+        "nome": "ciliegie"
+      },
+      {
+        "quantita": 130,
+        "unita": "g",
+        "nome": "arancia"
+      },
+      {
+        "quantita": 70,
+        "unita": "g",
+        "nome": "lime"
+      }
+    ],
+    "svolgimento": "1. Versa acqua e yogurt nel vaso del frullatore ad alta velocità.\n2. Aggiungi il peperone rosso privato dei semi, le ciliegie denocciolate (surgelate), l'arancia e la limetta sbucciate.\n3. Frulla fino a ottenere una crema omogenea e liscia.\n4. Versa nella bowl e servi.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed. La pagina fotografata riporta solo l'elenco ingredienti, senza procedimento: il procedimento è stato ricostruito seguendo lo schema delle altre ricette 'bowl' dello stesso libretto."
+  },
+  {
+    "id": "carota-con-menta-e-zucchine-gialle",
+    "numero": 382,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Carota con menta e zucchine gialle",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 105,
+      "proteine": 5.2,
+      "carboidrati": 14.5,
+      "grassi": 3.7
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 200,
+        "unita": "ml",
+        "nome": "acqua"
+      },
+      {
+        "quantita": 200,
+        "unita": "ml",
+        "nome": "yogurt bianco"
+      },
+      {
+        "quantita": 2,
+        "unita": "pezzi",
+        "nome": "carote"
+      },
+      {
+        "quantita": 180,
+        "unita": "g",
+        "nome": "zucchine"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "menta (6 ciuffi, guarnizione)"
+      }
+    ],
+    "svolgimento": "1. Versa acqua e yogurt nel vaso del frullatore ad alta velocità.\n2. Aggiungi le carote e le zucchine gialle a pezzi.\n3. Frulla fino a ottenere una crema omogenea e liscia.\n4. Versa nella bowl e completa con la menta fresca.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed. La pagina fotografata riporta solo l'elenco ingredienti, senza procedimento: il procedimento è stato ricostruito seguendo lo schema delle altre ricette 'bowl' dello stesso libretto."
+  },
+  {
+    "id": "ananas-e-mango-con-menta",
+    "numero": 383,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Ananas e mango con menta",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 210,
+      "proteine": 2.4,
+      "carboidrati": 55.1,
+      "grassi": 1.0
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 100,
+        "unita": "ml",
+        "nome": "acqua di cocco"
+      },
+      {
+        "quantita": 200,
+        "unita": "g",
+        "nome": "ananas",
+        "stimato": true
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "mango"
+      },
+      {
+        "quantita": 360,
+        "unita": "g",
+        "nome": "mela"
+      },
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "limone"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "menta (6 ciuffi, guarnizione)"
+      }
+    ],
+    "svolgimento": "1. Versa l'acqua di cocco nel vaso del frullatore ad alta velocità.\n2. Aggiungi l'ananas, il mango, le mele gialle e il limone sbucciati.\n3. Frulla fino a ottenere una crema omogenea e liscia.\n4. Versa nella bowl e completa con la menta fresca.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed. La pagina fotografata riporta solo l'elenco ingredienti, senza procedimento: il procedimento è stato ricostruito seguendo lo schema delle altre ricette 'bowl' dello stesso libretto. Quantità di ananas (indicata come '0,5 pezzi' nel libretto) stimata in grammi."
+  },
+  {
+    "id": "albicocca-e-frutto-della-passione-con-mais-e-menta",
+    "numero": 384,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Albicocca e frutto della passione con mais e menta",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 169,
+      "proteine": 4.5,
+      "carboidrati": 39.5,
+      "grassi": 1.3
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 400,
+        "unita": "ml",
+        "nome": "acqua di cocco"
+      },
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "mais",
+        "stimato": true
+      },
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "frutto della passione"
+      },
+      {
+        "quantita": 40,
+        "unita": "g",
+        "nome": "albicocche secche"
+      },
+      {
+        "quantita": 40,
+        "unita": "g",
+        "nome": "limone"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "menta (6 ciuffi, guarnizione)"
+      }
+    ],
+    "svolgimento": "1. Versa l'acqua di cocco nel vaso del frullatore ad alta velocità.\n2. Aggiungi il mais, la polpa del frutto della passione, le albicocche essiccate e il mezzo limone sbucciato.\n3. Frulla fino a ottenere una crema omogenea e liscia.\n4. Versa nella bowl e completa con la menta fresca.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed. La pagina fotografata riporta solo l'elenco ingredienti, senza procedimento: il procedimento è stato ricostruito seguendo lo schema delle altre ricette 'bowl' dello stesso libretto. Quantità di mais (indicata come '1 pezzo' nel libretto) stimata in grammi."
+  },
+  {
+    "id": "sedano-e-cocco-con-miele-e-cannella",
+    "numero": 385,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Sedano e cocco con miele e cannella",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 280,
+      "proteine": 3.8,
+      "carboidrati": 22.5,
+      "grassi": 20.3
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 200,
+        "unita": "ml",
+        "nome": "acqua"
+      },
+      {
+        "quantita": 200,
+        "unita": "ml",
+        "nome": "latte di cocco"
+      },
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "sedano"
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "sedano rapa"
+      },
+      {
+        "quantita": 30,
+        "unita": "g",
+        "nome": "miele di castagno"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "menta, vaniglia e cannella (guarnizione)"
+      }
+    ],
+    "svolgimento": "1. Versa acqua (sotto forma di ghiaccio) e latte di cocco nel vaso del frullatore ad alta velocità.\n2. Aggiungi il sedano a pezzi e il sedano rapa pelato.\n3. Frulla fino a ottenere una crema omogenea e liscia.\n4. Versa nella bowl e completa con menta, miele, vaniglia e cannella.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed. La pagina fotografata riporta solo l'elenco ingredienti, senza procedimento: il procedimento è stato ricostruito seguendo lo schema delle altre ricette 'bowl' dello stesso libretto."
+  },
+  {
+    "id": "lattuga-iceberg-e-cetriolo-con-menta",
+    "numero": 386,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Lattuga iceberg e cetriolo con menta",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 212,
+      "proteine": 7.9,
+      "carboidrati": 37.6,
+      "grassi": 5.6
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 100,
+        "unita": "ml",
+        "nome": "acqua"
+      },
+      {
+        "quantita": 300,
+        "unita": "ml",
+        "nome": "yogurt bianco"
+      },
+      {
+        "quantita": 200,
+        "unita": "g",
+        "nome": "lattuga"
+      },
+      {
+        "quantita": 200,
+        "unita": "g",
+        "nome": "cetrioli"
+      },
+      {
+        "quantita": 360,
+        "unita": "g",
+        "nome": "mela"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "menta (6 ciuffi, guarnizione)"
+      }
+    ],
+    "svolgimento": "1. Versa acqua e yogurt nel vaso del frullatore ad alta velocità.\n2. Aggiungi la lattuga iceberg, il cetriolo e le mele verdi a pezzi.\n3. Frulla fino a ottenere una crema omogenea e liscia.\n4. Versa nella bowl e completa con la menta fresca.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed. La pagina fotografata riporta solo l'elenco ingredienti, senza procedimento: il procedimento è stato ricostruito seguendo lo schema delle altre ricette 'bowl' dello stesso libretto."
+  },
+  {
+    "id": "crescione-e-avocado-con-peperone-verde",
+    "numero": 387,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Crescione e avocado con peperone verde",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 285,
+      "proteine": 5.5,
+      "carboidrati": 22.8,
+      "grassi": 22.4
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 400,
+        "unita": "ml",
+        "nome": "acqua"
+      },
+      {
+        "quantita": 100,
+        "unita": "g",
+        "nome": "crescione"
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "pepe verde"
+      },
+      {
+        "quantita": 100,
+        "unita": "g",
+        "nome": "cetrioli"
+      },
+      {
+        "quantita": 300,
+        "unita": "g",
+        "nome": "avocado"
+      },
+      {
+        "quantita": 70,
+        "unita": "g",
+        "nome": "lime"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "zenzero (guarnizione)"
+      }
+    ],
+    "svolgimento": "1. Versa l'acqua nel vaso del frullatore ad alta velocità.\n2. Aggiungi il crescione, il peperone verde privato dei semi, il cetriolo, l'avocado e la limetta sbucciati.\n3. Frulla fino a ottenere una crema omogenea e liscia.\n4. Versa nella bowl e completa con lo zenzero.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed. La pagina fotografata riporta solo l'elenco ingredienti, senza procedimento: il procedimento è stato ricostruito seguendo lo schema delle altre ricette 'bowl' dello stesso libretto."
+  },
+  {
+    "id": "mela-e-pera-con-cavolo-riccio",
+    "numero": 388,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Mela e pera con cavolo riccio",
+    "titoloOriginale": null,
+    "autore": "Philips High Speed Blender Recipes Book",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 232,
+      "proteine": 3.9,
+      "carboidrati": 60.0,
+      "grassi": 1.1
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 200,
+        "unita": "ml",
+        "nome": "acqua"
+      },
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "sedano"
+      },
+      {
+        "quantita": 100,
+        "unita": "g",
+        "nome": "cavolo riccio"
+      },
+      {
+        "quantita": 360,
+        "unita": "g",
+        "nome": "mela"
+      },
+      {
+        "quantita": 340,
+        "unita": "g",
+        "nome": "pera"
+      },
+      {
+        "quantita": 70,
+        "unita": "g",
+        "nome": "lime"
+      }
+    ],
+    "svolgimento": "1. Versa l'acqua nel vaso del frullatore ad alta velocità.\n2. Aggiungi il sedano, il cavolo riccio, le mele verdi, le pere e la limetta sbucciati.\n3. Frulla fino a ottenere una crema omogenea e liscia.\n4. Versa nella bowl e servi.",
+    "note": "Dal libretto ricette multilingue del frullatore Philips High Speed. La pagina fotografata riporta solo l'elenco ingredienti, senza procedimento: il procedimento è stato ricostruito seguendo lo schema delle altre ricette 'bowl' dello stesso libretto. Numero di porzioni non indicato nella pagina fotografata (probabilmente tagliato fuori dall'inquadratura): stimato per coerenza con le altre bowl della stessa serie."
+  },
+  {
+    "id": "succo-di-mela-carota-latte-e-miele",
+    "numero": 389,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Succo di mela, carota, latte e miele",
+    "titoloOriginale": "Apple Radish Juice",
+    "autore": "Centrifugal Juicer Healthy Recipes",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 1,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 236,
+      "proteine": 5.7,
+      "carboidrati": 44.0,
+      "grassi": 5.8
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 180,
+        "unita": "g",
+        "nome": "mela"
+      },
+      {
+        "quantita": 40,
+        "unita": "g",
+        "nome": "carote",
+        "stimato": true
+      },
+      {
+        "quantita": 150,
+        "unita": "ml",
+        "nome": "latte"
+      },
+      {
+        "quantita": 10,
+        "unita": "g",
+        "nome": "miele di castagno",
+        "stimato": true
+      }
+    ],
+    "svolgimento": "1. Lava la mela e la carota; sbuccia la mela e tagliala a pezzi.\n2. Passa mela e carota nell'estrattore.\n3. Aggiungi il latte e il miele e mescola bene.",
+    "note": "Tradotta dal manuale in inglese di un estrattore/centrifuga da cucina. Nel manuale originale la ricetta si intitola 'Apple Radish Juice' ma gli ingredienti elencati non comprendono il ravanello (probabile imprecisione del manuale): titolo adattato di conseguenza."
+  },
+  {
+    "id": "succo-di-arancia-e-mandarino",
+    "numero": 390,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Succo di arancia e mandarino",
+    "titoloOriginale": "Orange Juice",
+    "autore": "Centrifugal Juicer Healthy Recipes",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 101,
+      "proteine": 1.8,
+      "carboidrati": 25.3,
+      "grassi": 0.5
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 260,
+        "unita": "g",
+        "nome": "arancia"
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "mandarino"
+      }
+    ],
+    "svolgimento": "1. Sbuccia le arance e i mandarini.\n2. Passa tutto nell'estrattore.",
+    "note": "Tradotta dal manuale in inglese di un estrattore/centrifuga da cucina."
+  },
+  {
+    "id": "succo-di-mela-e-fragole-al-miele",
+    "numero": 391,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Succo di mela e fragole al miele",
+    "titoloOriginale": "Strawberry Juice",
+    "autore": "Centrifugal Juicer Healthy Recipes",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegetariano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 149,
+      "proteine": 1.4,
+      "carboidrati": 38.6,
+      "grassi": 0.7
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 360,
+        "unita": "g",
+        "nome": "mela"
+      },
+      {
+        "quantita": 250,
+        "unita": "g",
+        "nome": "fragole"
+      },
+      {
+        "quantita": 10,
+        "unita": "g",
+        "nome": "miele di castagno",
+        "stimato": true
+      }
+    ],
+    "svolgimento": "1. Lava le mele e le fragole, taglia le mele a pezzi.\n2. Passa tutto nell'estrattore.\n3. Aggiungi il miele e mescola.",
+    "note": "Tradotta dal manuale in inglese di un estrattore/centrifuga da cucina."
+  },
+  {
+    "id": "succo-di-mela-arancia-fragole-e-anguria",
+    "numero": 392,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Succo di mela, arancia, fragole e anguria",
+    "titoloOriginale": "Watermelon Juice",
+    "autore": "Centrifugal Juicer Healthy Recipes",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 132,
+      "proteine": 2.0,
+      "carboidrati": 33.7,
+      "grassi": 0.8
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 180,
+        "unita": "g",
+        "nome": "mela"
+      },
+      {
+        "quantita": 130,
+        "unita": "g",
+        "nome": "arancia"
+      },
+      {
+        "quantita": 200,
+        "unita": "g",
+        "nome": "fragole"
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "anguria"
+      }
+    ],
+    "svolgimento": "1. Lava e prepara tutta la frutta, sbucciando mela e arancia.\n2. Passa tutto nell'estrattore, mescola e servi.",
+    "note": "Tradotta dal manuale in inglese di un estrattore/centrifuga da cucina."
+  },
+  {
+    "id": "succo-di-cetriolo",
+    "numero": 393,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Succo di cetriolo",
+    "titoloOriginale": "Cucumber Juice",
+    "autore": "Centrifugal Juicer Healthy Recipes",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 1,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 30,
+      "proteine": 1.8,
+      "carboidrati": 6.2,
+      "grassi": 0.2
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 250,
+        "unita": "g",
+        "nome": "cetrioli"
+      }
+    ],
+    "svolgimento": "1. Lava il cetriolo e passalo nell'estrattore.\n2. Servi senza aggiungere altri ingredienti, per mantenerne il sapore naturale.",
+    "note": "Tradotta dal manuale in inglese di un estrattore/centrifuga da cucina."
+  },
+  {
+    "id": "succo-duva-fatto-in-casa",
+    "numero": 394,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Succo d'uva fatto in casa",
+    "titoloOriginale": "Grape Juice",
+    "autore": "Centrifugal Juicer Healthy Recipes",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "10 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 554,
+      "proteine": 1.5,
+      "carboidrati": 142.3,
+      "grassi": 1.0
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 500,
+        "unita": "g",
+        "nome": "uva"
+      },
+      {
+        "quantita": 200,
+        "unita": "g",
+        "nome": "zucchero"
+      }
+    ],
+    "svolgimento": "1. Lava l'uva e scolala bene, poi passala nell'estrattore insieme allo zucchero.",
+    "note": "Tradotta dal manuale in inglese di un estrattore/centrifuga da cucina. Ricetta tradizionale con una quantità di zucchero aggiunto piuttosto elevata."
+  },
+  {
+    "id": "succo-di-cavolo-riccio-cetriolo-e-limone",
+    "numero": 395,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Succo di cavolo riccio, cetriolo e limone",
+    "titoloOriginale": "Kale+Cucumber+Lemon",
+    "autore": "Centrifugal Juicer Healthy Recipes",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 1,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 184,
+      "proteine": 6.3,
+      "carboidrati": 45.4,
+      "grassi": 1.6
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 75,
+        "unita": "g",
+        "nome": "cavolo riccio",
+        "stimato": true
+      },
+      {
+        "quantita": 200,
+        "unita": "g",
+        "nome": "cetrioli"
+      },
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "limone"
+      },
+      {
+        "quantita": 180,
+        "unita": "g",
+        "nome": "mela"
+      },
+      {
+        "quantita": 40,
+        "unita": "g",
+        "nome": "sedano",
+        "stimato": true
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "zenzero (1 pollice)"
+      }
+    ],
+    "svolgimento": "1. Lava e prepara tutti gli ingredienti (meglio se biologici), sbucciando il limone.\n2. Passa tutto nell'estrattore.\n3. Servi subito, con ghiaccio.",
+    "note": "Tradotta dal manuale in inglese di un estrattore/centrifuga da cucina."
+  },
+  {
+    "id": "succo-di-cavolo-riccio-ananas-mango-e-arancia",
+    "numero": 396,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Succo di cavolo riccio, ananas, mango e arancia",
+    "titoloOriginale": "Kale+Pineapple+Orange",
+    "autore": "Centrifugal Juicer Healthy Recipes",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 169,
+      "proteine": 4.1,
+      "carboidrati": 41.2,
+      "grassi": 1.0
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 105,
+        "unita": "g",
+        "nome": "cavolo riccio",
+        "stimato": true
+      },
+      {
+        "quantita": 270,
+        "unita": "g",
+        "nome": "ananas",
+        "stimato": true
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "mango"
+      },
+      {
+        "quantita": 130,
+        "unita": "g",
+        "nome": "arancia"
+      }
+    ],
+    "svolgimento": "1. Lava e prepara tutti gli ingredienti (meglio se biologici), sbucciando ananas, mango e arancia.\n2. Passa tutto nell'estrattore.",
+    "note": "Tradotta dal manuale in inglese di un estrattore/centrifuga da cucina."
+  },
+  {
+    "id": "succo-di-carota-mela-zenzero-e-limone",
+    "numero": 397,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Succo di carota, mela, zenzero e limone",
+    "titoloOriginale": "Carrot Juice",
+    "autore": "Centrifugal Juicer Healthy Recipes",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 116,
+      "proteine": 1.1,
+      "carboidrati": 31.1,
+      "grassi": 0.5
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 360,
+        "unita": "g",
+        "nome": "mela"
+      },
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "carote"
+      },
+      {
+        "quantita": 40,
+        "unita": "g",
+        "nome": "limone"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "zenzero (1/2 pollice)"
+      }
+    ],
+    "svolgimento": "1. Lava e prepara tutti gli ingredienti, sbucciando il mezzo limone.\n2. Passa tutto nell'estrattore, mescola o agita e servi.",
+    "note": "Tradotta dal manuale in inglese di un estrattore/centrifuga da cucina."
+  },
+  {
+    "id": "succo-di-cavolo-riccio-uva-e-zenzero",
+    "numero": 398,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Succo di cavolo riccio, uva e zenzero",
+    "titoloOriginale": "Kale+organic grapes+lemon",
+    "autore": "Centrifugal Juicer Healthy Recipes",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 1,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 150,
+      "proteine": 5.2,
+      "carboidrati": 34.3,
+      "grassi": 1.5
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 100,
+        "unita": "g",
+        "nome": "cavolo riccio",
+        "stimato": true
+      },
+      {
+        "quantita": 150,
+        "unita": "g",
+        "nome": "uva",
+        "stimato": true
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "zenzero (1 fetta) e succo di limone (facoltativo)"
+      }
+    ],
+    "svolgimento": "1. Fai passare il cavolo riccio, l'uva e lo zenzero attraverso il tubo di alimentazione dell'estrattore.\n2. Se vuoi, aggiungi il succo di un limone al succo d'uva e cavolo riccio.",
+    "note": "Tradotta dal manuale in inglese di un estrattore/centrifuga da cucina."
+  },
+  {
+    "id": "succo-di-cavolo-riccio-carota-sedano-e-daikon-al-lime",
+    "numero": 399,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Succo di cavolo riccio, carota, sedano e daikon al lime",
+    "titoloOriginale": "Kale+carrot+celery",
+    "autore": "Centrifugal Juicer Healthy Recipes",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 1,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 106,
+      "proteine": 4.3,
+      "carboidrati": 25.4,
+      "grassi": 1.0
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 45,
+        "unita": "g",
+        "nome": "cavolo riccio",
+        "stimato": true
+      },
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "carote"
+      },
+      {
+        "quantita": 120,
+        "unita": "g",
+        "nome": "sedano",
+        "stimato": true
+      },
+      {
+        "quantita": 60,
+        "unita": "g",
+        "nome": "daikon",
+        "stimato": true
+      },
+      {
+        "quantita": 70,
+        "unita": "g",
+        "nome": "lime"
+      },
+      {
+        "quantita": null,
+        "unita": "q.b.",
+        "nome": "zenzero (1 fetta)"
+      }
+    ],
+    "svolgimento": "1. Lava le tue verdure e passale attraverso l'estrattore.\n2. Bevi entro 15 minuti per la massima qualità, oppure conserva in un barattolo ermetico in frigorifero fino a 1 giorno.",
+    "note": "Tradotta dal manuale in inglese di un estrattore/centrifuga da cucina."
+  },
+  {
+    "id": "succo-di-mela-cavolo-e-sedano",
+    "numero": 400,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Succo di mela, cavolo e sedano",
+    "titoloOriginale": "Vegetable Apple Juice",
+    "autore": "Centrifugal Juicer Healthy Recipes",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 122,
+      "proteine": 2.0,
+      "carboidrati": 31.6,
+      "grassi": 0.5
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 360,
+        "unita": "g",
+        "nome": "mela"
+      },
+      {
+        "quantita": 200,
+        "unita": "g",
+        "nome": "cavolo cappuccio"
+      },
+      {
+        "quantita": 40,
+        "unita": "g",
+        "nome": "sedano",
+        "stimato": true
+      }
+    ],
+    "svolgimento": "1. Lava il cavolo, il sedano e le mele, taglia le mele a pezzi.\n2. Metti tutto insieme nell'estrattore.",
+    "note": "Tradotta dal manuale in inglese di un estrattore/centrifuga da cucina."
+  },
+  {
+    "id": "succo-di-sedano",
+    "numero": 401,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Succo di sedano",
+    "titoloOriginale": "Celery Juice",
+    "autore": "Centrifugal Juicer Healthy Recipes",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 1,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 40,
+      "proteine": 1.8,
+      "carboidrati": 7.5,
+      "grassi": 0.5
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 250,
+        "unita": "g",
+        "nome": "sedano"
+      }
+    ],
+    "svolgimento": "1. Lava gli ingredienti e passali nell'estrattore.\n2. Metti gli ingredienti nella macchina.",
+    "note": "Tradotta dal manuale in inglese di un estrattore/centrifuga da cucina."
+  },
+  {
+    "id": "succo-di-mela-carota-e-patata-dolce",
+    "numero": 402,
+    "dataAggiunta": "2026-11-06",
+    "titolo": "Succo di mela, carota e patata dolce",
+    "titoloOriginale": "Sweet Potato Juice",
+    "autore": "Centrifugal Juicer Healthy Recipes",
+    "categorie": [
+      "Frullati"
+    ],
+    "dieta": [
+      "Vegano"
+    ],
+    "fredda": true,
+    "difficolta": "Facile",
+    "tempo": "5 minuti",
+    "persone": 2,
+    "gruppo": null,
+    "tags": [],
+    "macronutrienti": {
+      "kcal": 166,
+      "proteine": 1.9,
+      "carboidrati": 42.2,
+      "grassi": 0.5
+    },
+    "macroStimato": true,
+    "nutrizioneVerificata": true,
+    "nutrizioneVerificataIl": "2026-11-06",
+    "ingredienti": [
+      {
+        "quantita": 360,
+        "unita": "g",
+        "nome": "mela"
+      },
+      {
+        "quantita": 80,
+        "unita": "g",
+        "nome": "carote"
+      },
+      {
+        "quantita": 130,
+        "unita": "g",
+        "nome": "patata dolce"
+      }
+    ],
+    "svolgimento": "1. Lava e prepara tutti gli ingredienti.\n2. Passa tutti gli ingredienti nell'estrattore, agita o mescola e servi.",
+    "note": "Tradotta dal manuale in inglese di un estrattore/centrifuga da cucina."
   }
 ]
 </script>
@@ -27866,9 +29775,9 @@
 (function(){
   "use strict";
 
-  const CATEGORIE_ORDINE = ["Antipasto","Primo","Piatto Unico","Secondo","Contorno","Zuppa","Snack","Aperitivo","Frullati","Dolce","Frutta","Condimenti e Salse","Basi e Preparazioni","Altro"];
+  const CATEGORIE_ORDINE = ["Colazione","Antipasto","Primo","Piatto Unico","Secondo","Contorno","Zuppa","Snack","Aperitivo","Frullati","Dolce","Frutta","Condimenti e Salse","Basi e Preparazioni","Altro"];
   const CATEGORIE_EMOJI = {
-    "Antipasto":"🥗","Primo":"🍝","Piatto Unico":"🍲","Secondo":"🍖","Contorno":"🥕",
+    "Colazione":"🥐","Antipasto":"🥗","Primo":"🍝","Piatto Unico":"🍲","Secondo":"🍖","Contorno":"🥕",
     "Zuppa":"🍜","Snack":"🍪","Aperitivo":"🍹","Frullati":"🥤","Dolce":"🍰","Frutta":"🍓",
     "Condimenti e Salse":"🫙","Basi e Preparazioni":"📋","Altro":"✦"
   };
@@ -28130,6 +30039,7 @@
     const hash = location.hash || '#/';
     if(hash === '#/' || hash === '') return { page: 'copertina' };
     if(hash === '#/indice') return { page: 'indice' };
+    if(hash === '#/gruppi') return { page: 'gruppi' };
     if(hash === '#/recenti') return { page: 'redirect', to: '#/indice/tutte/recenti-desc' };
     if(hash.startsWith('#/indice/tutte')){
       const parti = hash.split('/');
@@ -28148,8 +30058,10 @@
     const hash = location.hash || '#/';
     const route = parseHash();
     if(route.page === 'redirect'){ location.hash = route.to; return; }
+    document.body.classList.toggle('vista-indice', route.page === 'indice');
     if(route.page === 'copertina') renderCopertina();
     else if(route.page === 'indice') renderIndiceLanding();
+    else if(route.page === 'gruppi') renderGruppiPage();
     else if(route.page === 'tutte') renderListaTutte(route.sort);
     else if(route.page === 'portata') renderListaPortata(route.categoria, route.sort);
     else if(route.page === 'ricetta') renderRicetta(route.id);
@@ -28173,16 +30085,6 @@
     else render();
   }
 
-  function tentaUscita(){
-    window.close();
-    setTimeout(() => {
-      if(!window.closed){
-        const hint = document.getElementById('esci-hint');
-        if(hint) hint.style.display = 'block';
-      }
-    }, 250);
-  }
-
   function renderCopertina(){
     const tot = RICETTE_BASE.length;
     const aggiornato = ultimoAggiornamento();
@@ -28199,10 +30101,6 @@
           <button class="btn-secondario" data-action="go-recenti">🕓 Ultime aggiunte</button>
           <button class="btn-secondario" data-action="stampa-pdf">📄 Esporta in PDF</button>
         </div>
-        <div class="copertina-esci">
-          <button class="btn-esci" data-action="esci">Esci</button>
-          <p id="esci-hint">Il browser non consente la chiusura automatica di questa scheda: chiudila manualmente per uscire.</p>
-        </div>
       </div>
     `;
   }
@@ -28215,15 +30113,46 @@
 
   function renderSegnalibriGruppi(){
     const gruppi = gruppiDisponibili();
-    if(gruppi.length === 0) return '';
+    if(gruppi.length === 0) return '<p class="no-results">Nessun gruppo di ricette collegate, per ora.</p>';
     return `
       <div class="segnalibri-wrap">
-        <div class="segnalibri-label">🔖 Gruppi di ricette collegate</div>
         <div class="segnalibri-griglia">
           ${gruppi.map(g => `<button class="segnalibro-btn" data-action="filtra-gruppo" data-gruppo="${escapeHtml(g)}"><span class="segnalibro-icona">🔖</span> ${escapeHtml(g)}</button>`).join('')}
         </div>
       </div>
     `;
+  }
+
+  function renderGruppiPage(){
+    app.innerHTML = `
+      <button class="back-link" data-action="go-indice">← Indice</button>
+      <h1 class="titolo-pagina">Gruppi di ricette</h1>
+      <p class="gruppi-pagina-intro">Ricette collegate tra loro (es. stessa preparazione base, variante di una ricetta). Apri un gruppo per vedere le ricette collegate: da lì puoi sempre cercare e filtrare come in "Tutte le ricette" (per titolo, autore, ingrediente, ecc.).</p>
+      ${renderSegnalibriGruppi()}
+    `;
+  }
+
+  function renderBarraGruppi(){
+    const gruppi = gruppiDisponibili();
+    if(gruppi.length === 0) return '';
+    return `
+      <div class="gruppi-select-wrap">
+        <label class="gruppi-select-label" for="gruppi-select">🔖 Gruppi di ricette collegate</label>
+        <select id="gruppi-select" class="gruppi-select" size="6">
+          <option value=""${filtri.gruppo ? '' : ' selected'}>— Nessun gruppo —</option>
+          ${gruppi.map(g => `<option value="${escapeHtml(g)}"${filtri.gruppo === g ? ' selected' : ''}>${escapeHtml(g)}</option>`).join('')}
+        </select>
+      </div>
+    `;
+  }
+
+  function collegaBarraGruppi(onChange){
+    const sel = document.getElementById('gruppi-select');
+    if(!sel) return;
+    sel.addEventListener('change', () => {
+      filtri.gruppo = sel.value || null;
+      onChange();
+    });
   }
 
   function resetFiltriBase(){
@@ -28236,20 +30165,36 @@
     const conteggi = {};
     CATEGORIE_ORDINE.forEach(c => { conteggi[c] = tutte.filter(r => (r.categorie || []).includes(c)).length; });
     app.innerHTML = `
-      <button class="back-link" data-action="go-cover">← Copertina</button>
-      <h1 class="indice-titolo-grande">Indice</h1>
-      <button class="btn-tutte" data-action="go-tutte">📖 Tutte le ricette <span class="btn-tutte-conteggio">(${tutte.length})</span></button>
-      <div class="griglia-portate">
-        ${CATEGORIE_ORDINE.map(c => `
-          <button class="portata-card" data-action="go-portata" data-categoria="${escapeHtml(c)}">
-            <span class="emoji">${CATEGORIE_EMOJI[c] || '•'}</span>
-            <span class="nome">${escapeHtml(c)}</span>
-            <span class="conteggio">${conteggi[c]}</span>
+      <div class="indice-fissa">
+        <div class="indice-riga-top">
+          <button class="back-link back-link-mini" data-action="go-cover">← Copertina</button>
+          <h1 class="indice-titolo-grande">Indice</h1>
+        </div>
+        <button class="btn-tutte" data-action="go-tutte">📖 Tutte le ricette <span class="btn-tutte-conteggio">(${tutte.length})</span></button>
+        <input id="search-box-home" class="search-box-home" type="text" placeholder="Cerca per titolo, numero, autore, ingrediente...">
+        <div class="griglia-portate">
+          ${CATEGORIE_ORDINE.map(c => `
+            <button class="portata-card" data-action="go-portata" data-categoria="${escapeHtml(c)}">
+              <span class="emoji">${CATEGORIE_EMOJI[c] || '•'}</span>
+              <span class="nome">${escapeHtml(c)}</span>
+              <span class="conteggio">${conteggi[c]}</span>
+            </button>
+          `).join('')}
+          <button class="portata-card" data-action="go-gruppi">
+            <span class="emoji">🔖</span>
+            <span class="nome">Gruppi di ricette</span>
+            <span class="conteggio">${gruppiDisponibili().length}</span>
           </button>
-        `).join('')}
+        </div>
       </div>
-      ${renderSegnalibriGruppi()}
     `;
+    const searchHome = document.getElementById('search-box-home');
+    searchHome.addEventListener('keydown', e => {
+      if(e.key === 'Enter'){
+        filtri.search = searchHome.value;
+        navigate('#/indice/tutte/' + SORT_NEUTRO);
+      }
+    });
   }
 
   function renderSortBar(sort){
@@ -28325,6 +30270,7 @@
       ${renderSortBar(sort)}
       <input id="search-box" type="text" placeholder="Cerca per titolo, numero, autore, ingrediente..." value="${escapeHtml(filtri.search)}">
       ${renderFiltriSpeciali()}
+      ${renderBarraGruppi()}
       ${renderFiltriComuni(true)}
       <div id="risultati-indice"></div>
     `;
@@ -28332,6 +30278,7 @@
       filtri.search = e.target.value;
       renderRisultatiTutte(sort);
     });
+    collegaBarraGruppi(() => renderListaTutte(sort));
     renderRisultatiTutte(sort);
   }
 
@@ -28365,9 +30312,11 @@
         <h1 class="titolo-portata-corrente">${CATEGORIE_EMOJI[categoria] || ''} ${escapeHtml(categoria)}</h1>
         <button class="freccia-portata" data-action="go-portata-freccia" data-categoria="${escapeHtml(nextCat)}" title="Portata successiva">→</button>
       </div>
+      ${filtri.gruppo ? `<div class="chip-gruppo-attivo">Gruppo: ${escapeHtml(filtri.gruppo)} <span class="chip-x" data-action="clear-gruppo">✕</span></div>` : ''}
       ${renderSortBar(sort)}
       <input id="search-box" type="text" placeholder="Cerca per titolo, numero, autore, ingrediente..." value="${escapeHtml(filtri.search)}">
       ${renderFiltriSpeciali()}
+      ${renderBarraGruppi()}
       ${renderFiltriComuni(false)}
       <div id="risultati-indice"></div>
     `;
@@ -28375,6 +30324,7 @@
       filtri.search = e.target.value;
       renderRisultatiPortata(categoria, sort);
     });
+    collegaBarraGruppi(() => renderListaPortata(categoria, sort));
     renderRisultatiPortata(categoria, sort);
   }
 
@@ -28530,7 +30480,10 @@
 
     app.innerHTML = `
       <div class="pagina-ricetta">
-        <button class="back-link" data-action="torna-indietro">← Indice</button>
+        <div class="nav-ricetta-top">
+          <button class="back-link" data-action="torna-indietro">← Indietro</button>
+          <button class="back-link back-link-indice" data-action="go-indice">Indice ☰</button>
+        </div>
         <div class="ricetta-titolo-riga">
           <h1 class="ricetta-titolo">${escapeHtml(r.titolo)}</h1>
           <button class="btn-preferito btn-preferito-grande ${r.preferito ? 'attivo' : ''}" data-id="${r.id}" title="${r.preferito ? 'Rimuovi dai preferiti' : 'Aggiungi ai preferiti'}">${r.preferito ? '★' : '☆'}</button>
@@ -28615,7 +30568,10 @@
     }
     if((el = e.target.closest('[data-action="clear-gruppo"]'))){
       filtri.gruppo = null;
-      refreshView();
+      const route = parseHash();
+      if(route.page === 'tutte') renderListaTutte(route.sort);
+      else if(route.page === 'portata') renderListaPortata(route.categoria, route.sort);
+      else refreshView();
       return;
     }
     if((el = e.target.closest('[data-action="go-ricetta"]'))){
@@ -28642,6 +30598,10 @@
     if((el = e.target.closest('[data-action="go-portata"]'))){
       resetFiltriBase();
       navigate('#/indice/portata/' + encodeURIComponent(el.dataset.categoria) + '/' + SORT_NEUTRO);
+      return;
+    }
+    if((el = e.target.closest('[data-action="go-gruppi"]'))){
+      navigate('#/gruppi');
       return;
     }
     if((el = e.target.closest('[data-action="go-portata-freccia"]'))){
